@@ -11,26 +11,23 @@
     height: 100%;
     }
 }
+.logincontainer{
+    margin-left: 100px;
+    width: 150px;
+    height: 50px;
+    border-radius: 10px;
+    background-color: #FF9138;
+}
 .buttonlogin{
-    margin-left: 120px;
+    padding-top: 10px;
     display: flex;
-    width: 162px;
-    height: 40px;
-    padding: 10px 24px;
     justify-content: center;
-    align-items: center;
 }
-.maubtlogin{
-    border-radius: 8px;
-    background: var(--orange-orange-400, #FF9138);
-    box-shadow: 0px 0px 6px 0px #E7E9F2;
+.dangnhap{
+    background-color: #FF9138;
+    border: none;
+    color: white;
 }
-.custom-button {
-    border: none; 
-    background-color: transparent;
-    padding: 0; 
-}
-  
 .show-password {
     color: #1890ff; 
 }
@@ -41,13 +38,78 @@
     border: none;
 }  
 .formdn{
-    width: 1440px;
-    height: 949px;
-    border-radius: 16px;
+    height: 952px;
+    border-radius: 5px;
     background: var(--bg, #F6F6F6);
 }
 .formdangnhap{
     margin-top: 90px;
     margin-left: 190px;
 }
+.container {
+    position: relative;
+    display: inline-block;
+}
+  
+  h3 {
+    color: #FF7506 !important;
+    position: absolute;
+    top: 45%;
+    left: 66%;
+    transform: translate(-86%, -40%);
+    z-index: 1;
+  }
+  
+  h1 {
+    color: #FF7506 !important;
+    position: absolute;
+    top: 50%;
+    left: 40%;
+    margin-left: 107px;
+    text-transform: uppercase;
+    z-index: 2;
+  }
+  
+.input-group {
+    position: relative;
+    background-color: white;
+    border-radius: 10px;
+  }
+  
+  .input-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    border-radius: 4px;
+    overflow: hidden;
+    width: 100%;
+    padding: 3px;
+  }
+  
+  .input-container input {
+    flex: 1;
+    border: none;
+    padding: 10px;
+  }
+  
+  .custom-button {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+  }
+  
+  .custom-button:focus {
+    outline: none;
+  }
+  
+  .show-password {
+    color: #1890ff;
+  }
+
   

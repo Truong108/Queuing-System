@@ -1,17 +1,16 @@
-import { LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILURE } from '../redux/type';
+import { AuthActionTypes, AuthState, LOGIN_FAILURE, LOGIN_REQUEST, LOGIN_SUCCESS } from './authActionTypes';
 
-const initialState = {
-  user: null,
+const initialState: AuthState = {
   loading: false,
   error: null,
 };
 
-const authReducer = (state = initialState, action: { type: any; payload: any; }) => {
+const authReducer = (state = initialState, action: AuthActionTypes): AuthState => {
   switch (action.type) {
     case LOGIN_REQUEST:
       return { ...state, loading: true, error: null };
     case LOGIN_SUCCESS:
-      return { ...state, user: action.payload, loading: false };
+      return { ...state, loading: false, error: null };
     case LOGIN_FAILURE:
       return { ...state, loading: false, error: action.payload };
     default:
