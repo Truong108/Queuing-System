@@ -1,10 +1,11 @@
-import loginImg from '../assets/Group.png';
-import Group from '../assets/group2.png';
+import loginImg from '../../assets/Group.png';
+import Matkhau from '../../assets/datlaimk.png';
 import React, {  } from 'react';
-import '../css/style.css'
+import '../../css/style.css'
 import { Button, Space } from 'antd';
+import { Link } from 'react-router-dom';
 
-const LoginForm: React.FC = () => {
+const ForgotPassword: React.FC = () => {
 
   return (
     <section className="vh-100">
@@ -16,34 +17,46 @@ const LoginForm: React.FC = () => {
             <div className="px-5 ms-xl-4" style={{ textAlign: 'center', marginTop: '150px' }}>
             <img src={loginImg} alt="login"/>
             </div>
-            <div className='formdangnhap'>
-              <form style={{ width: '25rem' }}>
-              <h3 className="fw-normal mb-3 pb-3">Đặt lại mật khẩu</h3>
+            <div className='formdangky'>
+            <h2 className='forgottieude'>
+              Đặt lại mật khẩu
+            </h2>
+              <form style={{ width: '33rem' }}>
               <div>
                 <div className="form-outline mb-4">
-                  <label className="form-label" htmlFor="email">
+                  <label 
+                  className="form-label forgot" 
+                  htmlFor="email">
                    Vui lòng nhập email để đặt lại mật khẩu của bạn *
                   </label>
                   <input
                     type="email"
-                    id="form2Example18"
                     className="form-control form-control-lg"
                   />
                 </div>
               </div>
-                <p className="small mb-5 pb-lg-2">
-                  <a className="text-muted" href="#!"
-                  style={{ textDecoration: 'none' }}>
-                    Quên mật khẩu?
-                  </a>
-                </p>
-               <div className='logincontainer'>
-               <div className="buttonlogin">
-                <Space wrap>
-                  <Button className='dangnhap'>Đăng nhập</Button>
+              <div>
+              <div className="button-group">
+                <Space style={{
+                  marginLeft: '40px',
+                  width: '162px',
+                  height: '40px',
+                  marginRight: '80px'
+                }}>
+                  <Link to="/">
+                  <Button className='huy' danger>Hủy</Button>
+                  </Link>
                 </Space>
-                </div>
-               </div>
+                <Space style={{
+                  width: '162px',
+                  height: '40px',
+                }}>
+                <Link to="/signupForm">
+                  <Button className='tieptuc'>Tiếp tục</Button>
+                </Link>
+                </Space>
+              </div>
+            </div>
               </form>
             </div>
           </div>
@@ -55,9 +68,7 @@ const LoginForm: React.FC = () => {
             paddingTop: '200px'
             }}>
           <div className="container">
-            <h3>Hệ Thống</h3>
-            <h1>Quản lý xếp hàng</h1>
-            <img src={Group} alt="login"/>
+            <img src={Matkhau} alt="forgot"/>
           </div>
           </div>
           </div>
@@ -67,4 +78,4 @@ const LoginForm: React.FC = () => {
   );
 };
 
-export default LoginForm;
+export default ForgotPassword;

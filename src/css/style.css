@@ -1,18 +1,6 @@
-.bg-image-vertical {
-    position: relative;
-    overflow: hidden;
-    background-repeat: no-repeat;
-    background-position: right center;
-    background-size: auto 100%;
-}
 
-@media (min-width: 1025px) {
-.h-custom-2 {
-    height: 100%;
-    }
-}
 .logincontainer{
-    margin-left: 100px;
+    margin-left: 170px;
     width: 150px;
     height: 50px;
     border-radius: 10px;
@@ -28,8 +16,17 @@
     border: none;
     color: white;
 }
+.tieptuc{
+  width: 200px;
+  background-color: #FF9138;
+  border: none;
+  color: white;
+}
+.huy{
+  width: 200px;
+}
 .show-password {
-    color: #1890ff; 
+    color: #7E7D88; 
 }
 .white-background {
     background-color: white;
@@ -44,8 +41,13 @@
 }
 .formdangnhap{
     margin-top: 90px;
-    margin-left: 190px;
+    margin-left: 180px;
 }
+.formdangky{
+  margin-top: 90px;
+  margin-left: 150px;
+}
+
 .container {
     position: relative;
     display: inline-block;
@@ -70,28 +72,6 @@
     z-index: 2;
   }
   
-.input-group {
-    position: relative;
-    background-color: white;
-    border-radius: 10px;
-  }
-  
-  .input-container {
-    position: relative;
-    display: flex;
-    align-items: center;
-    border-radius: 4px;
-    overflow: hidden;
-    width: 100%;
-    padding: 3px;
-  }
-  
-  .input-container input {
-    flex: 1;
-    border: none;
-    padding: 10px;
-  }
-  
   .custom-button {
     background-color: transparent;
     border: none;
@@ -103,13 +83,14 @@
     right: 0;
     height: 100%;
   }
-  
-  .custom-button:focus {
-    outline: none;
+  .button-group {
+    display: flex;
+    width: 100%;
   }
-  
-  .show-password {
-    color: #1890ff;
+  .forgottieude{
+   margin-left: 140px;
+   padding-bottom: 20px;
   }
-
-  
+  .forgot{
+    margin-left: 80px;
+  }

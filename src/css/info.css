@@ -1,0 +1,32 @@
+.cssthongtin {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+    font-family: "Nunito Sans", sans-serif;
+    margin-right: 50px;
+  }
+  .cssthongtin .anhthongtin {
+    margin-right: 30px;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+  }
+  .thongtin {
+    display: flex;
+    cursor: pointer;
+}
+  .thongtin .textthongtin span {
+    color: #7e7d88;
+    font-size: 12px;
+    margin-right: 10px;
+  }
+  .link-style{
+    text-decoration: none;
+  }
+  .thongtin .textthongtin h3 {
+    font-weight: 700;
+    font-size: 16px;
+  }
+  .thongtin .avatar {
+    margin-right: 20px;
+  }

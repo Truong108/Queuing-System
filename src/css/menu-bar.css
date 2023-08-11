@@ -1,0 +1,74 @@
+.logoMenu {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 70px; /* Điều chỉnh khoảng cách lên trên */
+  margin-left: 70px; /* Điều chỉnh khoảng cách bên trái */
+  z-index: 9999;
+}
+.logoMenu img {
+  width: 80px;
+  height: 64px;
+}
+.dangxuat {
+  position: absolute;
+  bottom: 4%;
+  margin-left: 25px;
+}
+.dangxuat button {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  color: #ff7506;
+  background-color: #fff2e7;
+  border: none;
+  padding: 12px 45px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-family: "Nunito Sans", sans-serif;
+  cursor: pointer;
+}
+.dangxuat i {
+  color: #ff7506;
+  font-weight: 700;
+}
+.menubar{
+  text-decoration: none;
+}
+
+.menubar ul {
+  margin-top: 50px;
+}
+.menubar ul li {
+  padding: 10px 0px;
+  padding-left: 30px;
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  color: #7e7d88;
+  margin: 5px 0;
+}
+.menubar ul .active,
+.menubar ul .active:hover {
+  background-color: #ff7506;
+  color: #ffffff;
+  width: 200px;
+}
+.menubar ul li:hover {
+  background-color: #fff2e7;
+  color: #ff7506;
+  width: 200px;
+}
+.menubar ul li {
+  display: flex;
+  gap: 11px;
+}
+.no-underline {
+  text-decoration: none;
+}
+
+.no-underline li {
+  text-decoration: none;
+}
+
