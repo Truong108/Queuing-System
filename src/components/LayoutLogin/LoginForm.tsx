@@ -69,7 +69,10 @@ const LoginForm: React.FC = () => {
               <div>
                 <div className="form-outline mb-4">
                   <label 
-                  style={{float: 'left'}}
+                  style={{
+                    float: 'left',
+                    fontWeight: 'bold'
+                  }}
                   className="form-label" 
                   htmlFor="email">
                     Tên đăng nhập *
@@ -83,6 +86,9 @@ const LoginForm: React.FC = () => {
                 </div>
                 <div className="form-outline mb-4">
                   <label 
+                  style={{
+                  fontWeight: 'bold'
+                  }}
                   className="form-label" 
                   htmlFor="password">
                     Mật khẩu *
@@ -103,7 +109,8 @@ const LoginForm: React.FC = () => {
                 to="/forgotPassword" 
                 className="text-muted"
                 style={{ 
-                textDecoration: 'none' 
+                textDecoration: 'none',
+                fontWeight: 'bold'
                 }}>
                 Quên mật khẩu?
                 </Link>

@@ -4,6 +4,7 @@ import SignupForm from "../components/LayoutLogin/SignupForm";
 import Dashboard from "../components/Page/Dashboard";
 import Device from "../components/Page/Device";
 import LevelNo from "../components/Page/LevelNo";
+import Personalinformation from "../components/Page/Personalinformation";
 import Report from "../components/Page/Report";
 import Service from "../components/Page/Service";
 import SystemInstallation from "../components/Page/SystemInstallation";
@@ -20,4 +21,5 @@ export const RouteHome = [
     {path: '/levelNo', element: <LevelNo/>},
     {path: '/report', element: <Report/>},
     {path: '/systemInstallation', element: <SystemInstallation/>},
+    {path: '/personalinformation', element: <Personalinformation/>},
 ];

@@ -12,7 +12,6 @@ const Danhsachthietbi = () => {
     const devices = useSelector((state: RootState) => state.device.devices);
     return ( <>
      <div>
-      <p className='danhsachtb'>Danh sách thiết bị</p>
       <table>
         <thead>
           <tr>

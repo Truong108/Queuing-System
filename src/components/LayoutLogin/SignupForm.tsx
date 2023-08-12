@@ -24,6 +24,9 @@ const SignupForm = () => {
               <div>
               <div className="form-outline mb-4">
                   <label 
+                  style={{
+                  fontWeight: 'bold'
+                  }}  
                   className="form-label" 
                   htmlFor="password">
                     Mật khẩu *
@@ -38,6 +41,9 @@ const SignupForm = () => {
                 </div>
                 <div className="form-outline mb-4">
                   <label 
+                   style={{
+                    fontWeight: 'bold'
+                    }}
                   className="form-label" 
                   htmlFor="password">
                    Nhập lại mật khẩu *

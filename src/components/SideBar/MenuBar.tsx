@@ -109,13 +109,16 @@ const MenuBar = () => {
         </Link>
     </ul>
   </div>
+  <Link to="/">
     <div className="dangxuat">
     <button>
     <LogoutOutlined style={{marginRight: '10px'}}/>
       Đăng xuất
     </button>
   </div>
- </> );
+  </Link>
+ </> 
+ );
 }
 
 export default MenuBar;
