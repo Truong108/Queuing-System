@@ -1,25 +1,30 @@
 .navtop {
   display: flex;
   justify-content: space-between;
-  width: 1240px;
-  height: 88px;
+  width: 1476px;
+  height: 127px;
   position: absolute;
-  top: 10px;
+  top: -1px;
   right: 0; /* Dịch chuyển .navtop qua phải */
   z-index: 10000; /* Đảm bảo nằm trên cùng */
+  background-color: #F6F6F6;
 }
-.dashboard span {
+.textnavtop{
+  margin-top: 30px;
+  margin-left: 130px;
+}
+.textnavtop span {
   font-weight: bold;
   font-size: 20px;
   font-family: "Nunito Sans", sans-serif;
   margin-left: -90px;
 }
-.dashboard span:first-child,
-.dashboard i {
+.textnavtop span:first-child,
+.textnavtop i {
   color: #7e7d88;
   margin-right: 20px;
 }
-.dashboard span:last-child {
+.textnavtop span:last-child {
   color: #ff7506;
 }
   

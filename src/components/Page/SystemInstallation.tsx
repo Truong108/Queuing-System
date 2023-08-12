@@ -1,12 +1,14 @@
 import Personal from "./Personal";
-
+import '../../css/dashboard.css';
+import { CaretRightOutlined } from "@ant-design/icons";
 const SystemInstallation = () => {
     return ( <>
      <div className="navtop">
-        <div className="heading-navtop">
+        <div className="textnavtop">
           <span>Cài đặt hệ thống</span>
-          <i className="bi bi-chevron-right"></i>
-          <span>Quản lý vai trò</span>
+          <CaretRightOutlined style={{marginLeft: '1px'}}/>
+          <span style={{marginLeft: '20px'}}
+          >Quản lý vai trò</span>
         </div>
        <Personal/>
       </div>

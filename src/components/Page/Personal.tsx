@@ -6,14 +6,23 @@ const Personal = () => {
  return ( 
    <div className="cssthongtin">
     <img src={Notification} className="anhthongtin" alt="" />
-    <Link to="/infomation" className="link-style">
+    <Link to="/personalinformation" className="link-style">
     <div className="thongtin">
     <div className="avatar">
         <img src={avatar} alt="" />
      </div>
     <div className="textthongtin">
       <span>Xin chào</span>
-      <h3>Lê Thị Quỳnh Vân</h3>
+      <span 
+      style={{
+         display: 'block',
+         fontSize: '16px',
+         fontWeight: '700',
+         lineHeight: '24px'
+      }}
+      >
+      Lê Thị Quỳnh Vân
+      </span>
      </div>
    </div>
    </Link>

@@ -2,13 +2,14 @@ import { Link } from "react-router-dom";
 import LogoMenu from "../../assets/Group.png";
 import '../../css/menu-bar.css';
 import { useState } from "react";
-import { AppstoreOutlined, AreaChartOutlined, CodepenOutlined, ConsoleSqlOutlined, LogoutOutlined, SettingOutlined, WechatOutlined } from "@ant-design/icons";
+import { AppstoreOutlined, AreaChartOutlined, CodepenOutlined, ConsoleSqlOutlined, LogoutOutlined, MoreOutlined, SettingOutlined, WechatOutlined } from "@ant-design/icons";
 const MenuBar = () => {
-  const [activeItem, setActiveItem] = useState<number | null>(0);
+  const [selectedTabIndex, setSelectedTabIndex] = useState<number | null>(0);
 
-  const handleItemClick = (index: number) => {
-    setActiveItem(index);
+  const handleTabClick = (index: number) => {
+    setSelectedTabIndex(index);
   };
+  
  return ( <>
   <div className="logoMenu">
     <img src={LogoMenu} alt="/" />  
@@ -17,8 +18,8 @@ const MenuBar = () => {
     <ul>
     <Link to="/dashboard" className="link-style">
       <li
-        className={activeItem === 0 ? "active" : ""}
-          onClick={() => handleItemClick(0)}
+        className={selectedTabIndex === 0 ? "active" : ""}
+          onClick={() => handleTabClick(0)}
           style={{
             display: "flex",
             alignItems: "center"
@@ -30,8 +31,8 @@ const MenuBar = () => {
       </Link>
       <Link to="/device" className="link-style">
         <li
-        className={activeItem === 1 ? "active" : ""}
-        onClick={() => handleItemClick(1)}
+        className={selectedTabIndex === 1 ? "active" : ""}
+        onClick={() => handleTabClick(1)}
         style={{
           display: "flex",
           alignItems: "center"
@@ -43,8 +44,8 @@ const MenuBar = () => {
         </Link>
         <Link to="/service" className="link-style">
           <li
-            className={activeItem === 2 ? "active" : ""}
-            onClick={() => handleItemClick(2)}
+            className={selectedTabIndex === 2 ? "active" : ""}
+            onClick={() => handleTabClick(2)}
             style={{
               display: "flex",
               alignItems: "center"
@@ -56,8 +57,8 @@ const MenuBar = () => {
           </Link>
           <Link to="/levelNo" className="link-style">
           <li
-            className={activeItem === 3 ? "active" : ""}
-            onClick={() => handleItemClick(3)}
+            className={selectedTabIndex === 3 ? "active" : ""}
+            onClick={() => handleTabClick(3)}
             style={{
               display: "flex",
               alignItems: "center"
@@ -69,8 +70,8 @@ const MenuBar = () => {
           </Link>
         <Link to="/report" className="link-style">
           <li
-            className={activeItem === 4 ? "active" : ""}
-            onClick={() => handleItemClick(4)}
+            className={selectedTabIndex === 4 ? "active" : ""}
+            onClick={() => handleTabClick(4)}
             style={{
               display: "flex",
               alignItems: "center"
@@ -82,15 +83,21 @@ const MenuBar = () => {
         </Link>
         <Link to="/systemInstallation" className="no-underline">
         <li
-          className={activeItem === 5 ? "active" : ""}
-          onClick={() => handleItemClick(5)}
+          className={selectedTabIndex === 5 ? "active" : ""}
+          onClick={() => handleTabClick(5)}
           style={{
             display: "flex",
             alignItems: "center"
           }}
           >
         <SettingOutlined />
-        <span>Cài đặt hệ thống</span>
+        <span>Cài đặt hệ thống 
+          <MoreOutlined 
+          style={{
+            fontWeight: 'bold',
+            marginLeft: '5px'
+            }}/>
+          </span>
         </li>
         </Link>
     </ul>
