@@ -5,7 +5,8 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
 import { Input } from "antd";
 const Dashboard = () => {
     return ( <>
-      <div className="navtop">
+    <div className="infocanhan">
+    <div className="navtoppp">
         <div className="textnavtop">
           <span>Thông tin cá nhân</span>
         </div>
@@ -100,6 +101,7 @@ const Dashboard = () => {
         </form>
       </div>
       </div>
+    </div>
     </> 
     );
 }

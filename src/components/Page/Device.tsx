@@ -10,7 +10,7 @@ const Device = () => {
   };
   return ( 
   <div className="thietbi">
-    <div className="navtop">
+    <div className="navtopp">
     <div className="textnavtop">
      <span>Thiết bị</span>
      <CaretRightOutlined  style={{marginLeft: '1px'}}/>

@@ -34,7 +34,7 @@ const SignupForm = () => {
                   <div className="input-group">
                   <Input.Password
                     size="large"
-                    placeholder="Mật khẩu đăng nhập"
+                    placeholder="Mật khẩu"
                     iconRender={(visible) => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)}
                   />
                   </div>
@@ -51,7 +51,7 @@ const SignupForm = () => {
                   <div className="input-group">
                   <Input.Password
                     size="large"
-                    placeholder="Nhập lại mật khẩu đăng nhập"
+                    placeholder="Nhập lại mật khẩu"
                     iconRender={(visible) => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)}
                   />
                   </div>

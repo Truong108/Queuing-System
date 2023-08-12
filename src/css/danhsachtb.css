@@ -1,0 +1,59 @@
+.content{
+    margin-left: 37px;
+    width: 1330px;
+    height: 150px;
+    position: relative;
+}
+.bangthietbi{
+    display: flex;
+    flex-direction: column;
+    border-collapse: collapse;
+}
+.bangthietbi thead{
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    background-color: #FF9138;
+    color: white;
+}
+  .bangthietbi tbody {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+  .bangthietbi tbody tr {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .bangthietbi tbody td {
+    flex: 1;
+    padding: 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+.bangthietbi thead tr th {
+    background: #FF9138;
+    color: white;
+    text-align: center;
+    padding: 10px;
+  }
+  
+  .xemthem {
+    color: blue; /* Chỉnh màu theo ý muốn */
+    cursor: pointer;
+  }
+  .xemthem-content {
+    display: none;
+  }
+  
+  .xemthem-content.show {
+    display: block;
+  }
+  .dichvu-content {
+    display: inline-block;
+    max-width: 150px; /* Điều chỉnh số ký tự hiển thị trước khi thu ngắn */
+    vertical-align: top;
+  }
+  
+  
