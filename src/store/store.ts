@@ -1,9 +1,11 @@
 import { Action, ThunkAction, configureStore } from "@reduxjs/toolkit";
 import authReducer from '../redux/authSlice'; // Import your authReducer
+import deviceReducer from "../redux/deviceReducer";
 
 const store = configureStore({
   reducer: {
     auth: authReducer,
+    device: deviceReducer,
   },
 });
 

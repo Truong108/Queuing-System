@@ -2,7 +2,14 @@ import { Link } from "react-router-dom";
 import LogoMenu from "../../assets/Group.png";
 import '../../css/menu-bar.css';
 import { useState } from "react";
-import { AppstoreOutlined, AreaChartOutlined, CodepenOutlined, ConsoleSqlOutlined, LogoutOutlined, MoreOutlined, SettingOutlined, WechatOutlined } from "@ant-design/icons";
+import { AppstoreOutlined, 
+  AreaChartOutlined, 
+  CodepenOutlined, 
+  DesktopOutlined, 
+  LogoutOutlined, 
+  MoreOutlined, 
+  SettingOutlined,
+  WechatOutlined } from "@ant-design/icons";
 const MenuBar = () => {
   const [selectedTabIndex, setSelectedTabIndex] = useState<number | null>(0);
 
@@ -38,7 +45,7 @@ const MenuBar = () => {
           alignItems: "center"
         }}
           >
-        <ConsoleSqlOutlined />
+       <DesktopOutlined />
             <span>Thiết bị</span>
         </li>
         </Link>

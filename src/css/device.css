@@ -1,7 +1,7 @@
 .thietbi{
     background-color: #F6F6F6;
     width: 1472px;
-    height: 793px;
+    height: 824px;
     margin-left: 232px;
     margin-bottom: -10%;
 }
@@ -14,3 +14,51 @@
     color: #FF7506;
     font-weight: bold;
   }
+.container {
+    display: flex;
+    justify-content: space-between;
+  }
+  .trangthaihd,
+  .trangthaikn,
+  .tukhoa {
+    flex: 1;
+    margin: 0 10px;
+    padding: 10px;
+  }
+.trangthaihd,
+.trangthaikn,
+.tukhoa
+{
+    margin-left: -57px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 24px; /* 150% */
+}
+.trangthaikn{
+    margin-left: 20px;
+}
+.tukhoa{
+    margin-left: 220px;
+}
+.input-container {
+    display: inline-block;
+    position: relative;
+}
+.ant-input-affix-wrapper .ant-input-suffix {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.form-control{
+  width: 320px;
+  height: 35px;
+}
+.container-fluid{
+  margin-top: -13px;
+}
+.navbar{
+  margin-left: -15px;
+}

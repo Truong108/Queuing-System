@@ -2,7 +2,8 @@ import { Link } from 'react-router-dom';
 import loginImg from '../../assets/Group.png';
 import Matkhau from '../../assets/datlaimk.png';
 import '../../css/signup.css';
-import { Button, Space } from 'antd';
+import { Button, Input, Space } from 'antd';
+import { EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
 
 const SignupForm = () => {
     return ( <>
@@ -21,27 +22,33 @@ const SignupForm = () => {
             </h2>
               <form style={{ width: '33rem' }}>
               <div>
-                <div className="form-outline mb-4">
+              <div className="form-outline mb-4">
                   <label 
-                  className="form-label " 
+                  className="form-label" 
                   htmlFor="password">
-                   Mật khẩu
+                    Mật khẩu *
                   </label>
-                  <input
-                    type="email"
-                    className="form-control form-control-lg"
+                  <div className="input-group">
+                  <Input.Password
+                    size="large"
+                    placeholder="Mật khẩu đăng nhập"
+                    iconRender={(visible) => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)}
                   />
+                  </div>
                 </div>
                 <div className="form-outline mb-4">
                   <label 
-                  className="form-label " 
+                  className="form-label" 
                   htmlFor="password">
-                  Nhập lại Mật khẩu
+                   Nhập lại mật khẩu *
                   </label>
-                  <input
-                    type="email"
-                    className="form-control form-control-lg"
+                  <div className="input-group">
+                  <Input.Password
+                    size="large"
+                    placeholder="Nhập lại mật khẩu đăng nhập"
+                    iconRender={(visible) => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)}
                   />
+                  </div>
                 </div>
               </div>
               <div>
