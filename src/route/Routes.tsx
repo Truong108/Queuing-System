@@ -8,6 +8,7 @@ import Personalinformation from "../components/Page/Personalinformation";
 import Report from "../components/Page/Report";
 import Service from "../components/Page/Service";
 import SystemInstallation from "../components/Page/SystemInstallation";
+import AddDevice from "../components/Page/tableDevice/AddDevice";
 
 export const RouteLogin = [
     {path: '/', element: <LoginForm/>},
@@ -22,4 +23,5 @@ export const RouteHome = [
     {path: '/report', element: <Report/>},
     {path: '/systemInstallation', element: <SystemInstallation/>},
     {path: '/personalinformation', element: <Personalinformation/>},
+    {path: '/adddevice', element: <AddDevice/>},
 ];

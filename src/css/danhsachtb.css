@@ -28,17 +28,21 @@
   
   .bangthietbi tbody td {
     flex: 1;
-    padding: 10px;
+    padding: 14px;
     overflow: hidden;
     text-overflow: ellipsis;
+    border-right: 1px solid #FF7506;
+  }
+  .bangthietbi tbody td:last-child, .bangthietbi thead tr th:last-child {
+    border-right: none;
   }
 .bangthietbi thead tr th {
     background: #FF9138;
     color: white;
     text-align: center;
     padding: 10px;
+    border-right: 1px solid #FFF;
   }
-  
   .xemthem {
     color: blue; /* Chỉnh màu theo ý muốn */
     cursor: pointer;
@@ -55,5 +59,123 @@
     max-width: 150px; /* Điều chỉnh số ký tự hiển thị trước khi thu ngắn */
     vertical-align: top;
   }
-  
+  .iconButton{
+    width: 85px;
+    height: 100px;
+    float: right;
+    margin-top: -150px;
+    padding: 12px 4px 10px 22px;
+    gap: 4px;
+    background-color: #FFF2E7; /* Đặt nền trong suốt */
+  }
+  .iconButton img{
+    margin-left: 8px;
+  }
+  .themtb{
+    margin-top: 10px;
+    margin-left: 3px;
+    color: var(--orange-orange-500, #FF7506);
+    font-family: "Nunito Sans", sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+  }
+  .totaladdtb{
+    width: 1470px;
+    height: 830px;
+    background-color: #F6F6F6;
+    margin-left: 231px;
+  }
+  .tieudetb{
+    font-family: "Nunito Sans", sans-serif;
+    color: #FF7506;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 36px;
+    margin-top: -23%;
+    padding-top: 15px;
+    margin-left: 40px;
+  }
+  .bangthongtin{
+    width: 1370px;
+    height: 620px;
+    background-color: #FFF;
+    margin-left: 35px;
+    border-radius: 16px;
+    margin-top: 20px;
+  }
+  .thongtintb{
+    font-family: "Nunito Sans", sans-serif;
+    color: #FF7506;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 30px;
+    margin-left: 30px;
+    margin-top: 18px;
+  }
+  .huybo{
+    width: 160px; 
+    height: 40px; 
+    font-family: "Nunito Sans", sans-serif;
+    font-size: 18px; 
+    font-weight: 700; 
+    line-height: 26px;
+    color: #FF993C;
+    border-radius: 8px;
+    border: 1.5px solid var(--orange-orange-400, #FF9138);
+    background: var(--orange-orange-50, #FFF2E7);
+    box-shadow: 0px 0px 6px 0px #E7E9F2;
+  }
+  .nutaddtb{
+    width: 160px; 
+    height: 40px;
+    font-family: "Nunito Sans", sans-serif; 
+    font-size: 18px; 
+    font-weight: 700; 
+    line-height: 26px; 
+    border-radius: 8px;
+    background: var(--orange-orange-400, #FF9138);
+    box-shadow: 0px 0px 6px 0px #E7E9F2;
+  }
+  .containerThemtb{
+    margin-top: 20px;
+  }
+  .thongtinbb{
+    font-family: Nunito Sans, sans-serif;
+    color: #7E7D88;
+    font-size: 12px;
+    font-style: italic;
+    font-weight: 400;
+    line-height: normal;
+    margin-top: 20px;
+    margin-left: 31px;
+  }
+  .text-label{
+    font-family: Nunito Sans, sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 24px;
+    margin-left: 31px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+  .form-input{
+    margin-left: 31px;
+    width: 600px;
+    height: 40px;
+  }
+  .form-inputt{
+    margin-left: 31px;
+    width: 1300px;
+    height: 40px;
+  }
+  .form-select {
+    margin-left: 28px;
+    width: 500px;
+    height: 40px;
+  }
   

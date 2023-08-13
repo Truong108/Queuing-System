@@ -32,6 +32,7 @@ const Dashboard = () => {
             type="email" 
             className="form-control" 
             id="inputEmail4"
+            placeholder="Lê Quỳnh Ái Vân"
             style={{
               width: '70%',
               marginLeft: '90px'
@@ -44,6 +45,7 @@ const Dashboard = () => {
             type="password" 
             className="form-control" 
             id="inputPassword4"
+            placeholder="lequynhaivan01"
             style={{
                 width: '70%',
                 marginLeft: '90px'
@@ -56,6 +58,7 @@ const Dashboard = () => {
             type="email" 
             className="form-control" 
             id="inputEmail4"
+            placeholder="0767375921"
             style={{
                 width: '70%',
                 marginLeft: '90px'
@@ -68,6 +71,7 @@ const Dashboard = () => {
             type="password" 
             className="form-control" 
             id="inputPassword4"
+            placeholder="311940211"
             style={{
                 width: '70%',
                 marginLeft: '90px'
@@ -80,6 +84,7 @@ const Dashboard = () => {
             type="email" 
             className="form-control" 
             id="inputEmail4"
+            placeholder="adminSSO1@domain.com"
             style={{
                 width: '70%',
                 marginLeft: '90px'
@@ -92,6 +97,7 @@ const Dashboard = () => {
             type="password" 
             className="form-control" 
             id="inputPassword4"
+            placeholder="Kế toán"
             style={{
                 width: '70%',
                 marginLeft: '90px'

@@ -35,7 +35,7 @@
     border: none;
 }  
 .formdn{
-    height: 952px;
+    height: 968px;
     border-radius: 5px;
     background: var(--bg, #F6F6F6);
 }
@@ -57,7 +57,7 @@
     color: #FF7506 !important;
     position: absolute;
     top: 45%;
-    left: 66%;
+    left: 56%;
     transform: translate(-86%, -40%);
     z-index: 1;
   }
@@ -66,7 +66,7 @@
     color: #FF7506 !important;
     position: absolute;
     top: 50%;
-    left: 40%;
+    left: 30%;
     margin-left: 107px;
     text-transform: uppercase;
     z-index: 2;
