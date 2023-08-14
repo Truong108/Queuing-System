@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import api from "../firebase/firebaseAPI";
+import api from "../../firebase/firebaseAPI";
 import { collection, getDocs } from "firebase/firestore";
-import { ThietBi } from "../Interface/Thietbi";
+import { ThietBi } from "../../Interface/Thietbi";
 
 export const fetchThietBi = createAsyncThunk("thietbi/fetchData", async () => {
     const querySnapshot = await getDocs(collection(api, 'thietbi'));

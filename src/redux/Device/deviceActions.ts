@@ -1,7 +1,7 @@
 
 import { collection, getDocs } from "firebase/firestore";
-import api from '../firebase/firebaseAPI';
-import { ThietBi } from "../Interface/Thietbi";
+import api from '../../firebase/firebaseAPI';
+import { ThietBi } from "../../Interface/Thietbi";
 
 interface FetchDevicesSuccessAction {
   type: 'FETCH_DEVICES_SUCCESS';

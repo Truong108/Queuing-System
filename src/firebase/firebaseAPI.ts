@@ -15,3 +15,4 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const api = getFirestore(app);
 export default api;
+

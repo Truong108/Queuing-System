@@ -71,6 +71,19 @@
   .iconButton img{
     margin-left: 8px;
   }
+  .iconButtonDevice{
+    width: 110px;
+    height: 110px;
+    float: right;
+    margin-top: -700px;
+    padding: 12px 4px 10px 22px;
+    gap: 4px;
+    background-color: #FFF2E7; 
+  }
+  .iconButtonDevice img{
+    margin-left: 15px;
+    margin-top: 5px;
+  }
   .themtb{
     margin-top: 10px;
     margin-left: 3px;
@@ -80,6 +93,18 @@
     font-style: normal;
     font-weight: 600;
     line-height: normal;
+  }
+  .uptb{
+    margin-top: 17px;
+    margin-left: -17px;
+    margin-right: 10px;
+    color: var(--orange-orange-500, #FF7506);
+    font-family: "Nunito Sans", sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    text-align: center;
   }
   .totaladdtb{
     width: 1470px;
@@ -101,6 +126,14 @@
   .bangthongtin{
     width: 1370px;
     height: 620px;
+    background-color: #FFF;
+    margin-left: 35px;
+    border-radius: 16px;
+    margin-top: 20px;
+  }
+  .bangthongtinchitiet{
+    width: 1300px;
+    height: 700px;
     background-color: #FFF;
     margin-left: 35px;
     border-radius: 16px;

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { ThietBi } from '../../../Interface/Thietbi';
-import { fetchThietBi } from '../../../redux/deviceReducer';
+import { fetchThietBi } from '../../../redux/Device/deviceReducer';
 import { RootState } from '../../../store/store';
 import '../../../css/danhsachtb.css';
 import Addthietbi from '../../../assets/add-square.png'
@@ -89,8 +89,13 @@ const Danhsachthietbi = () => {
                   </div>
                 )}
               </td>
+              <Link to="/chitietdevice">
               <td style={mautb}>{device.chitiet}</td>
+              </Link>
+              <Link to="/updevice">
               <td style={mautb}>{device.capnhat}</td>
+              </Link>
+              
             </tr>
             ); 
             })}
@@ -100,7 +105,7 @@ const Danhsachthietbi = () => {
     <Link to="/adddevice">
     <div className='iconButton'>
       <img src={Addthietbi} alt='add'/>
-      <p className='themtb'>Thêm thiết bị</p>
+      <p className='themtb'>Thêm Thiết Bị</p>
     </div>
     </Link>
     <div 

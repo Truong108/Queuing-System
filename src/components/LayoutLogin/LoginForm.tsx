@@ -7,7 +7,7 @@ import { Button, Input, Space, message } from 'antd';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '../../store/store';
-import { fetchData } from '../../redux/authSlice';
+import { fetchLogin } from '../../redux/Login/authActions';
 
 const LoginForm: React.FC = () => {
   const [loginAttempted, setLoginAttempted] = useState(false);
@@ -18,7 +18,7 @@ const LoginForm: React.FC = () => {
   const [userName, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const dataLogin = useSelector(
-    (state: RootState) => state.auth.dataLogin
+    (state: RootState) => state.auth.login
   );
   const OnchaneHandleUserName = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUsername(e.target.value);
@@ -32,8 +32,8 @@ const LoginForm: React.FC = () => {
     if (!loginAttempted) {
       setLoginAttempted(true);
       const matchingUser = dataLogin.map(
-        (item: { tendn: string; mk: string }) =>
-          userName === item.tendn && password === item.mk
+        (login: { tendn: string; mk: string }) =>
+          userName === login.tendn && password === login.mk
       );
       if (matchingUser) {
         if (!loggedIn) {
@@ -51,9 +51,8 @@ const LoginForm: React.FC = () => {
     }
   };
   useEffect(() => {
-    dispatch(fetchData());
+    dispatch(fetchLogin() as any);
   }, [dispatch]);
-  console.log(dataLogin);
   return (
     <section className="vh-100">
       <link rel="icon" href="img/mdb-favicon.ico" type="image/x-icon" />
@@ -66,64 +65,64 @@ const LoginForm: React.FC = () => {
             </div>
             <div className='formdangnhap'>
               <form style={{ width: '30rem' }}>
-              <div>
-                <div className="form-outline mb-4">
-                  <label 
-                  style={{
-                    float: 'left',
-                    fontWeight: 'bold'
-                  }}
-                  className="form-label" 
-                  htmlFor="email">
-                    Tên đăng nhập *
-                  </label>
-                  <Input
-                    onChange={OnchaneHandleUserName}
-                    size="large"
-                    className={loginError ? 'error-input' : ''}
-                    placeholder="Tên đăng nhập"
-                  />
-                </div>
-                <div className="form-outline mb-4">
-                  <label 
-                  style={{
-                  fontWeight: 'bold'
-                  }}
-                  className="form-label" 
-                  htmlFor="password">
-                    Mật khẩu *
-                  </label>
-                  <div className="input-group">
-                  <Input.Password
-                    className={loginError ? 'error-input' : ''}
-                    onChange={OnchaneHandlePassword}
-                    size="large"
-                    placeholder="Mật khẩu đăng nhập"
-                    iconRender={(visible) => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)}
-                  />
+                <div>
+                  <div className="form-outline mb-4">
+                    <label
+                      style={{
+                        float: 'left',
+                        fontWeight: 'bold'
+                      }}
+                      className="form-label"
+                      htmlFor="email">
+                      Tên đăng nhập *
+                    </label>
+                    <Input
+                      onChange={OnchaneHandleUserName}
+                      size="large"
+                      className={loginError ? "" : "error"}
+                      placeholder="Tên đăng nhập"
+                    />
+                  </div>
+                  <div className="form-outline mb-4">
+                    <label
+                      style={{
+                        fontWeight: 'bold'
+                      }}
+                      className="form-label"
+                      htmlFor="password">
+                      Mật khẩu *
+                    </label>
+                    <div className="input-group">
+                      <Input.Password
+                        onChange={OnchaneHandlePassword}
+                        size="large"
+                        className={loginError ? "" : "error"}
+                        placeholder="Mật khẩu đăng nhập"
+                        iconRender={(visible) => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)}
+                      />
+                    </div>
                   </div>
                 </div>
-              </div>
                 <p className="small mb-5 pb-lg-2">
-                <Link 
-                to="/forgotPassword" 
-                className="text-muted"
-                style={{ 
-                textDecoration: 'none',
-                fontWeight: 'bold'
-                }}>
-                Quên mật khẩu?
-                </Link>
+                  <Link
+                    to="/forgotPassword"
+                    className="text-muted"
+                    style={{
+                      textDecoration: 'none',
+                      fontWeight: 'bold'
+                    }}>
+                    Quên mật khẩu?
+                  </Link>
                 </p>
-               <div className='logincontainer'>
-               <div className="buttonlogin">
-                <Space wrap>
-                <Button 
-                 onClick={onchangeLogin}
-                className='dangnhap'>Đăng nhập</Button>
-                </Space>
+                <div className='logincontainer'>
+                  <div className="buttonlogin">
+                    <Space wrap>
+                      <Button
+                        onClick={onchangeLogin}
+                        className='dangnhap'>Đăng nhập</Button>
+                    </Space>
+                  </div>
                 </div>
-               </div>
               </form>
             </div>
           </div>

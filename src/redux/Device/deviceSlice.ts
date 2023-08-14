@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { ThietBi } from '../Interface/Thietbi'; // Đảm bảo đường dẫn đúng
-import { AppThunk } from '../store/store'; // Đảm bảo đường dẫn đúng
-import api from '../firebase/firebaseAPI'; // Đảm bảo đường dẫn đúng
+import { ThietBi } from '../../Interface/Thietbi'; // Đảm bảo đường dẫn đúng
+import { AppThunk } from '../../store/store'; // Đảm bảo đường dẫn đúng
+import api from '../../firebase/firebaseAPI'; // Đảm bảo đường dẫn đúng
 import { collection, getDocs } from "firebase/firestore";
 
 interface DeviceState {

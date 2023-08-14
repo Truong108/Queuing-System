@@ -9,6 +9,8 @@ import Report from "../components/Page/Report";
 import Service from "../components/Page/Service";
 import SystemInstallation from "../components/Page/SystemInstallation";
 import AddDevice from "../components/Page/tableDevice/AddDevice";
+import ChitietDevice from "../components/Page/tableDevice/ChitietDevice";
+import UpdateDevice from "../components/Page/tableDevice/UpdateDevice";
 
 export const RouteLogin = [
     {path: '/', element: <LoginForm/>},
@@ -24,4 +26,6 @@ export const RouteHome = [
     {path: '/systemInstallation', element: <SystemInstallation/>},
     {path: '/personalinformation', element: <Personalinformation/>},
     {path: '/adddevice', element: <AddDevice/>},
+    {path: '/chitietdevice', element: <ChitietDevice/>},
+    {path: '/updevice', element: <UpdateDevice/>},
 ];

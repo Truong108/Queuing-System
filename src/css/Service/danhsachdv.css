@@ -1,0 +1,30 @@
+/* styles.css */
+.bangdichvu {
+    border-collapse: collapse;
+    width: 85%;
+    margin-left: 37px;
+  }
+  
+  .bangdichvu th,
+  .bangdichvu td {
+    border: 1px solid #dddddd;
+    padding: 15px;
+    text-align: left;
+  }
+  
+  .maudichvu,
+  .tendichvu,
+  .mota,
+  .trangthai,
+  .chitiet,
+  .capnhat
+   {
+    width: 10%; /* Cân bằng kích thước cột */
+    background-color: #FF9138;
+  }
+  .ctiet, .cnhat {
+    width: 20%;
+  }
+  tr:nth-child(even) {
+    background-color: #FF750622; /* Màu nền hàng chẵn */
+  }
