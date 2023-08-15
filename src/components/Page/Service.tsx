@@ -1,11 +1,14 @@
 import Personal from "./Personal";
 import '../../css/dashboard.css';
 import { CaretRightOutlined, SearchOutlined } from "@ant-design/icons";
-import { Input, Select, Space } from "antd";
+import { DatePicker, DatePickerProps, Input, Select, Space } from "antd";
 import Danhsachdv from "./tableService/Danhsachdv";
 const Service = () => {
   const handleChange = (value: string) => {
     console.log(`selected ${value}`);
+  };
+  const onChange: DatePickerProps['onChange'] = (date, dateString) => {
+    console.log(date, dateString);
   };
     return ( <>
     <div className="thietbi">
@@ -14,7 +17,7 @@ const Service = () => {
           <span>Dịch vụ</span>
           <CaretRightOutlined style={{marginLeft: '1px'}}/>
           <span style={{marginLeft: '20px'}}
-          >Danh sách Dịch vụ</span>
+          >Danh sách dịch vụ</span>
         </div>
        <Personal/>
       </div>
@@ -36,19 +39,14 @@ const Service = () => {
        </Space>
       </div>
       <div className="trangthaikn">
-        <p>Trạng thái kết nối</p>
-        <Space wrap> 
-      <Select
-        defaultValue="Tất cả"
-        style={{ width: 350, marginLeft: '-2px' }}
-        onChange={handleChange}
-        options={[
-          { value: 'Tất cả', label: 'Tất cả' },
-          { value: 'Kết nối', label: 'Kết nối' },
-          { value: 'Mất kết nối', label: 'Mất kết nối' }
-        ]}
-      />
-       </Space>
+        <p>Chọn thời gian</p>
+        <Space direction="vertical">
+          <DatePicker onChange={onChange} />
+        </Space>
+        <CaretRightOutlined />
+        <Space direction="vertical">
+          <DatePicker onChange={onChange} />
+        </Space>
       </div>
       <div className="tukhoa">
         <p>Từ khóa</p>
@@ -59,7 +57,7 @@ const Service = () => {
           <Input
             className="form-control"
             type="search"
-            placeholder="Search"
+            placeholder="Nhập từ khóa"
             aria-label="Search"
             suffix={<SearchOutlined 
             style={{color: '#FF7506'}}
@@ -73,7 +71,6 @@ const Service = () => {
     </div>
     <Danhsachdv/>
     </div>
-     
     </> 
     );
 }

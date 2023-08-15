@@ -1,0 +1,59 @@
+.report{
+    background-color: #F6F6F6;
+    width: 1472px;
+    height: 830px;
+    margin-left: 232px;
+    margin-top: -20%;
+}
+.bangbaocao{
+    border-collapse: collapse;
+    width: 90%;
+    margin-left: 37px;
+    background-color: #FFF;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+}
+.bangbaocao th {
+    border: 1px solid #dddddd;
+    padding: 14px;
+    text-align: left;
+  }
+  .chontgbaocao{
+    margin-top: 4%;
+    margin-left: -4%;
+    margin-bottom: 2%;
+    white-space: nowrap;
+  }
+  .chontgbaocao p{
+    font-family: Nunito;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 24px;
+    margin-left: 2px;
+    font-family: 'Nunito', sans-serif;
+  }
+  .download{
+    position: fixed;
+    z-index: 999;
+    top: 33%;
+    right: 1px; 
+    transform: translateY(-50%); 
+    width: 75px;
+    height: 100px;
+    padding: 12px 4px 10px 22px;
+    background-color: #FFF2E7;
+  }
+  .download img{
+    margin-left: 1px;
+  }
+  .taive{
+    margin-top: 10px;
+    color: var(--orange-orange-500, #FF7506);
+    font-family: "Nunito Sans", sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    text-align: center;
+    margin-left: -15px;
+  }

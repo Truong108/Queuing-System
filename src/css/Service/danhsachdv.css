@@ -1,17 +1,38 @@
 /* styles.css */
 .bangdichvu {
     border-collapse: collapse;
-    width: 85%;
+    width: 90%;
     margin-left: 37px;
+    background-color: #FFF;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
   }
   
-  .bangdichvu th,
-  .bangdichvu td {
+  .bangdichvu th {
+    border: 1px solid #dddddd;
+    padding: 14px;
+    text-align: left;
+  }
+  .tdmadv,
+  .tdtendv,
+  .tdmota,
+  .tdtthd,
+  .tdctiet,
+  .tdcnhat
+  {
     border: 1px solid #dddddd;
     padding: 15px;
     text-align: left;
+    white-space: nowrap;
   }
-  
+  .tdctiet,
+  .tdcnhat {
+        display: table-cell;
+        vertical-align: middle;
+        text-align: center;
+        border: 1px solid #dddddd;
+        padding: 10px; 
+        width: 10%; 
+    }
   .maudichvu,
   .tendichvu,
   .mota,
@@ -19,12 +40,35 @@
   .chitiet,
   .capnhat
    {
-    width: 10%; /* Cân bằng kích thước cột */
+    width: 10%;
     background-color: #FF9138;
-  }
-  .ctiet, .cnhat {
-    width: 20%;
+    color: #FFF;
   }
   tr:nth-child(even) {
     background-color: #FF750622; /* Màu nền hàng chẵn */
+  }
+  .buttonService{
+    position: fixed;
+    z-index: 999;
+    top: 33%;
+    right: 5px; 
+    transform: translateY(-50%); 
+    width: 85px;
+    height: 100px;
+    padding: 12px 4px 10px 22px;
+    gap: 4px;
+    background-color: #FFF2E7;
+  }  
+  .buttonService img{
+    margin-left: 12px;
+  }
+  .themdv{
+    margin-top: 10px;
+    color: var(--orange-orange-500, #FF7506);
+    font-family: "Nunito Sans", sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    text-align: center;
   }

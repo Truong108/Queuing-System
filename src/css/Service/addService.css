@@ -1,0 +1,53 @@
+.text-matb{
+    font-family: Nunito Sans, sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 24px;
+    margin-left: 31px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+.form-matb{
+    margin-left: 31px;
+    width: 600px;
+    height: 40px;
+}
+.input-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Khoảng cách giữa label và input */
+    align-items: flex-start; /* Để input nằm bên phải của label */
+    margin-bottom: 10px;
+  }
+  .textinput {
+    width: 600px;
+    margin-left: 31px;
+  }
+  .containerThemtb {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Khoảng cách giữa các hàng và cột */
+  }
+  
+  .row {
+    display: flex;
+    flex-direction: column;
+    flex: 1; /* Các hàng chiếm đều không gian */
+  }
+  
+  .col-md-6 {
+    flex: 1; /* Các cột chiếm đều không gian */
+  }
+  
+  .input-container {
+    display: flex;
+    justify-content: flex-end; /* Đặt nội dung cuối hàng bên phải */
+  }
+  .checkbox{
+    margin-left: 31px;
+    margin-top: 25px;
+  }
+  .inputadd{
+    margin-left: 65px;
+  }

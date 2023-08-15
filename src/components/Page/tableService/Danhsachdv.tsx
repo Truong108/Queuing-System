@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../../store/store';
 import '../../../css/Service/danhsachdv.css';
@@ -6,15 +6,23 @@ import Addthietbi from '../../../assets/add-square.png'
 import { Pagination } from 'antd';
 import { Link } from 'react-router-dom';
 import { fetchDichvu } from '../../../redux/Service/serviceReducer';
-import { Dichvu } from '../../../Interface/Dichvu';
+import { Dichvu } from '../../../Interface/service/Dichvu';
 
 
-const Danhsachthietbi = () => {
+const Danhsachdichvu = () => {
     const dispatch = useDispatch();
     useEffect(() => {
       dispatch(fetchDichvu() as any);
     }, [dispatch]);
     const service = useSelector((state: RootState) => state.service.service);
+    const itemsPerPage = 10;
+  const [currentPage, setCurrentPage] = useState(1);
+  const handlePageChange = (page: React.SetStateAction<number>) => {
+    setCurrentPage(page);
+  };
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const currentPageData = service.slice(startIndex, endIndex);
     return ( <>
      <div className='contect'>
       <table className='bangdichvu'>
@@ -29,7 +37,7 @@ const Danhsachthietbi = () => {
           </tr>
         </thead>
         <tbody>
-          {service.map((service: Dichvu, index) => {
+          {currentPageData.map((service: Dichvu, index) => {
              let mautb = {};
              if (index % 2 === 1) {
               mautb = { backgroundColor: "#FF750622" };
@@ -49,16 +57,20 @@ const Danhsachthietbi = () => {
              }
             return(
               <tr key={service.id}>
-              <td style={mautb}>{service.madv}</td>
-              <td style={mautb}>{service.tendv}</td>
-              <td style={mautb}>{service.mota}</td>
-              <td style={mautb}><span style={ketnoi}><i className="bi bi-circle-fill"></i></span>{service.tthd}</td>
-              <Link className='ctiet'
-               to="/chitietdevice">
+              <td className='tdmadv'
+              style={mautb}>{service.madv}</td>
+              <td className='tdtendv'
+              style={mautb}>{service.tendv}</td>
+              <td className='tdmota'
+              style={mautb}>{service.mota}</td>
+              <td className='tdtthd'
+              style={mautb}><span style={ketnoi}><i className="bi bi-circle-fill"></i></span>{service.tthd}</td>
+              <Link className='tdctiet'
+               to="/chitietservice">
               <td style={mautb}>{service.ct}</td>
               </Link>
-              <Link className='cnhat' 
-              to="/updevice">
+              <Link className='tdcnhat' 
+              to="/capnhatservice">
               <td style={mautb}>{service.cn}</td>
               </Link>
             </tr>
@@ -67,10 +79,10 @@ const Danhsachthietbi = () => {
         </tbody>
       </table>
     </div>
-    <Link to="/adddevice">
-    <div className='iconButton'>
+    <Link to="/addservice">
+    <div className='buttonService'>
       <img src={Addthietbi} alt='add'/>
-      <p className='themtb'>Thêm Dịch Vụ</p>
+      <p className='themdv'>Thêm Dịch Vụ</p>
     </div>
     </Link>
     <div 
@@ -84,13 +96,15 @@ const Danhsachthietbi = () => {
         alignItems: 'flex-end'
       }}
     >
-      <Pagination 
-       
-        showSizeChanger={false} 
-      />
+      <Pagination
+      showSizeChanger={false}
+      current={currentPage}
+      onChange={handlePageChange}
+      total={service.length} 
+    />
     </div>
     </> 
   );
 }
  
-export default Danhsachthietbi;
+export default Danhsachdichvu;

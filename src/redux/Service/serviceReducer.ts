@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import api from "../../firebase/firebaseAPI";
 import { collection, getDocs } from "firebase/firestore";
-import { Dichvu } from "../../Interface/Dichvu";
+import { Dichvu } from "../../Interface/service/Dichvu";
 
 export const fetchDichvu = createAsyncThunk("dichvu/fetchData", async () => {
     const querySnapshot = await getDocs(collection(api, 'dichvu'));

@@ -60,7 +60,7 @@ const Device = () => {
           <Input
             className="form-control"
             type="search"
-            placeholder="Search"
+            placeholder="Nhập từ khóa"
             aria-label="Search"
             suffix={<SearchOutlined 
             style={{color: '#FF7506'}}

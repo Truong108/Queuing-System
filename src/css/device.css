@@ -18,17 +18,13 @@
     display: flex;
     justify-content: space-between;
   }
-  .trangthaihd,
-  .trangthaikn,
-  .tukhoa {
-    flex: 1;
-    margin: 0 10px;
-    padding: 10px;
-  }
 .trangthaihd,
 .trangthaikn,
 .tukhoa
 {
+  flex: 1;
+  margin: 0 10px;
+  padding: 10px;
     margin-left: -57px;
     font-family: 'Nunito', sans-serif;
     font-size: 16px;

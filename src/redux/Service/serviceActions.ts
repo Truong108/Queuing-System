@@ -1,7 +1,7 @@
 
 import { collection, getDocs } from "firebase/firestore";
 import api from '../../firebase/firebaseAPI';
-import { Dichvu } from "../../Interface/Dichvu";
+import { Dichvu } from "../../Interface/service/Dichvu";
 
 interface FetchServiceSuccessAction {
   type: 'FETCH_SERVICE_SUCCESS';

@@ -2,7 +2,6 @@ import Personal from "./Personal";
 import Info from '../../assets/thongtincanhan.png';
 import '../../css/dashboard.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
-import { Input } from "antd";
 const Dashboard = () => {
     return ( <>
     <div className="infocanhan">
@@ -25,86 +24,105 @@ const Dashboard = () => {
        </div>
        <p className="ten">Lê Quỳnh Ái Vân</p>
     </div>
-      <form className="row g-3">
-        <div className="col-md-6">
-            <label htmlFor="inputEmail4" className="form-labell">Tên người dùng</label>
-            <Input 
+    <form className="container">
+    <div className="row">
+        <div className="col-md-4">
+            <label htmlFor="inputEmail1" className="form-info">Tên người dùng</label>
+            <input 
             type="email" 
             className="form-control" 
-            id="inputEmail4"
+            style={{
+              marginLeft: '89px',
+              width: '350px',
+              height: '45px',
+              marginTop: '10px'
+          }}
+            id="inputEmail1"
             placeholder="Lê Quỳnh Ái Vân"
-            style={{
-              width: '70%',
-              marginLeft: '90px'
-            }}
             />
         </div>
-        <div className="col-md-6">
-            <label htmlFor="inputPassword4" className="form-labell">Tên đăng nhập</label>
-            <Input 
+        <div className="col-md-4">
+            <label htmlFor="inputPassword1" className="form-info">Tên đăng nhập</label>
+            <input 
             type="password" 
             className="form-control" 
-            id="inputPassword4"
+            style={{
+              marginLeft: '89px',
+              width: '350px',
+              height: '45px',
+              marginTop: '10px'
+          }}
+            id="inputPassword1"
             placeholder="lequynhaivan01"
-            style={{
-                width: '70%',
-                marginLeft: '90px'
-              }}
             />
         </div>
-        <div className="col-md-6">
-            <label htmlFor="inputEmail4" className="form-labell">Số điện thoại</label>
-            <Input 
+        <div className="col-md-4">
+            <label htmlFor="inputEmail2" className="form-info">Số điện thoại</label>
+            <input 
             type="email" 
             className="form-control" 
-            id="inputEmail4"
+            style={{
+              marginLeft: '89px',
+              width: '350px',
+              height: '45px',
+              marginTop: '10px'
+          }}
+            id="inputEmail2"
             placeholder="0767375921"
-            style={{
-                width: '70%',
-                marginLeft: '90px'
-              }}
             />
         </div>
-        <div className="col-md-6">
-            <label htmlFor="inputPassword4" className="form-labell">Mật khẩu</label>
-            <Input 
+    </div> 
+
+    <div className="row"> 
+        <div className="col-md-4">
+            <label htmlFor="inputPassword2" className="form-info">Mật khẩu</label>
+            <input 
             type="password" 
             className="form-control" 
-            id="inputPassword4"
-            placeholder="311940211"
             style={{
-                width: '70%',
-                marginLeft: '90px'
-              }}
+              marginLeft: '89px',
+              width: '350px',
+              height: '45px',
+              marginTop: '10px'
+          }}
+            id="inputPassword2"
+            placeholder="311940211"
             />
         </div>
-        <div className="col-md-6">
-            <label htmlFor="inputEmail4" className="form-labell">Email</label>
-            <Input 
+        <div className="col-md-4">
+            <label htmlFor="inputEmail3" className="form-info">Email</label>
+            <input 
             type="email" 
             className="form-control" 
-            id="inputEmail4"
+            style={{
+              marginLeft: '89px',
+              width: '350px',
+              height: '45px',
+              marginTop: '10px'
+          }}
+            id="inputEmail3"
             placeholder="adminSSO1@domain.com"
-            style={{
-                width: '70%',
-                marginLeft: '90px'
-              }}
             />
         </div>
-        <div className="col-md-6">
-            <label htmlFor="inputPassword4" className="form-labell">Vai trò</label>
-            <Input 
-            type="password" 
+        <div className="col-md-4">
+            <label htmlFor="inputPassword3" className="form-info">Vai trò</label>
+            <input 
+            type="text" 
             className="form-control" 
-            id="inputPassword4"
-            placeholder="Kế toán"
             style={{
-                width: '70%',
-                marginLeft: '90px'
-              }}
+              marginLeft: '89px',
+              width: '350px',
+              height: '45px',
+              marginTop: '10px'
+          }}
+            id="inputPassword3"
+            placeholder="Kế toán"
             />
         </div>
-        </form>
+    </div>
+</form>
+
+
       </div>
       </div>
     </div>

@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { ThietBi } from '../../../Interface/Thietbi';
 import { fetchThietBi } from '../../../redux/Device/deviceReducer';
 import { RootState } from '../../../store/store';
-import '../../../css/danhsachtb.css';
+import '../../../css/Device/danhsachtb.css';
 import Addthietbi from '../../../assets/add-square.png'
 import { Pagination } from 'antd';
 import { Link } from 'react-router-dom';
@@ -31,23 +31,32 @@ const Danhsachthietbi = () => {
       }
       return text.slice(0, maxLength) + "...";
     };
+    
+  const itemsPerPage = 10;
+  const [currentPage, setCurrentPage] = useState(1);
+  const handlePageChange = (page: React.SetStateAction<number>) => {
+    setCurrentPage(page);
+  };
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const currentPageData = devices.slice(startIndex, endIndex);
     return ( <>
      <div className='content'>
       <table className='bangthietbi'>
         <thead>
           <tr>
-            <th>Mã thiết bị</th>
-            <th>Tên thiết bị</th>
-            <th>Địa chỉ IP</th>
-            <th>Trạng thái hoạt động</th>
-            <th>Trạng thái kết nối</th>
-            <th>Dịch vụ sử dụng</th>
-            <th></th>
-            <th></th>
+            <th className='thmatb'>Mã thiết bị</th>
+            <th className='thtentb'>Tên thiết bị</th>
+            <th className='thdc'>Địa chỉ IP</th>
+            <th className='thtt'>Trạng thái hoạt động</th>
+            <th className='thttkn'>Trạng thái kết nối</th>
+            <th className='thdv'>Dịch vụ sử dụng</th>
+            <th className='thctiet'></th>
+            <th className='thcnhat'></th>
           </tr>
         </thead>
         <tbody>
-          {devices.map((device: ThietBi, index) => {
+          {currentPageData.map((device: ThietBi, index) => {
              let mautb = {};
              if (index % 2 === 1) {
               mautb = { backgroundColor: "#FF750622" };
@@ -67,12 +76,18 @@ const Danhsachthietbi = () => {
              }
             return(
               <tr key={device.id}>
-              <td style={mautb}>{device.matb}</td>
-              <td style={mautb}>{device.tentb}</td>
-              <td style={mautb}>{device.dcip}</td>
-              <td style={mautb}><span style={ketnoi}><i className="bi bi-circle-fill"></i></span>{device.trangthai}</td>
-              <td style={mautb}><span style={ketnoi}><i className="bi bi-circle-fill"></i></span>{device.trangthaikn}</td>
-              <td style={mautb}>
+              <td className='tdmatb'
+              style={mautb}>{device.matb}</td>
+              <td className='tdtentb'
+              style={mautb}>{device.tentb}</td>
+              <td className='tddc'
+              style={mautb}>{device.dcip}</td>
+              <td className='tdtt'
+              style={mautb}><span style={ketnoi}><i className="bi bi-circle-fill"></i></span>{device.trangthai}</td>
+              <td className='tdttkn'
+              style={mautb}><span style={ketnoi}><i className="bi bi-circle-fill"></i></span>{device.trangthaikn}</td>
+              <td className='tddv'
+              style={mautb}>
                 {showFullContent[index] ? (
                   <div>
                     {device.dichvu}
@@ -89,10 +104,12 @@ const Danhsachthietbi = () => {
                   </div>
                 )}
               </td>
-              <Link to="/chitietdevice">
+              <Link className='tdctiet'
+              to="/chitietdevice">
               <td style={mautb}>{device.chitiet}</td>
               </Link>
-              <Link to="/updevice">
+              <Link className='tdcnhat'
+              to="/updevice">
               <td style={mautb}>{device.capnhat}</td>
               </Link>
               
@@ -119,10 +136,12 @@ const Danhsachthietbi = () => {
         alignItems: 'flex-end'
       }}
     >
-      <Pagination 
-       
-        showSizeChanger={false} 
-      />
+    <Pagination
+      showSizeChanger={false}
+      current={currentPage}
+      onChange={handlePageChange}
+      total={devices.length} 
+    />
     </div>
     </> 
   );

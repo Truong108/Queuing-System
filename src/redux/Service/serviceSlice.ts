@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { AppThunk } from '../../store/store'; // Đảm bảo đường dẫn đúng
 import api from '../../firebase/firebaseAPI'; // Đảm bảo đường dẫn đúng
 import { collection, getDocs } from "firebase/firestore";
-import { Dichvu } from '../../Interface/Dichvu';
+import { Dichvu } from '../../Interface/service/Dichvu';
 
 interface ServiceState {
   service: Dichvu[];

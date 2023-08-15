@@ -51,23 +51,23 @@
   align-items: center; 
 }
 .formthongtin{
-  margin-bottom: 90px;
-  margin-left: 140px;
+  margin-bottom: 150px;
+  margin-left: 100px;
   display: flex;
-  width: 1112px;
+  width: 1282px;
   padding: 40px 24px 35px 24px;
-  align-items: flex-start;
+  align-items: center;
   gap: 24px;
   border-radius: 12px;
   background: var(--white, #f3eaea);
   box-shadow: 0px 2px 6px 0px rgba(219, 219, 219, 0.50);
 }
-
-.form-labell {
+.form-info {
   font-size: 16px;
   font-weight: bold;
   margin-left: 90px;
   margin-top: 29px;
+  white-space: nowrap;
 }
 .ten{
   text-align: center;
@@ -79,6 +79,11 @@
   font-weight: 700;
   line-height: 36px; 
   white-space: nowrap;
+}
+.avatars-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .avatars {
   position: relative;
@@ -93,6 +98,7 @@
 .avatar-image img {
   max-width: 170%;
   height: auto;
+  object-fit: cover;
 }
 
 .camera-icon {
@@ -107,7 +113,6 @@
   justify-content: center;
   align-items: center;
 }
-
 .bi-camera {
   color: white;
   font-size: 3rem;

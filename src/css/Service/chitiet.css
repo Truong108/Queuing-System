@@ -1,0 +1,126 @@
+.totalchitiet {
+    display: flex;
+  }
+.bangchitiet{
+    width: 400px;
+    height: 720px;
+    background-color: #FFF;
+    margin-left: 35px;
+    border-radius: 15px;
+    margin-top: 20px;
+}
+.check{
+    margin-left: 32px;
+    padding-top: 20px;
+}
+.form-check-label{
+    font-family: "Nunito Sans", sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 24px; 
+}
+.inputchitiet{
+    margin-left: 55px;
+}
+.bangchitiet2{
+    width: 880px;
+    height: 720px;
+    background-color: #FFF;
+    margin-left: 30px;
+    margin-top: 20px;
+    border-radius: 15px;
+}
+.chitietButtun{
+    position: fixed;
+    z-index: 999;
+    top: 26%;
+    right: 5px; 
+    transform: translateY(-50%); 
+    width: 85px;
+    height: 100px;
+    padding: 12px 4px 10px 22px;
+    gap: 4px;
+    background-color: #FFF2E7;
+}
+.chitietButtun2{
+    position: fixed;
+    z-index: 999;
+    top: 37%;
+    right: 5px; 
+    transform: translateY(-50%); 
+    width: 85px;
+    height: 100px;
+    padding: 12px 4px 10px 22px;
+    gap: 4px;
+    background-color: #FFF2E7;
+}
+.chitietButtun img, .chitietButtun2 img{
+    margin-left: 10px;
+}
+.editct, .editct2{
+    margin-top: 10px;
+    color: var(--orange-orange-500, #FF7506);
+    font-family: "Nunito Sans", sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    white-space: nowrap;
+}
+.editct{
+    margin-left: -8px;
+}
+.tongbangct{
+    display: flex;
+}
+.trangthaihdct p, .thoigianct p, .tukhoact p{
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 24px;
+    font-family: "Nunito Sans", sans-serif;
+}
+.trangthaihdct p{
+    margin-left: 30px;
+    margin-top: 20px;
+}
+.thoigianct p{
+    margin-top: 20px;
+}
+.tukhoact p{
+    margin-top: 22px;
+    margin-left: 10px;
+}
+.tukhoact{
+    margin-left: 30px;
+}
+.timkiem{
+    margin-top: 10px;
+    width: 235px;
+}
+.sothutu, .tthai{
+    background-color: #FF9138;
+    color: #FFF;
+}
+.bangdichvuchitiet{
+    border-collapse: collapse;
+    width: 94%;
+    margin-left: 27px;
+    background-color: #FFF;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+    margin-top: 20px;
+}
+.bangdichvuchitiet th{
+    border: 1px solid #dddddd;
+    padding: 14px;
+    text-align: left;
+}
+.sottchitietdv, .tthaichitiet{
+    border: 1px solid #dddddd;
+    padding: 15px;
+    text-align: left;
+    white-space: nowrap;
+    display: table-cell;
+    width: 12%; 
+}
