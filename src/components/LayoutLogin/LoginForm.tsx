@@ -133,8 +133,8 @@ const LoginForm: React.FC = () => {
             textAlign: 'center', 
             paddingTop: '200px'
             }}>
-          <div className="container">
-            <h3>Hệ Thống</h3>
+          <div className="containerr">
+            <h3 className='hethonglogin'>Hệ Thống</h3>
             <h1>Quản lý xếp hàng</h1>
             <img src={Group} alt="login"/>
           </div>

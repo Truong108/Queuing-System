@@ -74,6 +74,7 @@
 }
 .Popover {
   position: relative; /* Để làm việc với các vị trí tương đối */
+  width: 232px;
 }
 
 .Popover-links {
@@ -84,6 +85,6 @@
 .iconmenu{
   position: absolute;
   margin-left: 207px;
-  margin-top: -12px;
+  margin-top: -8px;
 }
 

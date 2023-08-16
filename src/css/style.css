@@ -1,4 +1,3 @@
-
 .logincontainer{
     margin-left: 170px;
     width: 150px;
@@ -48,16 +47,17 @@
   margin-left: 150px;
 }
 
-.container {
+.containerr {
+    white-space: nowrap;
     position: relative;
     display: inline-block;
 }
   
-  h3 {
+  .hethonglogin {
     color: #FF7506 !important;
     position: absolute;
     top: 45%;
-    left: 56%;
+    left: 66%;
     transform: translate(-86%, -40%);
     z-index: 1;
   }
