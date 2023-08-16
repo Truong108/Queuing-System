@@ -5,6 +5,16 @@
     margin-left: 232px;
     margin-bottom: -10%;
 }
+.tendvtieude{
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 24px;
+    margin-left: -49px;
+    margin-right: 90px;
+    margin-top: 10px;
+}
 .tendv, .tendv2, .tendv3, .chontg{
     flex: 1;
     margin: 0 10px;

@@ -32,7 +32,7 @@ const Danhsachthietbi = () => {
       return text.slice(0, maxLength) + "...";
     };
     
-  const itemsPerPage = 10;
+  const itemsPerPage = 9;
   const [currentPage, setCurrentPage] = useState(1);
   const handlePageChange = (page: React.SetStateAction<number>) => {
     setCurrentPage(page);

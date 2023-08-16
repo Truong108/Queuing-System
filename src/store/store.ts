@@ -5,6 +5,9 @@ import serviceReducer from "../redux/Service/serviceReducer";
 import chitietserviceReducer from "../redux/Service/chitietReducer";
 import capsoReducer from "../redux/GrantNumber/grantNumberReducer";
 import baocaoReducer from "../redux/Report/reportReducer";
+import vaitroReducer from "../redux/SettingVaitro/vaitroReducer";
+import accountReducer from "../redux/SettingTaikhoan/accountReducer";
+import nhatkyReducer from "../redux/SettingNhatky/nhatkyReducer";
 
 const store = configureStore({
   reducer: {
@@ -14,6 +17,9 @@ const store = configureStore({
     chitietservice: chitietserviceReducer,
     capso: capsoReducer,
     baocao: baocaoReducer,
+    vaitro: vaitroReducer,
+    account: accountReducer,
+    nhatky: nhatkyReducer,
   },
 });
 

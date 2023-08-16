@@ -4,13 +4,17 @@ import '../../css/menu-bar.css';
 import { useState } from "react";
 import { AppstoreOutlined, 
   AreaChartOutlined, 
+  CaretDownOutlined, 
   CodepenOutlined, 
   DesktopOutlined, 
   LogoutOutlined, 
   MoreOutlined, 
   SettingOutlined,
   WechatOutlined } from "@ant-design/icons";
+import React from "react";
+
 const MenuBar = () => {
+  const [popoverVisible, setPopoverVisible] = useState(false);
   const [selectedTabIndex, setSelectedTabIndex] = useState<number | null>(0);
 
   const handleTabClick = (index: number) => {
@@ -88,25 +92,75 @@ const MenuBar = () => {
         <span>Báo cáo</span> 
           </li>
         </Link>
+        <div className="Popover">
         <Link to="/systemInstallation" className="no-underline">
-        <li
-          className={selectedTabIndex === 5 ? "active" : ""}
-          onClick={() => handleTabClick(5)}
+      <li
+        className={selectedTabIndex === 5 ? "active" : ""}
+        onClick={() => handleTabClick(5)}
+        style={{
+          display: "flex",
+          alignItems: "center"
+        }}
+      >
+        <SettingOutlined />
+        <span
           style={{
             display: "flex",
-            alignItems: "center"
+            alignItems: "center",
+            whiteSpace: "nowrap"
           }}
+        >
+          Cài đặt hệ thống
+          <div
+            style={{
+              marginLeft: "10px",
+              clear: "both",
+              whiteSpace: "nowrap",
+              marginTop: "-5px"
+            }}
           >
-        <SettingOutlined />
-        <span>Cài đặt hệ thống 
-          <MoreOutlined 
-          style={{
-            fontWeight: 'bold',
-            marginLeft: '5px'
-            }}/>
-          </span>
-        </li>
-        </Link>
+            <MoreOutlined
+              style={{ fontWeight: "bold", marginLeft: "5px" }}
+              onClick={() => setPopoverVisible(!popoverVisible)} 
+            />
+          </div>
+        </span>
+      </li>
+      <p className="iconmenu">
+      <CaretDownOutlined />
+      </p>
+      {popoverVisible && (
+        <div className="Popover-links">
+        <React.Fragment>
+          <Link to="/systemInstallation" className="nav-link">
+            <li
+              className={selectedTabIndex === 5 ? "active" : ""}
+              onClick={() => handleTabClick(5)}
+            >
+              <span style={{ fontWeight: "bold" }}>Quản lý vai trò</span>
+            </li>
+          </Link>
+          <Link to="/quanlytaikhoan" className="nav-link">
+            <li 
+              className={selectedTabIndex === 6 ? "active" : ""}
+              onClick={() => handleTabClick(6)}
+            >
+              <span style={{ fontWeight: "bold" }}>Quản lý tài khoản</span>
+            </li>
+          </Link>
+          <Link to="/nhatky" className="nav-link">
+            <li
+              className={selectedTabIndex === 7 ? "active" : ""}
+              onClick={() => handleTabClick(7)}
+            >
+              <span style={{ fontWeight: "bold" }}>Nhật ký người dùng</span>
+            </li>
+          </Link>
+        </React.Fragment>
+        </div>
+      )}
+    </Link>
+    </div>
     </ul>
   </div>
   <Link to="/">

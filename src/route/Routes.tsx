@@ -1,6 +1,7 @@
 import ForgotPassword from "../components/LayoutLogin/ForgotPassword";
 import LoginForm from "../components/LayoutLogin/LoginForm";
 import SignupForm from "../components/LayoutLogin/SignupForm";
+import Account from "../components/Page/Account";
 import Dashboard from "../components/Page/Dashboard";
 import Device from "../components/Page/Device";
 import GrantNumber from "../components/Page/GrantNumber";
@@ -13,6 +14,9 @@ import ChitietDevice from "../components/Page/tableDevice/ChitietDevice";
 import UpdateDevice from "../components/Page/tableDevice/UpdateDevice";
 import Capsonew from "../components/Page/tableGrantNumber/Capsonew";
 import ChitietCapso from "../components/Page/tableGrantNumber/ChitietCapso";
+import NhatKy from "../components/Page/tableHeThong/UserLog";
+import Addvaitro from "../components/Page/tableHeThong/Vaitro/Addvaitro";
+import Capnhatvaitro from "../components/Page/tableHeThong/Vaitro/Upvaitro";
 import AddService from "../components/Page/tableService/AddService";
 import DetailService from "../components/Page/tableService/DetailService";
 import UpdateService from "../components/Page/tableService/UpdateService";
@@ -38,4 +42,8 @@ export const RouteHome = [
     {path: '/capnhatservice', element: <UpdateService/>},
     {path: '/capsonew', element: <Capsonew/>},
     {path: '/chitietcapso', element: <ChitietCapso/>},
+    {path: '/nhatky', element: <NhatKy/>},
+    {path: '/themvaitro', element: <Addvaitro/>},
+    {path: '/upvaitro', element: <Capnhatvaitro/>},
+    {path: '/quanlytaikhoan', element: <Account/>},
 ];

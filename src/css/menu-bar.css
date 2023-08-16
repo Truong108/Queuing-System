@@ -38,17 +38,16 @@
 }
 
 .menubar ul {
-  margin-top: 50px;
+  margin-top: 15px;
 }
 .menubar ul li {
-  padding: 10px 0px;
+  padding: 15px 0px;
   padding-left: 45px;
   font-family: "Nunito Sans", sans-serif;
   font-size: 15px;
   font-weight: 600;
   cursor: pointer;
   color: #7e7d88;
-  margin: 5px 0;
 }
 .menubar ul .active,
 .menubar ul .active:hover {
@@ -63,13 +62,28 @@
 }
 .menubar ul li {
   display: flex;
-  gap: 11px;
+  gap: 15px;
 }
+
 .no-underline {
   text-decoration: none;
 }
 
 .no-underline li {
   text-decoration: none;
+}
+.Popover {
+  position: relative; /* Để làm việc với các vị trí tương đối */
+}
+
+.Popover-links {
+  position: absolute; /* Đặt vị trí tuyệt đối cho các liên kết bên trong */
+  top: 100%; /* Đặt vị trí bên dưới dấu ba chấm */
+  margin-top: 10px;
+}
+.iconmenu{
+  position: absolute;
+  margin-left: 207px;
+  margin-top: -12px;
 }
 

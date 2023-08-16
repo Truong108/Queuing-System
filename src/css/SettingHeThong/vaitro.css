@@ -1,0 +1,128 @@
+.vaitro{
+    background-color: #F6F6F6;
+    width: 1472px;
+    height: 822px;
+    margin-left: 232px;
+    margin-top: -20%;
+}
+.dsvaitro{
+    font-size: 1.5em;
+    margin-left: 38px;
+    color: #333; /* Màu chữ tuỳ chọn */
+    display: block;
+    color: #FF7506;
+    font-weight: bold;
+    padding-top: 11px;
+}
+.contaivaitro{
+    display: flex;
+    justify-content: space-between;
+    float: right;
+    margin-right: 9%;
+    margin-top: -2%;
+    margin-bottom: 55px;
+}
+.tukhoavaitro p{
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 24px;
+    margin-left: -17px;
+    font-family: 'Nunito', sans-serif;
+}
+.input-vaitro{
+    display: inline-block;
+    position: relative;
+}
+.containervt{
+    margin-top: -13px;
+}
+.form-vaitro{
+    width: 320px;
+    height: 35px;
+}
+.bangvaitro{
+    border-collapse: collapse;
+    width: 89%;
+    height: 450px;
+    margin-left: 37px;
+}
+.bangvaitro th{
+    border: 1px solid #dddddd;
+    padding: 14px;
+    text-align: left;
+}
+.tenvt, .sond, .mota, .cn{
+    width: 10%;
+    background-color: #FF9138;
+    color: #FFF;
+}
+.totaladdvaitro{
+    width: 1470px;
+    height: 830px;
+    background-color: #F6F6F6;
+    margin-left: 231px;
+}
+.dsvaitro{
+    font-family: "Nunito Sans", sans-serif;
+    color: #FF7506;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 36px;
+    margin-top: -23%;
+    padding-top: 15px;
+    margin-left: 40px;
+}
+
+.containerThemvaitro{
+    width: 1380px;
+    height: 625px;
+    margin-top: 20px;
+    display: flex;
+    background-color: #FFF;
+    border-radius: 15px;
+}
+.phanquyen{
+    font-family: "Nunito Sans", sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 24px;
+    margin-left: -10px;
+}
+.cbox{
+    margin-left: 20px;
+    margin-bottom: 18px;
+}
+.nhomcn{
+    font-family: "Nunito Sans", sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 30px;
+    color: #FF7506;
+    margin-top: 20px !important;
+    margin-left: 20px;
+}
+.totalrow{
+    width: 670px !important;
+    height: 490px;
+    flex-shrink: 0;
+    border-radius: 8px;
+    background: var(--orange-orange-50, #FFF2E7);
+}
+.tenvaitro, .motavaitro{
+    font-family: "Nunito Sans", sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 24px;
+    margin-left: 31px;
+}
+.tenvaitro{
+    margin-bottom: 10px;
+}
+.motavaitro{
+    margin-top: 40px;
+}

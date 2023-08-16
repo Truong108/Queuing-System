@@ -5,7 +5,7 @@
   height: 127px;
   position: absolute;
   top: -1px;
-  left: 231px; /* Dịch chuyển .navtop qua phải */
+  left: 232px; /* Dịch chuyển .navtop qua phải */
   z-index: 10000; /* Đảm bảo nằm trên cùng */
   background-color: #F6F6F6;
 }

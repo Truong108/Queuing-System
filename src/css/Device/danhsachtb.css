@@ -1,16 +1,13 @@
-.content{
-  border-radius: 15px;
-}
 .bangthietbi{
     border-collapse: collapse;
-    width: 90%;
+    width: 89%;
     margin-left: 37px;
     background-color: #FFF;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
 }
 .bangthietbi th {
   border: 1px solid #dddddd;
-  padding: 13px;
+  padding: 15px;
   text-align: left;
 }
 .tdmatb,
@@ -23,7 +20,7 @@
 .tdcnhat
 {
   border: 1px solid #dddddd;
-  padding: 14px;
+  padding: 15px;
   text-align: left;
 }
 .tdctiet,
@@ -34,6 +31,9 @@
       border: 1px solid #dddddd;
       padding: 10px; 
       width: 10%; 
+  }
+  .tddv{
+    padding: 10px;
   }
 .thmatb,
 .thtentb,
@@ -47,6 +47,7 @@
   width: 10%;
   background-color: #FF9138;
   color: #FFF;
+  white-space: nowrap;
 }
 tr:nth-child(even) {
   background-color: #FF750622; /* Màu nền hàng chẵn */

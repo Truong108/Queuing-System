@@ -24,7 +24,7 @@ const GrantNumber = () => {
       </div>
       <h2 className="subheading">Quản lý cấp số</h2>
     <div className="container">
-      <div className="tendv">
+      <div className="tendvtieude">
       <p>Tên dịch vụ</p>
       <Space wrap> 
       <Select

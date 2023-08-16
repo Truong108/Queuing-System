@@ -15,7 +15,7 @@ const Danhsachdichvu = () => {
       dispatch(fetchDichvu() as any);
     }, [dispatch]);
     const service = useSelector((state: RootState) => state.service.service);
-    const itemsPerPage = 10;
+    const itemsPerPage = 9;
   const [currentPage, setCurrentPage] = useState(1);
   const handlePageChange = (page: React.SetStateAction<number>) => {
     setCurrentPage(page);

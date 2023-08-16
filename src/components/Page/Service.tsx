@@ -50,7 +50,7 @@ const Service = () => {
       </div>
       <div className="tukhoa">
         <p>Từ khóa</p>
-        <nav className="navbar bg-body-tertiary">
+        <nav className="navbar">
         <div className="container-fluid">
           <form className="d-flex" role="search">
           <div className="input-container">

@@ -57,3 +57,8 @@
     text-align: center;
     margin-left: -15px;
   }
+  .stt, .tendv, .tgcap, .tt, .ncap{
+    width: 10%;
+    background-color: #FF9138;
+    color: #FFF;
+  }
