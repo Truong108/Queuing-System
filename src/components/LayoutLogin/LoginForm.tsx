@@ -7,7 +7,7 @@ import { Button, Input, Space, message } from 'antd';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '../../store/store';
-import { fetchLogin } from '../../redux/Login/authActions';
+import { fetchLogin } from '../../redux/Login/authReducer';
 
 const LoginForm: React.FC = () => {
   const [loginAttempted, setLoginAttempted] = useState(false);
@@ -43,11 +43,11 @@ const LoginForm: React.FC = () => {
         navigate("/dashboard"); // Chuyển trang ngay sau khi đăng nhập thành công
       } else {
         message.error("Tên đăng nhập hoặc mật khẩu không đúng");
-        setLoginError(true);
+        setLoginError(false);
       }
     } else {
       message.error("Tên đăng nhập hoặc mật khẩu không đúng");
-      setLoginError(true);
+      setLoginError(false);
     }
   };
   useEffect(() => {
@@ -126,7 +126,7 @@ const LoginForm: React.FC = () => {
               </form>
             </div>
           </div>
-          <div className="col-sm-6 px-0 d-none d-sm-block">
+          <div className="col-sm-6 px-0 d-none d-sm-block imglogin">
           <div className="header-container"
           style={{
             width: '820px', 
@@ -135,7 +135,7 @@ const LoginForm: React.FC = () => {
             }}>
           <div className="containerr">
             <h3 className='hethonglogin'>Hệ Thống</h3>
-            <h1>Quản lý xếp hàng</h1>
+            <h1 className='quanlybanhang'>Quản lý xếp hàng</h1>
             <img src={Group} alt="login"/>
           </div>
           </div>

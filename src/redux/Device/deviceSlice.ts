@@ -25,15 +25,11 @@ const deviceSlice = createSlice({
 export const { fetchDevicesSuccess } = deviceSlice.actions;
 export default deviceSlice.reducer;
 
-export const fetchDevices = (): AppThunk => async (dispatch) => {
+export const fetchDevices = (): AppThunk => async () => {
   try {
-    const devicesRef = collection(api, 'thietbi');
-    const querySnapshot = await getDocs(devicesRef);
-    const devicesArray: ThietBi[] = querySnapshot.docs.map((doc) => ({
-        firebaseId: doc.id,
-        ...doc.data() as ThietBi,
-      }));
-    dispatch(fetchDevicesSuccess(devicesArray));
+      const querySnaapDoc = await getDocs(collection(api,"thietbi"))
+      return querySnaapDoc.docs.map((doc) => ({id: doc.id, ...doc.data() }as ThietBi))
+    
   } catch (error) {
     console.error(error);
   }

@@ -47,29 +47,40 @@
   margin-left: 150px;
 }
 
-.containerr {
-    white-space: nowrap;
-    position: relative;
-    display: inline-block;
+.imglogin{
+  color: #FF7506 !important;
+  position: absolute;
+  top: 45%;
+  left: 66%;
+  transform: translate(-36%, -50%);
+  z-index: 1;
 }
-  
+.imgforgot, .signfrom{
+  color: #FF7506 !important;
+  position: absolute;
+  top: 45%;
+  left: 69%;
+  transform: translate(-36%, -50%);
+  z-index: 1;
+}
   .hethonglogin {
     color: #FF7506 !important;
     position: absolute;
-    top: 45%;
+    top: 59%;
     left: 66%;
     transform: translate(-86%, -40%);
     z-index: 1;
   }
   
-  h1 {
+  .quanlybanhang {
     color: #FF7506 !important;
     position: absolute;
-    top: 50%;
-    left: 30%;
-    margin-left: 107px;
-    text-transform: uppercase;
+    top: 59%;
+    left: 78%;
+    transform: translate(-56%, 60%);
+    white-space: nowrap;
     z-index: 2;
+    text-transform: uppercase;
   }
   
   .custom-button {

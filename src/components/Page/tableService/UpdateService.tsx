@@ -1,12 +1,27 @@
 import { CaretRightOutlined } from "@ant-design/icons";
 import Personal from "../Personal";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import '../../../css/Device/danhsachtb.css';
 import { Button, Input, InputNumber, Space } from "antd";
 import TextArea from "antd/es/input/TextArea";
 import '../../../css/Service/addService.css';
+import { useEffect, useState } from "react";
+import { Dichvu } from "../../../Interface/service/Dichvu";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../../store/store";
+import { fetchDichvu } from "../../../redux/Service/serviceReducer";
 
 const UpdateService = () => {
+  const {id} = useParams()
+  const [serviceUpdate, setServiceUpdate] = useState<Dichvu>()
+  const dispatch = useDispatch();
+    const serviceUp = useSelector((state: RootState) => state.service.service);
+    useEffect(() => {
+        // eslint-disable-next-line eqeqeq
+        const data = serviceUp.find((item) => item.madv == id)
+        setServiceUpdate(data)
+      dispatch(fetchDichvu() as any);
+    }, [serviceUp, dispatch, id]);
     return ( <>
     <div className="themdevice">
      <div className="navtopp">
@@ -40,6 +55,7 @@ const UpdateService = () => {
       <Input 
         placeholder="201"
         className="form-matb"
+        value={serviceUpdate?.madv}
       />
     </div>
     <div className="col-md-6">
@@ -47,6 +63,7 @@ const UpdateService = () => {
       <Input 
         placeholder="Khám tim mạch"
         className="form-matb"
+        value={serviceUpdate?.tendv}
       />
     </div>
   </div>
@@ -55,6 +72,7 @@ const UpdateService = () => {
       <label htmlFor="inputEmail4" className="text-matb">Mô tả:</label>
       <TextArea
       className="textinput"
+      value={serviceUpdate?.mota}
         placeholder="Mô tả dịch vụ"
         autoSize={{ minRows: 5}}
         style={{ width: '190%', maxWidth: '600px' }}

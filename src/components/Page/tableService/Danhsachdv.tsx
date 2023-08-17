@@ -4,7 +4,7 @@ import { RootState } from '../../../store/store';
 import '../../../css/Service/danhsachdv.css';
 import Addthietbi from '../../../assets/add-square.png'
 import { Pagination } from 'antd';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { fetchDichvu } from '../../../redux/Service/serviceReducer';
 import { Dichvu } from '../../../Interface/service/Dichvu';
 
@@ -23,6 +23,13 @@ const Danhsachdichvu = () => {
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
   const currentPageData = service.slice(startIndex, endIndex);
+  const navigate =  useNavigate()
+  const handleDetail = (id:string) =>{
+      navigate(`/chitietservice/${id}`)
+  }
+  const hanndleUpdate = (id:string) =>{
+    navigate(`/capnhatservice/${id}`)
+}
     return ( <>
      <div className='contect'>
       <table className='bangdichvu'>
@@ -65,14 +72,12 @@ const Danhsachdichvu = () => {
               style={mautb}>{service.mota}</td>
               <td className='tdtthd'
               style={mautb}><span style={ketnoi}><i className="bi bi-circle-fill"></i></span>{service.tthd}</td>
-              <Link className='tdctiet'
-               to="/chitietservice">
-              <td style={mautb}>{service.ct}</td>
-              </Link>
-              <Link className='tdcnhat' 
-              to="/capnhatservice">
-              <td style={mautb}>{service.cn}</td>
-              </Link>
+             
+              <td className='chitietdichvu'
+              style={mautb} onClick={() => handleDetail(service.madv)}>Chi tiết</td>
+
+              <td className='chitietdichvu'
+              style={mautb} onClick={() => hanndleUpdate(service.madv)}>Cập nhật</td>
             </tr>
             ); 
             })}

@@ -27,13 +27,8 @@ export default serviceSlice.reducer;
 
 export const fetchService = (): AppThunk => async (dispatch) => {
   try {
-    const serviceRef = collection(api, 'dichvu');
-    const querySnapshot = await getDocs(serviceRef);
-    const serviceArray: Dichvu[] = querySnapshot.docs.map((doc) => ({
-        firebaseId: doc.id,
-        ...doc.data() as Dichvu,
-      }));
-    dispatch(fetchServiceSuccess(serviceArray));
+    const querySnaapDoc = await getDocs(collection(api,"dichvu"))
+    return querySnaapDoc.docs.map((doc) => ({id: doc.id, ...doc.data() }as Dichvu))
   } catch (error) {
     console.error(error);
   }

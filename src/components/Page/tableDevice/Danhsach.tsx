@@ -6,7 +6,7 @@ import { RootState } from '../../../store/store';
 import '../../../css/Device/danhsachtb.css';
 import Addthietbi from '../../../assets/add-square.png'
 import { Pagination } from 'antd';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Danhsachthietbi = () => {
     const dispatch = useDispatch();
@@ -40,6 +40,14 @@ const Danhsachthietbi = () => {
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
   const currentPageData = devices.slice(startIndex, endIndex);
+
+  const navigate =  useNavigate()
+  const handleDetail = (id:string) =>{
+      navigate(`/chitietdevice/${id}`)
+  }
+  const handleUpdate = (id: string) =>{
+      navigate(`/updevice/${id}`);
+  }
     return ( <>
      <div className='content'>
       <table className='bangthietbi'>
@@ -104,15 +112,12 @@ const Danhsachthietbi = () => {
                   </div>
                 )}
               </td>
-              <Link className='tdctiet'
-              to="/chitietdevice">
-              <td style={mautb}>{device.chitiet}</td>
-              </Link>
-              <Link className='tdcnhat'
-              to="/updevice">
-              <td style={mautb}>{device.capnhat}</td>
-              </Link>
-              
+              <td className='ctthietbi' 
+              style={mautb} onClick={() => handleDetail(device.matb)}>Chi tiết</td>
+  
+              <td className='cnthietbi'
+              style={mautb} onClick={() => handleUpdate(device.matb)}>Cập nhật</td>
+            
             </tr>
             ); 
             })}

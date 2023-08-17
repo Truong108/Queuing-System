@@ -4,6 +4,7 @@ import SignupForm from "../components/LayoutLogin/SignupForm";
 import Account from "../components/Page/Account";
 import Dashboard from "../components/Page/Dashboard";
 import Device from "../components/Page/Device";
+import Diary from "../components/Page/Diary";
 import GrantNumber from "../components/Page/GrantNumber";
 import Personalinformation from "../components/Page/Personalinformation";
 import Report from "../components/Page/Report";
@@ -14,7 +15,6 @@ import ChitietDevice from "../components/Page/tableDevice/ChitietDevice";
 import UpdateDevice from "../components/Page/tableDevice/UpdateDevice";
 import Capsonew from "../components/Page/tableGrantNumber/Capsonew";
 import ChitietCapso from "../components/Page/tableGrantNumber/ChitietCapso";
-import NhatKy from "../components/Page/tableHeThong/UserLog";
 import Addvaitro from "../components/Page/tableHeThong/Vaitro/Addvaitro";
 import Capnhatvaitro from "../components/Page/tableHeThong/Vaitro/Upvaitro";
 import AddService from "../components/Page/tableService/AddService";
@@ -35,15 +35,15 @@ export const RouteHome = [
     {path: '/systemInstallation', element: <SystemInstallation/>},
     {path: '/personalinformation', element: <Personalinformation/>},
     {path: '/adddevice', element: <AddDevice/>},
-    {path: '/chitietdevice', element: <ChitietDevice/>},
-    {path: '/updevice', element: <UpdateDevice/>},
+    {path: '/chitietdevice/:id', element: <ChitietDevice/>},
+    {path: '/updevice/:id', element: <UpdateDevice/>},
     {path: '/addservice', element: <AddService/>},
-    {path: '/chitietservice', element: <DetailService/>},
-    {path: '/capnhatservice', element: <UpdateService/>},
+    {path: '/chitietservice/:id', element: <DetailService/>},
+    {path: '/capnhatservice/:id', element: <UpdateService/>},
     {path: '/capsonew', element: <Capsonew/>},
     {path: '/chitietcapso', element: <ChitietCapso/>},
-    {path: '/nhatky', element: <NhatKy/>},
     {path: '/themvaitro', element: <Addvaitro/>},
     {path: '/upvaitro', element: <Capnhatvaitro/>},
     {path: '/quanlytaikhoan', element: <Account/>},
+    {path: '/nhatky', element: <Diary/>},
 ];

@@ -1,6 +1,6 @@
 import { CaretRightOutlined, SearchOutlined } from "@ant-design/icons";
 import Personal from "../Personal";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import '../../../css/Service/chitiet.css';
 import { fetchDichvu } from "../../../redux/Service/serviceReducer";
 import { useDispatch, useSelector } from "react-redux";
@@ -11,13 +11,20 @@ import Edit from '../../../assets/Edit Square.png'
 import Back from '../../../assets/back-square.png'
 import { Chitiet } from "../../../Interface/service/Chitiet";
 import { fetchChitietDichvu } from "../../../redux/Service/chitietReducer";
+import { Dichvu } from "../../../Interface/service/Dichvu";
 
 const DetailService = () => {
+  const {id} = useParams()
+  const [chitietservice, setServicechitiet] = useState<Dichvu>();
+  const serviceInfo = useSelector((state: RootState) => state.service.service);
   const dispatch = useDispatch();
     useEffect(() => {
+       // eslint-disable-next-line eqeqeq
+       const data = serviceInfo.find((item) => item.madv == id)
+       setServicechitiet(data)
       dispatch(fetchDichvu() as any);
-    }, [dispatch]);
-    const serviceInfo = useSelector((state: RootState) => state.service.service[0]);
+    }, [dispatch, id, serviceInfo]);
+   
     const handleChange = (value: string) => {
       console.log(`selected ${value}`);
     };
@@ -61,7 +68,7 @@ const DetailService = () => {
     <div className="row">
     <div className="col-md-4">
         <label htmlFor="inputEmail4" className="text-chitiet">
-            Mã thiết bị: 
+            Mã dịch vụ: 
             <span style={{
                 color: '#535261',
                 fontFamily: "Nunito Sans, sans-serif",
@@ -71,13 +78,13 @@ const DetailService = () => {
                 lineHeight: '24px',
                 marginLeft: '55px'
             }}>
-                {serviceInfo.madv}
+                {chitietservice?.madv}
             </span>
         </label>
     </div>
     <div className="col-md-4">
         <label htmlFor="inputEmail4" className="text-chitiet">
-            Địa chỉ IP: 
+            Tên dịch vụ: 
             <span style={{
                 color: '#535261',
                 fontFamily: "Nunito Sans, sans-serif",
@@ -87,13 +94,13 @@ const DetailService = () => {
                 lineHeight: '24px',
                 marginLeft: '64px'
             }}>
-                {serviceInfo.tendv}
+                {chitietservice?.tendv}
             </span>
         </label>
     </div>
     <div className="col-md-4">
         <label htmlFor="inputEmail4" className="text-chitiet">
-            Tên thiết bị: 
+            Mô tả: 
             <span style={{
                 color: '#535261',
                 fontFamily: "Nunito Sans, sans-serif",
@@ -103,7 +110,7 @@ const DetailService = () => {
                 lineHeight: '24px',
                 marginLeft: '50px'
             }}>
-                {serviceInfo.mota}
+                {chitietservice?.mota}
             </span>
         </label>
     </div>

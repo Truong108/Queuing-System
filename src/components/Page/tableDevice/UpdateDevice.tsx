@@ -1,9 +1,13 @@
 import { CaretRightOutlined } from "@ant-design/icons";
 import Personal from "../Personal";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import '../../../css/Device/danhsachtb.css';
 import { Button, Input, Select, Space, Tag } from "antd";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { ThietBi } from "../../../Interface/Thietbi";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../../store/store";
+import { fetchThietBi } from "../../../redux/Device/deviceReducer";
 
 
 const options = [
@@ -39,6 +43,16 @@ const tagRender = (props: any) => {
     );
   };
 const AddDevice = () => {
+  const {id} = useParams()
+  const [deviceUpdate, setDeviceUpdate] = useState<ThietBi>()
+  const dispatch = useDispatch();
+    const deviceUp = useSelector((state: RootState) => state.device.devices);
+    useEffect(() => {
+        // eslint-disable-next-line eqeqeq
+        const data = deviceUp.find((item) => item.matb == id)
+        setDeviceUpdate(data)
+      dispatch(fetchThietBi() as any);
+    }, [deviceUp, dispatch, id]);
   const [selectedValues, setSelectedValues] = useState<string[]>([
     'Khám tim mạch', 
     'Khám sản phụ khoa', 
@@ -83,6 +97,7 @@ const AddDevice = () => {
         <Input 
             placeholder="Nhập mã thiết bị"
             className="form-tb"
+            value={deviceUpdate?.matb}
         />
     </div>
     <div className="col-md-4">
@@ -90,6 +105,7 @@ const AddDevice = () => {
         <Input 
             placeholder="Nhập tên thiết bị"
             className="form-tb"
+            value={deviceUpdate?.tentb}
         />
     </div>
     <div className="col-md-4">
@@ -97,6 +113,7 @@ const AddDevice = () => {
         <Input 
             placeholder="Nhập địa chỉ IP"
             className="form-tb"
+            value={deviceUpdate?.dcip}
         />
     </div>
   </div>
@@ -107,10 +124,20 @@ const AddDevice = () => {
             className="form-select" 
             aria-label="Default select example" 
             style={{ width: '288%' }}
+            value={deviceUpdate?.tentb}
         >
             <option value="" disabled selected hidden>Chọn thiết bị</option>
-            <option value="1">Kiosk</option>
-            <option value="2">Display counter</option>
+            <option value="Kisud31">Kiosk</option>
+            <option value="Krier45">Display counter</option>
+            <option value="Keqye13">Keqye13</option>
+            <option value="Ktetoe29">Ktetoe29</option>
+            <option value="Kiklti01">Kiklti01</option>
+            <option value="Kwre38">Kwre38</option>
+            <option value="Kfskr89">Kfskr89</option>
+            <option value="Keitw90">Keitw90</option>
+            <option value="Kqlei390">Kqlei390</option>
+            <option value="Ktwo29">Ktwo29</option>
+            <option value="Kwql78">Kwql78</option>
         </select>
     </div>
     <div className="col-md-4">
@@ -134,7 +161,6 @@ const AddDevice = () => {
       <Select
         mode="multiple"
         tagRender={tagRender}
-        value={selectedValues}
         onChange={newSelectedValues => {
           if (newSelectedValues.includes('selectAll')) {
             handleSelectAll();
@@ -142,23 +168,13 @@ const AddDevice = () => {
             setSelectedValues(newSelectedValues);
           }
         }}
-        defaultValue={[
-            'Khám tim mạch', 
-            'Khám sản phụ khoa', 
-            'Khám răng hàm mặt', 
-            'Khám tai mũi họng',
-            'Khám hô hấp',
-            'Khám tổng quát',
-        ]}
+        value={deviceUpdate?.dichvu ? deviceUpdate?.dichvu.split(',') : []}
         style={{ width: '1300px', marginLeft: '31px' }}
-        options={[{ 
-          label: 'Tất cả', 
-          value: 'selectAll' 
-        }, ...options.map(option => ({ 
-          label: option.value, 
-          value: option.value 
-        }))]}
-    />
+        options={[
+          { label: 'Tất cả', value: 'selectAll' },
+          ...options.map(option => ({ label: option.value, value: option.value }))
+        ]}
+      />
      </div>
     </div>
    </div>

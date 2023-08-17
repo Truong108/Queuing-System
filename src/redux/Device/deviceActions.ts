@@ -19,7 +19,7 @@ export const fetchDevices = () => {
       
         const querySnapshot = await getDocs(devicesRef);
         const devicesArray: ThietBi[] = querySnapshot.docs.map((doc) => ({
-            id: doc.id,
+            id: (doc.data() as ThietBi).id,
             matb: (doc.data() as ThietBi).matb,
             tentb: (doc.data() as ThietBi).tentb,
             dcip: (doc.data() as ThietBi).dcip,

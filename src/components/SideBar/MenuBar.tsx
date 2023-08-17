@@ -116,7 +116,7 @@ const MenuBar = () => {
               marginLeft: "10px",
               clear: "both",
               whiteSpace: "nowrap",
-              marginTop: "-5px"
+              marginTop: "-1px"
             }}
           >
             <MoreOutlined
@@ -126,11 +126,11 @@ const MenuBar = () => {
           </div>
         </span>
       </li>
+      {popoverVisible && (
+        <div className="Popover-links">
       <p className="iconmenu">
       <CaretDownOutlined />
       </p>
-      {popoverVisible && (
-        <div className="Popover-links">
         <React.Fragment>
           <Link to="/systemInstallation" className="nav-link">
             <li

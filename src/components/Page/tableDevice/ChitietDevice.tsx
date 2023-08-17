@@ -1,19 +1,26 @@
 import { CaretRightOutlined } from "@ant-design/icons";
 import Personal from "../Personal";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import '../../../css/Device/danhsachtb.css';
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../store/store";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { fetchThietBi } from "../../../redux/Device/deviceReducer";
 import UpdateDevice from "../../../assets/Edit Square.png";
+import { ThietBi } from "../../../Interface/Thietbi";
 
 const ChitietDevice = () => {
+    const {id} = useParams()
+    const [device, setDevice] = useState<ThietBi>()
     const dispatch = useDispatch();
+    const deviceInfo = useSelector((state: RootState) => state.device.devices);
     useEffect(() => {
+        // eslint-disable-next-line eqeqeq
+        const data = deviceInfo.find((item) => item.matb == id)
+         setDevice(data)
       dispatch(fetchThietBi() as any);
-    }, [dispatch]);
-    const deviceInfo = useSelector((state: RootState) => state.device.devices[0]);
+    }, [deviceInfo, dispatch, id]);
+   
     return ( <>
     <div className="themdevice">
      <div className="navtopp">
@@ -49,7 +56,7 @@ const ChitietDevice = () => {
                 lineHeight: '24px',
                 marginLeft: '150px'
             }}>
-                {deviceInfo.matb}
+                {device?.matb}
             </span>
         </label>
     </div>
@@ -65,7 +72,7 @@ const ChitietDevice = () => {
                 lineHeight: '24px',
                 marginLeft: '150px'
             }}>
-                {deviceInfo.dcip}
+                {device?.dcip}
             </span>
         </label>
     </div>
@@ -81,7 +88,7 @@ const ChitietDevice = () => {
                 lineHeight: '24px',
                 marginLeft: '150px'
             }}>
-                {deviceInfo.tentb}
+                {device?.tentb}
             </span>
         </label>
     </div>
@@ -100,7 +107,7 @@ const ChitietDevice = () => {
                 lineHeight: '24px',
                 marginLeft: '150px'
             }}>
-                {deviceInfo.tentb}
+                {device?.tentb}
             </span>
         </label>
     </div>
@@ -151,7 +158,7 @@ const ChitietDevice = () => {
             marginTop: '20px',
             display: 'block'
           }}>
-            {deviceInfo.dichvu}
+            {device?.dichvu}
           </span>
         </label>
      </div>

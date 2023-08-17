@@ -60,7 +60,7 @@ const ForgotPassword: React.FC = () => {
               </form>
             </div>
           </div>
-          <div className="col-sm-6 px-0 d-none d-sm-block">
+          <div className="col-sm-6 px-0 d-none d-sm-block imgforgot">
           <div className="header-container"
           style={{
             width: '820px', 

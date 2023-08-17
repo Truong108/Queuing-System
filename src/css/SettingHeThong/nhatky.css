@@ -1,0 +1,58 @@
+.nhatkyfrom{
+    background-color: #F6F6F6;
+    width: 1472px;
+    height: 822px;
+    margin-left: 232px;
+    margin-top: -20%;
+}
+.containhatky{
+    display: flex;
+    justify-content: space-between;
+    float: right;
+    margin-right: 9%;
+    margin-top: -2%;
+    margin-bottom: 20px;
+}
+.chontgnhatky{
+    margin-top: 40px;
+    margin-left: -109%;
+}
+.tukhoanhatky p{
+    margin-top: 40px;
+    margin-left: -14px;
+}
+.chontgnhatky, .tukhoanhatky{
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 24px;
+    font-family: "Nunito Sans", sans-serif;
+}
+.bangnhatky{
+    border-collapse: collapse;
+    width: 89%;
+    height: 450px;
+    margin-left: 37px;
+}
+.bangnhatky th{
+    border: 1px solid #dddddd;
+    padding: 14px;
+    text-align: left;
+}
+.tenlogin,
+.tgtacdong,
+.ipthuchien,
+.thaotacth{
+    width: 10%;
+    background-color: #FF9138;
+    color: #FFF;
+}
+.tennhatky,
+.tgnhatky,
+.ipnhatky,
+.thaotacnhatky{
+    border: 1px solid #dddddd;
+    padding: 15px;
+    text-align: left;
+    white-space: nowrap;
+}
