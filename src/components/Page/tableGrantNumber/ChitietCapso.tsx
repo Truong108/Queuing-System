@@ -1,19 +1,25 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCapso } from "../../../redux/GrantNumber/grantNumberReducer";
 import { RootState } from "../../../store/store";
 import { CaretRightOutlined } from "@ant-design/icons";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Personal from "../Personal";
 import Backchitiet from '../../../assets/back-square.png';
 import '../../../css/grantNumber/chitiet.css';
+import { CapSo } from "../../../Interface/Capso";
 
 const Chitietcapso = () => {
-    const dispatch = useDispatch();
+  const {id} = useParams()
+  const [capso, setCapso] = useState<CapSo>()
+  const dispatch = useDispatch();
+  const capsoInfo = useSelector((state: RootState) => state.capso.capso);
     useEffect(() => {
+      // eslint-disable-next-line eqeqeq
+      const data = capsoInfo.find((item) => item.stt == id)
+      setCapso(data)
       dispatch(fetchCapso() as any);
-    }, [dispatch]);
-    const capsoInfo = useSelector((state: RootState) => state.capso.capso[0]);
+    }, [capsoInfo, dispatch, id]);
     return ( <>
     <div className="themdevice">
      <div className="navtopp">
@@ -40,31 +46,31 @@ const Chitietcapso = () => {
     <div className="col-md-2">
       <label htmlFor="inputEmail4" className="text-chitiet">
         Họ tên:
-        <span className="info-span">{capsoInfo.tenkh}</span>
+        <span className="info-span">{capso?.tenkh}</span>
       </label>
     </div>
     <div className="col-md-2"> 
       <label htmlFor="inputEmail4" className="text-chitiet">
         Tên dịch vụ:
-        <span className="info-span">{capsoInfo.tendv}</span>
+        <span className="info-span">{capso?.tendv}</span>
       </label>
     </div>
     <div className="col-md-2">
       <label htmlFor="inputEmail4" className="text-chitiet">
         Số thứ tự:
-        <span className="info-span">{capsoInfo.stt}</span>
+        <span className="info-span">{capso?.stt}</span>
       </label>
     </div>
     <div className="col-md-2"> 
       <label htmlFor="inputEmail4" className="text-chitiet">
         Thời gian cấp:
-        <span className="info-span">{capsoInfo.tgcap}</span>
+        <span className="info-span">{capso?.tgcap}</span>
       </label>
     </div>
     <div className="col-md-2"> 
       <label htmlFor="inputEmail4" className="text-chitiet">
         Hạn sử dụng:
-        <span className="info-span">{capsoInfo.hsdung}</span>
+        <span className="info-span">{capso?.hsdung}</span>
       </label>
     </div>
   </div>
@@ -73,25 +79,25 @@ const Chitietcapso = () => {
   <div className="col-md-2"> 
       <label htmlFor="inputEmail4" className="text-chitiet">
         Nguồn cấp:
-        <span className="info-span">{capsoInfo.ncap}</span>
+        <span className="info-span">{capso?.ncap}</span>
       </label>
     </div>
     <div className="col-md-2"> 
       <label htmlFor="inputEmail4" className="text-chitiet">
         Trạng thái:
-        <span className="info-span">{capsoInfo.tt}</span>
+        <span className="info-span">{capso?.tt}</span>
       </label>
     </div>
     <div className="col-md-2"> 
       <label htmlFor="inputEmail4" className="text-chitiet">
         Số điện thoại:
-        <span className="info-span">{capsoInfo.sodt}</span>
+        <span className="info-span">{capso?.sodt}</span>
       </label>
     </div>
     <div className="col-md-2">
       <label htmlFor="inputEmail4" className="text-chitiet">
         Địa chỉ Email:
-        <span className="info-span">{capsoInfo.mail}</span>
+        <span className="info-span">{capso?.mail}</span>
       </label>
     </div>
   </div>

@@ -144,8 +144,7 @@ const ChitietDevice = () => {
         </label>
     </div>
   </div>
-    <div className="row">
-      <div className="col-md-6">
+      <div className="col-md-12">
       <label htmlFor="inputEmail4" className="text-chitiet">
           Dịch vụ sử dụng: 
           <span style={{
@@ -162,7 +161,6 @@ const ChitietDevice = () => {
           </span>
         </label>
      </div>
-    </div>
    </div>
    </table>
    <Link to="/updevice">

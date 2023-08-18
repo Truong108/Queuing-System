@@ -5,7 +5,7 @@ import { CapSo } from "../../Interface/Capso";
 
 export const fetchCapso = createAsyncThunk("capso/fetchData", async () => {
     const querySnapshot = await getDocs(collection(api, 'capso'));
-    return querySnapshot.docs.map((doc) => doc.data() as CapSo);
+    return querySnapshot.docs.map((doc) => ({id:doc.id, ...doc.data()}as CapSo) );
   });
   const capsoReducer = createSlice({
     name: 'capso',

@@ -1,12 +1,29 @@
 import { CaretRightOutlined } from "@ant-design/icons";
 import Personal from "../Personal";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import '../../../css/Device/danhsachtb.css';
 import { Button, Input, InputNumber, Space } from "antd";
 import TextArea from "antd/es/input/TextArea";
 import '../../../css/Service/addService.css';
+import { useDispatch } from "react-redux";
+import { useState } from "react";
+import { addService } from "../../../redux/Service/serviceSlice";
 
 const AddService = () => {
+  const dispatch = useDispatch()
+  const [dataInfo, setDataInfo]= useState({
+      tendv: "",
+      madv: "",
+      mota: "",
+      tthd: "",
+      ct: "",
+      cn: "",
+  })
+  const navigate = useNavigate()
+  const handleAdd = async () =>{
+      dispatch(addService(dataInfo) as any)
+      navigate("/service")
+  }
     return ( <>
     <div className="themdevice">
      <div className="navtopp">
@@ -35,6 +52,7 @@ const AddService = () => {
       <Input 
         placeholder="201"
         className="form-matb"
+        onChange={(e) => setDataInfo((prev)=>({...prev, madv:e.target.value}))}
       />
     </div>
     <div className="col-md-6">
@@ -42,6 +60,7 @@ const AddService = () => {
       <Input 
         placeholder="Khám tim mạch"
         className="form-matb"
+        onChange={(e) => setDataInfo((prev)=>({...prev, tendv:e.target.value}))}
       />
     </div>
   </div>
@@ -53,6 +72,7 @@ const AddService = () => {
         placeholder="Mô tả dịch vụ"
         autoSize={{ minRows: 5}}
         style={{ width: '190%', maxWidth: '600px' }}
+        onChange={(e) => setDataInfo((prev)=>({...prev, mota:e.target.value}))}
       />
     </div>
   </div>
@@ -117,6 +137,7 @@ const AddService = () => {
    </Link>
     <Button danger className="nutaddtb"
     style={{color: '#FFF', marginLeft: '25px'}}
+    onClick={handleAdd}
     >Thêm dịch vụ</Button>
     </Space>
    </div>

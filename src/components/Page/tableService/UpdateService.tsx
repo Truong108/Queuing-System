@@ -1,6 +1,6 @@
 import { CaretRightOutlined } from "@ant-design/icons";
 import Personal from "../Personal";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import '../../../css/Device/danhsachtb.css';
 import { Button, Input, InputNumber, Space } from "antd";
 import TextArea from "antd/es/input/TextArea";
@@ -10,18 +10,33 @@ import { Dichvu } from "../../../Interface/service/Dichvu";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../store/store";
 import { fetchDichvu } from "../../../redux/Service/serviceReducer";
+import { updateService } from "../../../redux/Service/serviceSlice";
 
 const UpdateService = () => {
+  const [dataService, setDataService] = useState<Dichvu>({
+    madv: "",
+    tendv: "",
+    mota: "",
+    tthd: "",
+    ct: "",
+    cn: "",
+  })
   const {id} = useParams()
-  const [serviceUpdate, setServiceUpdate] = useState<Dichvu>()
+  const [serviceUpdate, setServiceUpdate] = useState<any>()
   const dispatch = useDispatch();
     const serviceUp = useSelector((state: RootState) => state.service.service);
     useEffect(() => {
         // eslint-disable-next-line eqeqeq
         const data = serviceUp.find((item) => item.madv == id)
+        setDataService(data!)
         setServiceUpdate(data)
       dispatch(fetchDichvu() as any);
-    }, [serviceUp, dispatch, id]);
+    }, [ dispatch, id]);
+    const navigate = useNavigate()
+    const handleUpdate = () =>{
+      dispatch(updateService(dataService) as any)
+      navigate("/service")
+    }
     return ( <>
     <div className="themdevice">
      <div className="navtopp">
@@ -55,7 +70,8 @@ const UpdateService = () => {
       <Input 
         placeholder="201"
         className="form-matb"
-        value={serviceUpdate?.madv}
+        value={dataService?.madv}
+            onChange={(e)=> setDataService((prev)=> ({...prev, madv:e.target.value}))}
       />
     </div>
     <div className="col-md-6">
@@ -63,7 +79,8 @@ const UpdateService = () => {
       <Input 
         placeholder="Khám tim mạch"
         className="form-matb"
-        value={serviceUpdate?.tendv}
+        value={dataService?.tendv}
+        onChange={(e)=> setDataService((prev)=> ({...prev, tendv:e.target.value}))}
       />
     </div>
   </div>
@@ -72,10 +89,11 @@ const UpdateService = () => {
       <label htmlFor="inputEmail4" className="text-matb">Mô tả:</label>
       <TextArea
       className="textinput"
-      value={serviceUpdate?.mota}
         placeholder="Mô tả dịch vụ"
         autoSize={{ minRows: 5}}
         style={{ width: '190%', maxWidth: '600px' }}
+        value={dataService?.mota}
+            onChange={(e)=> setDataService((prev)=> ({...prev, mota:e.target.value}))}
       />
     </div>
   </div>
@@ -140,6 +158,7 @@ const UpdateService = () => {
    </Link>
     <Button danger className="nutaddtb"
     style={{color: '#FFF', marginLeft: '25px'}}
+    onClick={handleUpdate}
     >Cập nhật</Button>
     </Space>
    </div>

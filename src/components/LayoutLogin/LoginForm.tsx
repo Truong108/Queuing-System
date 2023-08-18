@@ -3,23 +3,20 @@ import Group from '../../assets/group2.png';
 import { EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
 import React, { useEffect, useState } from 'react';
 import '../../css/style.css';
-import { Button, Input, Space, message } from 'antd';
+import { Button, Input, Space, Spin } from 'antd';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { AppDispatch, RootState } from '../../store/store';
 import { fetchLogin } from '../../redux/Login/authReducer';
+import { RootState } from '../../store/store';
+
 
 const LoginForm: React.FC = () => {
-  const [loginAttempted, setLoginAttempted] = useState(false);
   const [loginError, setLoginError] = useState(false);
-  const [loggedIn, setLoggedIn] = useState(false); 
-  const dispatch: AppDispatch = useDispatch();
   const navigate = useNavigate(); 
   const [userName, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
-  const dataLogin = useSelector(
-    (state: RootState) => state.auth.login
-  );
+  
+
   const OnchaneHandleUserName = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUsername(e.target.value);
     setLoginError(false); // Reset lỗi khi thay đổi tên đăng nhập
@@ -28,28 +25,20 @@ const LoginForm: React.FC = () => {
     setPassword(e.target.value);
     setLoginError(false); // Reset lỗi khi thay đổi mật khẩu
   };
+  const [spiner, setSpinner] = useState<boolean>(false)
   const onchangeLogin = () => {
-    if (!loginAttempted) {
-      setLoginAttempted(true);
-      const matchingUser = dataLogin.map(
-        (login: { tendn: string; mk: string }) =>
-          userName === login.tendn && password === login.mk
-      );
-      if (matchingUser) {
-        if (!loggedIn) {
-          message.success('Đăng nhập thành công');
-          setLoggedIn(true);
-        }
-        navigate("/dashboard"); // Chuyển trang ngay sau khi đăng nhập thành công
-      } else {
-        message.error("Tên đăng nhập hoặc mật khẩu không đúng");
-        setLoginError(false);
-      }
-    } else {
-      message.error("Tên đăng nhập hoặc mật khẩu không đúng");
-      setLoginError(false);
-    }
-  };
+      dataLogin.forEach((item) =>{
+          if(userName === item.tendn && password === item.mk){
+              setSpinner(true) 
+              setTimeout(()=>{
+                navigate("/dashboard")
+              },2000)
+          }
+      })
+  };  
+  const dispatch = useDispatch();
+  const dataLogin = useSelector((state: RootState) => state.login.login);
+
   useEffect(() => {
     dispatch(fetchLogin() as any);
   }, [dispatch]);
@@ -63,6 +52,7 @@ const LoginForm: React.FC = () => {
             <div className="px-5 ms-xl-4" style={{ textAlign: 'center', marginTop: '150px' }}>
             <img src={loginImg} alt="login"/>
             </div>
+            <Spin tip="Đang đăng nhập..." spinning={spiner}>
             <div className='formdangnhap'>
               <form style={{ width: '30rem' }}>
                 <div>
@@ -125,6 +115,7 @@ const LoginForm: React.FC = () => {
                 </div>
               </form>
             </div>
+            </Spin>
           </div>
           <div className="col-sm-6 px-0 d-none d-sm-block imglogin">
           <div className="header-container"

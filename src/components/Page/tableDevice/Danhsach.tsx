@@ -18,7 +18,7 @@ const Danhsachthietbi = () => {
 
     useEffect(() => {
       setShowFullContent(devices.map(() => false));
-    }, [devices]);
+    }, [devices, dispatch]);
 
     const toggleShowContent = (index: number) => {
       const newShowFullContent = [...showFullContent];
@@ -64,64 +64,66 @@ const Danhsachthietbi = () => {
           </tr>
         </thead>
         <tbody>
-          {currentPageData.map((device: ThietBi, index) => {
-             let mautb = {};
-             if (index % 2 === 1) {
-              mautb = { backgroundColor: "#FF750622" };
-             }
-             let ketnoi = {}
-             if(device.trangthaikn ==="Kết nối" && device.trangthai === "Hoạt động"){
-              ketnoi = {
-              color:"#FFA500",
-              marginRight: "10px",
-            }
-             }
-             if(device.trangthaikn ==="Mất kết nối" && device.trangthai === "Ngưng hoạt động"){
-              ketnoi= {
-                color: "#FF0000",
-                marginRight: "10px"
-              }
-             }
-            return(
-              <tr key={device.id}>
-              <td className='tdmatb'
-              style={mautb}>{device.matb}</td>
-              <td className='tdtentb'
-              style={mautb}>{device.tentb}</td>
-              <td className='tddc'
-              style={mautb}>{device.dcip}</td>
-              <td className='tdtt'
-              style={mautb}><span style={ketnoi}><i className="bi bi-circle-fill"></i></span>{device.trangthai}</td>
-              <td className='tdttkn'
-              style={mautb}><span style={ketnoi}><i className="bi bi-circle-fill"></i></span>{device.trangthaikn}</td>
-              <td className='tddv'
-              style={mautb}>
-                {showFullContent[index] ? (
-                  <div>
-                    {device.dichvu}
-                    <span className="xemthem" onClick={() => toggleShowContent(index)}>
-                      Thu gọn
-                    </span>
-                  </div>
-                ) : (
-                  <div>
-                    {truncateText(device.dichvu, 9)}
-                    <span className="xemthem" onClick={() => toggleShowContent(index)}>
-                      Xem thêm
-                    </span>
-                  </div>
-                )}
+        {currentPageData.map((device: ThietBi, index) => {
+          const mautb = index % 2 === 1 ? { backgroundColor: "#FF750622" } : {};
+          
+          const ketnoi = {
+            color: device.trangthaikn === "Kết nối" && device.trangthai === "Hoạt động" ? "#FFA500" : "#FF0000",
+            marginRight: "10px",
+          };
+          
+          return (
+            <tr key={index}>
+              <td className='tdmatb' style={mautb}>{device.matb}</td>
+              <td className='tdtentb' style={mautb}>{device.tentb}</td>
+              <td className='tddc' style={mautb}>{device.dcip}</td>
+              <td className='tdtt' style={mautb}>
+                <span style={ketnoi}><i className="bi bi-circle-fill"></i></span>
+                {device.trangthai}
               </td>
-              <td className='ctthietbi' 
-              style={mautb} onClick={() => handleDetail(device.matb)}>Chi tiết</td>
-  
-              <td className='cnthietbi'
-              style={mautb} onClick={() => handleUpdate(device.matb)}>Cập nhật</td>
-            
+              <td className='tdttkn' style={mautb}>
+                <span style={ketnoi}><i className="bi bi-circle-fill"></i></span>
+                {device.trangthaikn}
+              </td>
+              <td className='tddv' style={mautb}>
+                  {Array.isArray(device.dichvu) ? (
+                    <div style={{ whiteSpace: 'nowrap' }}>
+                      {showFullContent[index] ? (
+                        <div>
+                          {device.dichvu.map((dichvuItem, dichvuIndex) => (
+                            <div key={dichvuIndex}>{dichvuItem}</div>
+                          ))}
+                          {device.dichvu.join('').length > 15 && (
+                            <span className="xemthem" onClick={() => toggleShowContent(index)}>
+                              Thu gọn
+                            </span>
+                          )}
+                        </div>
+                      ) : (
+                        <div>
+                          {truncateText(device.dichvu.join(''), 15)}
+                          {device.dichvu.join('').length > 10 && (
+                            <span className="xemthem" onClick={() => toggleShowContent(index)}>
+                              Xem thêm
+                            </span>
+                          )}
+                        </div>
+                      )}
+                    </div>
+                  ) : (
+                    truncateText(device.dichvu, 15)
+                  )}
+                </td>
+              <td className='ctthietbi' style={mautb} onClick={() => handleDetail(device.matb)}>
+                <span style={{ textDecoration: "underline", cursor: "pointer" }}>Chi tiết</span>
+              </td>
+              <td className='cnthietbi' style={mautb} onClick={() => handleUpdate(device.matb)}>
+                <span style={{ textDecoration: "underline", cursor: "pointer" }}>Cập nhật</span>
+              </td>
             </tr>
-            ); 
-            })}
-        </tbody>
+          );
+        })}
+      </tbody>
       </table>
     </div>
     <Link to="/adddevice">

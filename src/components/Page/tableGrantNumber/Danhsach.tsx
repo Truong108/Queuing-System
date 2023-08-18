@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Capsonew from '../../../assets/add-square.png'
 import { Pagination } from "antd";
 import { useDispatch, useSelector } from "react-redux";
@@ -21,6 +21,10 @@ const Capso = () => {
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
   const currentPageData = capso.slice(startIndex, endIndex);
+  const navigate =  useNavigate()
+  const handleDetail = (id:string) =>{
+      navigate(`/chitietcapso/${id}`)
+  }
     return ( <>
     <div className='contect'>
       <table className='bangdichvu'>
@@ -77,10 +81,9 @@ const Capso = () => {
               style={maucapso}><span style={trangthai}><i className="bi bi-circle-fill"></i></span>{capso.tt}</td>
               <td className="tdncap"
               style={maucapso}>{capso.ncap}</td>
-              <Link className='tdchtiet' 
-              to="/chitietcapso">
-              <td style={maucapso}>{capso.ct}</td>
-              </Link>
+               <td className='tdchtiet' style={maucapso} onClick={() => handleDetail(capso.stt)}>
+                <span style={{ textDecoration: "underline", cursor: "pointer" }}>Chi tiết</span>
+              </td>
             </tr>
             ); 
             })}

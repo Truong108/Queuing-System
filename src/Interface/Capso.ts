@@ -1,6 +1,6 @@
 export interface CapSo {
-    id: string;
-    stt: number;
+    id?: string;
+    stt: string;
     tenkh: string;
     tendv: string;
     tgcap: string;

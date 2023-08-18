@@ -74,10 +74,14 @@ const Danhsachdichvu = () => {
               style={mautb}><span style={ketnoi}><i className="bi bi-circle-fill"></i></span>{service.tthd}</td>
              
               <td className='chitietdichvu'
-              style={mautb} onClick={() => handleDetail(service.madv)}>Chi tiết</td>
+              style={mautb} onClick={() => handleDetail(service.madv)}>
+                <span style={{ textDecoration: "underline", cursor: "pointer" }}>Chi tiết</span>
+                </td>
 
               <td className='chitietdichvu'
-              style={mautb} onClick={() => hanndleUpdate(service.madv)}>Cập nhật</td>
+              style={mautb} onClick={() => hanndleUpdate(service.madv)}>
+                <span style={{ textDecoration: "underline", cursor: "pointer" }}>Cập nhật</span>
+              </td>
             </tr>
             ); 
             })}

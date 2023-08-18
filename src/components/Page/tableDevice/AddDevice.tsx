@@ -1,10 +1,29 @@
 import { CaretRightOutlined } from "@ant-design/icons";
 import Personal from "../Personal";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import '../../../css/Device/danhsachtb.css';
 import { Button, Input, Space } from "antd";
+import { useDispatch } from "react-redux";
+import { useState } from "react";
+import { addDevice } from "../../../redux/Device/deviceSlice";
 
 const AddDevice = () => {
+    const dispatch = useDispatch()
+    const [dataInfo, setDataInfo]= useState({
+        matb: "",
+        tentb: "",
+        dcip: "",
+        trangthai: "",
+        trangthaikn: "",
+        dichvu: "",
+        chitiet: "",
+        capnhat: "",
+    })
+    const navigate = useNavigate()
+    const handleAdd = async () =>{
+        dispatch(addDevice(dataInfo) as any)
+        navigate("/device")
+    }
     return ( <>
     <div className="themdevice">
      <div className="navtopp">
@@ -33,6 +52,7 @@ const AddDevice = () => {
         <Input 
             placeholder="Nhập mã thiết bị"
             className="form-tb"
+            onChange={(e) => setDataInfo((prev)=>({...prev, matb:e.target.value}))}
         />
     </div>
     <div className="col-md-4">
@@ -40,6 +60,7 @@ const AddDevice = () => {
         <Input 
             placeholder="Nhập tên thiết bị"
             className="form-tb"
+            onChange={(e) => setDataInfo((prev)=>({...prev, tentb:e.target.value}))}
         />
     </div>
     <div className="col-md-4">
@@ -47,6 +68,7 @@ const AddDevice = () => {
         <Input 
             placeholder="Nhập địa chỉ IP"
             className="form-tb"
+            onChange={(e) => setDataInfo((prev)=>({...prev, dcip:e.target.value}))}
         />
     </div>
   </div>
@@ -84,6 +106,7 @@ const AddDevice = () => {
       <Input 
         placeholder="Nhập dịch vụ sử dụng"
         className="form-inputt"
+        onChange={(e) => setDataInfo((prev)=>({...prev, dichvu:e.target.value}))}
       />
      </div>
     </div>
@@ -98,7 +121,7 @@ const AddDevice = () => {
    <Link to="/device">
    <Button danger className="huybo">Hủy bỏ</Button>
    </Link>
-    <Button danger className="nutaddtb"
+    <Button danger className="nutaddtb" onClick={handleAdd}
     style={{color: '#FFF', marginLeft: '25px'}}
     >Thêm thiết bị</Button>
     </Space>

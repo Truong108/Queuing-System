@@ -1,74 +1,44 @@
 import { CaretRightOutlined } from "@ant-design/icons";
 import Personal from "../Personal";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import '../../../css/Device/danhsachtb.css';
-import { Button, Input, Select, Space, Tag } from "antd";
+import { Button, Input, Space } from "antd";
 import { useEffect, useState } from "react";
 import { ThietBi } from "../../../Interface/Thietbi";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../store/store";
 import { fetchThietBi } from "../../../redux/Device/deviceReducer";
+import { updateDevice } from "../../../redux/Device/deviceSlice";
 
 
-const options = [
-  { value: 'Khám tim mạch', color: 'gold' },
-  { value: 'Khám sản phụ khoa', color: 'lime' },
-  { value: 'Khám răng hàm mặt', color: 'green' },
-  { value: 'Khám tai mũi họng', color: 'cyan' },
-  { value: 'Khám hô hấp', color: 'blue' }, // Ví dụ thêm màu cho giá trị 'Khám hô hấp'
-  { value: 'Khám tổng quát', color: 'purple' }
-];
-const tagRender = (props: any) => {
-    const { label, closable, onClose } = props;
-  const onPreventMouseDown = (event: React.MouseEvent<HTMLSpanElement>) => {
-    event.preventDefault();
-  };
-    return (
-      <Tag
-        color={options.find(option => option.value === label)?.color || 'defaultColor'} // Tìm màu dựa trên giá trị
-        onMouseDown={onPreventMouseDown}
-        closable={closable}
-        onClose={onClose}
-        style={{
-            display: 'flex', // Hiển thị thành container flex
-            alignItems: 'center', // Căn giữa theo chiều dọc
-            justifyContent: 'center', // Căn giữa theo chiều ngang
-            marginRight: 5,
-            marginLeft: 40,
-            height: '60px'
-          }}
-      >
-        {label}
-      </Tag>
-    );
-  };
-const AddDevice = () => {
+const UpdateDevice = () => {
+  const [dataInfo, setDataInfo] = useState<ThietBi>({
+    matb: "",
+    tentb: "",
+    dcip: "",
+    trangthai: "",
+    trangthaikn: "",
+    dichvu: [],
+    chitiet: "",
+    capnhat: "",
+  })
   const {id} = useParams()
-  const [deviceUpdate, setDeviceUpdate] = useState<ThietBi>()
+  const [deviceUpdate, setDeviceUpdate] = useState<any>()
   const dispatch = useDispatch();
     const deviceUp = useSelector((state: RootState) => state.device.devices);
+    const navigate = useNavigate()
+    const handleUpdate = () =>{
+      dispatch(updateDevice(dataInfo) as any)
+      navigate("/device")
+    }
     useEffect(() => {
         // eslint-disable-next-line eqeqeq
         const data = deviceUp.find((item) => item.matb == id)
+        setDataInfo(data!)
         setDeviceUpdate(data)
       dispatch(fetchThietBi() as any);
-    }, [deviceUp, dispatch, id]);
-  const [selectedValues, setSelectedValues] = useState<string[]>([
-    'Khám tim mạch', 
-    'Khám sản phụ khoa', 
-    'Khám răng hàm mặt', 
-    'Khám tai mũi họng', 
-    'Khám hô hấp', 
-    'Khám tổng quát'
-  ]);
+    }, [dispatch, id]);
 
-  const handleSelectAll = () => {
-    if (selectedValues.length === options.length) {
-      setSelectedValues([]);
-    } else {
-      setSelectedValues(options.map(option => option.value));
-    }
-  };
     return ( <>
     <div className="themdevice">
      <div className="navtopp">
@@ -97,7 +67,8 @@ const AddDevice = () => {
         <Input 
             placeholder="Nhập mã thiết bị"
             className="form-tb"
-            value={deviceUpdate?.matb}
+            value={dataInfo?.matb}
+            onChange={(e)=> setDataInfo((prev)=> ({...prev, matb:e.target.value}))}
         />
     </div>
     <div className="col-md-4">
@@ -105,7 +76,8 @@ const AddDevice = () => {
         <Input 
             placeholder="Nhập tên thiết bị"
             className="form-tb"
-            value={deviceUpdate?.tentb}
+            value={dataInfo?.tentb}
+            onChange={(e) => setDataInfo((prev)=>({...dataInfo, tentb:e.target.value}))}
         />
     </div>
     <div className="col-md-4">
@@ -113,7 +85,8 @@ const AddDevice = () => {
         <Input 
             placeholder="Nhập địa chỉ IP"
             className="form-tb"
-            value={deviceUpdate?.dcip}
+            value={dataInfo?.dcip}
+            onChange={(e) => setDataInfo((prev)=>({...dataInfo, dcip:e.target.value}))}
         />
     </div>
   </div>
@@ -124,7 +97,8 @@ const AddDevice = () => {
             className="form-select" 
             aria-label="Default select example" 
             style={{ width: '288%' }}
-            value={deviceUpdate?.tentb}
+            value={dataInfo?.tentb}
+            onChange={(e) => setDataInfo((prev)=>({...dataInfo, tentb:e.target.value}))}
         >
             <option value="" disabled selected hidden>Chọn thiết bị</option>
             <option value="Kisud31">Kiosk</option>
@@ -158,23 +132,26 @@ const AddDevice = () => {
    <div className="row">
     <div className="col-md-6">
       <label htmlFor="inputPassword4" className="text-chitiet">Dịch vụ sử dụng:*</label>
-      <Select
-        mode="multiple"
-        tagRender={tagRender}
-        onChange={newSelectedValues => {
-          if (newSelectedValues.includes('selectAll')) {
-            handleSelectAll();
-          } else {
-            setSelectedValues(newSelectedValues);
-          }
+      <select 
+        className="form-select" 
+        aria-label="Default select example" 
+        style={{ width: '1300px', height: '170px', marginLeft: '31px' }}
+        multiple
+        value={dataInfo?.dichvu || []}
+        onChange={(e) => {
+          const selectedOptions = Array.from(e.target.selectedOptions, option => option.value);
+          setDataInfo((prev) => ({ ...prev, dichvu: selectedOptions }));
         }}
-        value={deviceUpdate?.dichvu ? deviceUpdate?.dichvu.split(',') : []}
-        style={{ width: '1300px', marginLeft: '31px' }}
-        options={[
-          { label: 'Tất cả', value: 'selectAll' },
-          ...options.map(option => ({ label: option.value, value: option.value }))
-        ]}
-      />
+      >
+        <option value="" disabled hidden>Chọn dịch vụ</option>
+        <option value="Khám tim mạch">Khám tim mạch</option>
+        <option value="Khám sản phụ khoa">Khám sản phụ khoa</option>
+        <option value="Khám răng hàm mặt">Khám răng hàm mặt</option>
+        <option value="Khám tai mũi họng">Khám tai mũi họng</option>
+        <option value="Khám hô hấp">Khám hô hấp</option>
+        <option value="Khám tổng quát">Khám tổng quát</option>
+      </select>
+
      </div>
     </div>
    </div>
@@ -190,6 +167,7 @@ const AddDevice = () => {
    </Link>
     <Button danger className="nutaddtb"
     style={{color: '#FFF', marginLeft: '25px'}}
+    onClick={handleUpdate}
     >Cập nhật</Button>
     </Space>
    </div>
@@ -197,4 +175,4 @@ const AddDevice = () => {
   );
 }
  
-export default AddDevice;
+export default UpdateDevice;

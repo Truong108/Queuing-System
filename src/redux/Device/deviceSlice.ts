@@ -1,8 +1,7 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { ThietBi } from '../../Interface/Thietbi'; // Đảm bảo đường dẫn đúng
-import { AppThunk } from '../../store/store'; // Đảm bảo đường dẫn đúng
 import api from '../../firebase/firebaseAPI'; // Đảm bảo đường dẫn đúng
-import { collection, getDocs } from "firebase/firestore";
+import { collection,doc, updateDoc, addDoc } from "firebase/firestore";
 
 interface DeviceState {
   devices: ThietBi[];
@@ -22,15 +21,19 @@ const deviceSlice = createSlice({
   },
 });
 
+export const updateDevice = createAsyncThunk("thietbi/updateDevice", 
+async (device : any) => {
+    const docRef = doc(collection(api,"thietbi"), device.id)
+    await updateDoc(docRef, device)
+    return device
+
+})
+
+export const addDevice = createAsyncThunk("thietbi/addDevice", 
+async (device : any) => {
+    const docRef = await addDoc(collection(api, "thietbi"), device)
+    return {...device, id:docRef.id}
+})
 export const { fetchDevicesSuccess } = deviceSlice.actions;
 export default deviceSlice.reducer;
 
-export const fetchDevices = (): AppThunk => async () => {
-  try {
-      const querySnaapDoc = await getDocs(collection(api,"thietbi"))
-      return querySnaapDoc.docs.map((doc) => ({id: doc.id, ...doc.data() }as ThietBi))
-    
-  } catch (error) {
-    console.error(error);
-  }
-};

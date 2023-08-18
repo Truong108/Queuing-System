@@ -4,13 +4,13 @@ import { collection, getDocs } from "firebase/firestore";
 import { Login } from "../../Interface/Login";
 
 
-export const fetchLogin = createAsyncThunk("login/fetchData", async () => {
+export const fetchLogin = createAsyncThunk("dangnhap/fetchLogin", async () => {
     const querySnapshot = await getDocs(collection(api, 'dangnhap'));
-    return querySnapshot.docs.map((doc) => doc.data() as Login);
+    return querySnapshot.docs.map((doc) =>({id:doc.id, ...doc.data()as Login}) );
   });
 
-const loginSlice = createSlice({
-  name: "login",
+ const loginSlice = createSlice({
+  name: "dangnhap",
   initialState: { login: [] as Login[] },
     reducers: {},
     extraReducers(builder) {

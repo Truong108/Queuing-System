@@ -4,7 +4,6 @@ import '../../css/menu-bar.css';
 import { useState } from "react";
 import { AppstoreOutlined, 
   AreaChartOutlined, 
-  CaretDownOutlined, 
   CodepenOutlined, 
   DesktopOutlined, 
   LogoutOutlined, 
@@ -128,9 +127,6 @@ const MenuBar = () => {
       </li>
       {popoverVisible && (
         <div className="Popover-links">
-      <p className="iconmenu">
-      <CaretDownOutlined />
-      </p>
         <React.Fragment>
           <Link to="/systemInstallation" className="nav-link">
             <li

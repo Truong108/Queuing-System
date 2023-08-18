@@ -1,5 +1,5 @@
 export interface Dichvu {
-    id: string;
+    id?: string;
     madv: string;
     tendv: string;
     mota: string;
