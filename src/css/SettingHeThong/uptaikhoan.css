@@ -1,0 +1,35 @@
+.totaladdtaikhoan{
+    width: 1470px;
+    height: 830px;
+    background-color: #F6F6F6;
+    margin-left: 231px;
+}
+.tieudetk{
+    font-family: "Nunito Sans", sans-serif;
+    color: #FF7506;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 36px;
+    margin-top: -23%;
+    padding-top: 15px;
+    margin-left: 40px;
+}
+.bangaddtaikhoan{
+    width: 1370px;
+    height: 620px;
+    background-color: #FFF;
+    margin-left: 35px;
+    border-radius: 16px;
+    margin-top: 20px;
+}
+.thongtintk{
+    font-family: "Nunito Sans", sans-serif;
+    color: #FF7506;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 30px;
+    margin-left: 30px;
+    margin-top: 18px;
+}

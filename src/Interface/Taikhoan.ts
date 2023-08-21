@@ -1,5 +1,5 @@
 export interface Account{
-    id: string;
+    id?: string;
     tendn: string;
     ht: string;
     sodt: string;

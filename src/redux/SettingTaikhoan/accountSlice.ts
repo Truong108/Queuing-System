@@ -1,7 +1,6 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { AppThunk } from '../../store/store'; // Đảm bảo đường dẫn đúng
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import api from '../../firebase/firebaseAPI'; // Đảm bảo đường dẫn đúng
-import { collection, getDocs } from "firebase/firestore";
+import { addDoc, collection, doc, updateDoc } from "firebase/firestore";
 import { Account } from '../../Interface/Taikhoan';
 
 
@@ -22,20 +21,18 @@ const accountSlice = createSlice({
     },
   },
 });
+export const updateAccount = createAsyncThunk("account/updateAccount", 
+async (account : any) => {
+    const docRef = doc(collection(api,"taikhoan"), account.id)
+    await updateDoc(docRef, account)
+    return account
+})
+export const addAccount = createAsyncThunk("account/addAccount", 
+async (account : any) => {
+    const docRef = await addDoc(collection(api, "taikhoan"), account)
+    return {...account, id:docRef.id}
+})
 
 export const { fetchAccountSuccess } = accountSlice.actions;
 export default accountSlice.reducer;
 
-export const fetchAccount = (): AppThunk => async (dispatch) => {
-  try {
-    const accountRef = collection(api, 'taikhoan');
-    const querySnapshot = await getDocs(accountRef);
-    const accountArray: Account[] = querySnapshot.docs.map((doc) => ({
-        firebaseId: doc.id,
-        ...doc.data() as Account,
-      }));
-    dispatch(fetchAccountSuccess(accountArray));
-  } catch (error) {
-    console.error(error);
-  }
-};

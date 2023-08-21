@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchAccount } from "../../../redux/SettingTaikhoan/accountReducer";
-import { RootState } from "../../../store/store";
-import { Link } from "react-router-dom";
-import { Account } from "../../../Interface/Taikhoan";
-import AddAccount from '../../../assets/add-square.png'
+import { fetchAccount } from "../../../../redux/SettingTaikhoan/accountReducer";
+import { RootState } from "../../../../store/store";
+import { Link, useNavigate } from "react-router-dom";
+import { Account } from "../../../../Interface/Taikhoan";
+import AddAccount from '../../../../assets/add-square.png'
 import { Pagination } from "antd";
 
 const Quanlytaikhoan = () => {
@@ -21,6 +21,10 @@ const Quanlytaikhoan = () => {
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
   const currentPageData = account.slice(startIndex, endIndex);
+  const navigate =  useNavigate()
+  const handleUpdate = (id: string) =>{
+    navigate(`/uptaikhoan/${id}`);
+  }
     return ( <>
      <div className='contaiaccount'>
       <table className='bangaccount'>
@@ -68,17 +72,16 @@ const Quanlytaikhoan = () => {
               style={mauaccount}>{account.vt}</td>
               <td className='actthd'
               style={mauaccount}><span style={tthoatdong}><i className="bi bi-circle-fill"></i></span>{account.tthd}</td>
-              <Link className='accn' 
-              to="/upvaitro">
-              <td style={mauaccount}>{account.cn}</td>
-              </Link>
+              <td className='cnthietbi' style={mauaccount} onClick={() => handleUpdate(account.tendn)}>
+                <span style={{ textDecoration: "underline", cursor: "pointer" }}>Cập nhật</span>
+              </td>
             </tr>
             ); 
             })}
         </tbody>
       </table>
     </div>
-    <Link to="/themvaitro">
+    <Link to="/addtaikhoan">
     <div className='addacount'>
       <img src={AddAccount} alt='add'/>
       <p className='themtaikhoan'>Thêm<br/> Tài Khoản</p>

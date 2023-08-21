@@ -32,22 +32,22 @@ const Danhsachthietbi = () => {
       return text.slice(0, maxLength) + "...";
     };
     
-  const itemsPerPage = 9;
-  const [currentPage, setCurrentPage] = useState(1);
-  const handlePageChange = (page: React.SetStateAction<number>) => {
-    setCurrentPage(page);
-  };
-  const startIndex = (currentPage - 1) * itemsPerPage;
-  const endIndex = startIndex + itemsPerPage;
-  const currentPageData = devices.slice(startIndex, endIndex);
+    const itemsPerPage = 9;
+    const [currentPage, setCurrentPage] = useState(1);
+    const handlePageChange = (page: React.SetStateAction<number>) => {
+      setCurrentPage(page);
+    };
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+    const currentPageData = devices.slice(startIndex, endIndex);
 
-  const navigate =  useNavigate()
-  const handleDetail = (id:string) =>{
-      navigate(`/chitietdevice/${id}`)
-  }
-  const handleUpdate = (id: string) =>{
-      navigate(`/updevice/${id}`);
-  }
+    const navigate =  useNavigate()
+    const handleDetail = (id:string) =>{
+        navigate(`/chitietdevice/${id}`)
+    }
+    const handleUpdate = (id: string) =>{
+        navigate(`/updevice/${id}`);
+    }
     return ( <>
      <div className='content'>
       <table className='bangthietbi'>

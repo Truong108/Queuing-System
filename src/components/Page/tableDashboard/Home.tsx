@@ -3,15 +3,19 @@ import Group2 from '../../../assets/Group (1).png';
 import Group3 from '../../../assets/icon dasboard05.png';
 import Group4 from '../../../assets/Group (2).png';
 import '../../../css/Dashboard/home.css';
-import { Calendar, CalendarProps, Progress, Statistic, theme } from 'antd';
+import { Calendar, CalendarProps, Progress, Select, Statistic, theme } from 'antd';
 import type { Dayjs } from 'dayjs';
 import { ArrowDownOutlined, ArrowUpOutlined, CodepenOutlined, DesktopOutlined, WechatOutlined } from '@ant-design/icons';
+import LineChart from './Linechart/LineChar';
 
 const onPanelChange = (value: Dayjs, mode: CalendarProps<Dayjs>['mode']) => {
     console.log(value.format('YYYY-MM-DD'), mode);
   };
   
 const Home = () => {
+  const handleChange = (value: { value: string; label: React.ReactNode }) => {
+    console.log(value);
+  };
     const { token } = theme.useToken();
     const wrapperStyle: React.CSSProperties = {
       width: 370,
@@ -29,7 +33,7 @@ const Home = () => {
                 <img src={Group1} alt="" />
                 <label htmlFor="">
                 Số thứ tự <br />
-                Đã cấp
+                đã cấp
                 </label>
             </div>
             <div className="tab1">
@@ -55,8 +59,9 @@ const Home = () => {
            <div className="tab2">
                 <img src={Group2} alt="" />
                 <label htmlFor="">
-                Số thứ tự <br />
-                Đã cấp
+                Số thứ tự
+                <br />
+                đã sử dụng
                 </label>
             </div>
             <div className="tab2">
@@ -83,7 +88,7 @@ const Home = () => {
                 <img src={Group3} alt="" />
                 <label htmlFor="">
                 Số thứ tự <br />
-                Đã cấp
+                đang chờ
                 </label>
             </div>
             <div className="tab3">
@@ -110,7 +115,7 @@ const Home = () => {
                 <img src={Group4} alt="" />
                 <label htmlFor="">
                 Số thứ tự <br />
-                Đã cấp
+                đã bỏ qua
                 </label>
             </div>
             <div className="tab4">
@@ -139,20 +144,58 @@ const Home = () => {
               <div>
                 <span className="textthongke">Bảng thống kê theo ngày</span>
                 <br />
-                <i>Năm 2023</i>
+                <p className='nam'>Năm 2023</p>
               </div>
               <div>
-                <div className="xemngay">
-                  <span>Xem theo</span>
-                  <select name="" id="">
-                    <option value="">Ngày</option>
-                    <option value="">Tháng</option>
-                    <option value="">Năm</option>
-                  </select>
+                <div className="ngaythangnam">
+                  <p className='xemtheo'>Xem theo</p>
+                  <Select
+                    labelInValue
+                    defaultValue={{ value: 'Ngày', label: 'Ngày' }}
+                    style={{ width: 130, top: '-5px' }}
+                    onChange={handleChange}
+                    options={[
+                      {
+                        value: 'Ngày',
+                        label: 'Ngày',
+                      },
+                      {
+                        value: 'Tháng',
+                        label: 'Tháng',
+                      },
+                      {
+                        value: 'Năm',
+                        label: 'Năm',
+                      },
+                    ]}
+                  />
                 </div>
               </div>
             </div>
-            {/* <LineChartComponent /> */}
+           <div style={{
+             display: 'flex',
+             justifyContent: 'center', // căn giữa theo chiều ngang
+             alignItems: 'center',     // căn giữa theo chiều dọc
+             height: '100%',         
+           }}>
+            <div style={{ marginLeft: '-500px'}}>
+            <LineChart 
+            ngay1={''} 
+            ngay2={''} 
+            ngay3={''} 
+            ngay4={''} 
+            ngay5={''} 
+            ngay6={''} 
+            ngay7={''} 
+            ngay8={''} 
+            ngay9={''} 
+            ngay10={''} 
+            ngay11={''} 
+            ngay12={''}
+            />
+            </div>
+          
+           </div>
           </div>
         </div>
         <div className="bang2">

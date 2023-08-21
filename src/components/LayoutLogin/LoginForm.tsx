@@ -3,7 +3,7 @@ import Group from '../../assets/group2.png';
 import { EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
 import React, { useEffect, useState } from 'react';
 import '../../css/style.css';
-import { Button, Input, Space, Spin } from 'antd';
+import { Button, Input, Space, Spin, message } from 'antd';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchLogin } from '../../redux/Login/authReducer';
@@ -33,6 +33,8 @@ const LoginForm: React.FC = () => {
               setTimeout(()=>{
                 navigate("/dashboard")
               },2000)
+          }else{
+            message.error('Sai tên tài khoản mật khẩu');
           }
       })
   };  

@@ -5,10 +5,12 @@ import { collection,doc, updateDoc, addDoc } from "firebase/firestore";
 
 interface DeviceState {
   devices: ThietBi[];
+  filter: 'Tất cả' | 'Hoạt động' | 'Ngưng hoạt động';
 }
 
 const initialState: DeviceState = {
   devices: [],
+  filter: 'Tất cả', // Giá trị mặc định
 };
 
 const deviceSlice = createSlice({
@@ -17,6 +19,9 @@ const deviceSlice = createSlice({
   reducers: {
     fetchDevicesSuccess(state, action: PayloadAction<ThietBi[]>) {
       state.devices = action.payload;
+    },
+    setFilter(state, action: PayloadAction<'Tất cả' | 'Hoạt động' | 'Ngưng hoạt động'>) {
+      state.filter = action.payload;
     },
   },
 });

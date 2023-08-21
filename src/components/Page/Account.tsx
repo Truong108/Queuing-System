@@ -4,7 +4,7 @@ import { CaretRightOutlined, SearchOutlined } from "@ant-design/icons";
 import '../../css/SettingHeThong/vaitro.css';
 import { Input, Select, Space } from "antd";
 import '../../css/SettingHeThong/taikhoan.css';
-import Quanlytaikhoan from "./tableHeThong/AccountManagement";
+import Quanlytaikhoan from "./tableHeThong/Taikhoan/AccountManagement";
 const Account = () => {
     const handleChange = (value: string) => {
         console.log(`selected ${value}`);

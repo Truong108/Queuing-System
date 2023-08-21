@@ -15,6 +15,8 @@ import ChitietDevice from "../components/Page/tableDevice/ChitietDevice";
 import UpdateDevice from "../components/Page/tableDevice/UpdateDevice";
 import Capsonew from "../components/Page/tableGrantNumber/Capsonew";
 import ChitietCapso from "../components/Page/tableGrantNumber/ChitietCapso";
+import AddAccount from "../components/Page/tableHeThong/Taikhoan/AddAccount";
+import UpdateAccount from "../components/Page/tableHeThong/Taikhoan/UpdateAccount";
 import Addvaitro from "../components/Page/tableHeThong/Vaitro/Addvaitro";
 import Capnhatvaitro from "../components/Page/tableHeThong/Vaitro/Upvaitro";
 import AddService from "../components/Page/tableService/AddService";
@@ -45,5 +47,7 @@ export const RouteHome = [
     {path: '/themvaitro', element: <Addvaitro/>},
     {path: '/upvaitro', element: <Capnhatvaitro/>},
     {path: '/quanlytaikhoan', element: <Account/>},
+    {path: '/uptaikhoan/:id', element: <UpdateAccount/>},
+    {path: '/addtaikhoan', element: <AddAccount/>},
     {path: '/nhatky', element: <Diary/>},
 ];
