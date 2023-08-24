@@ -27,8 +27,8 @@ const UpdateDevice = () => {
   const dispatch = useDispatch();
     const deviceUp = useSelector((state: RootState) => state.device.devices);
     const navigate = useNavigate()
-    const handleUpdate = () =>{
-      dispatch(updateDevice(dataInfo) as any)
+    const handleUpdate = async () =>{
+      await dispatch(updateDevice(dataInfo) as any)
       navigate("/device")
     }
     useEffect(() => {

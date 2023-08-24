@@ -3,7 +3,7 @@
     width: 1472px;
     height: 842px;
     margin-left: 232px;
-    margin-top: -20%;
+    margin-top: -21%;
 }
 .dstaikhoan{
     font-family: "Nunito Sans", sans-serif;
@@ -12,7 +12,7 @@
     font-style: normal;
     font-weight: 700;
     line-height: 36px;
-    margin-top: -23%;
+    margin-top: -1%;
     padding-top: 15px;
     margin-left: 40px;
 }
@@ -44,6 +44,7 @@
     width: 89%;
     height: 400px;
     margin-left: 37px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
 }
 .bangaccount th{
     border: 1px solid #dddddd;

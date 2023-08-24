@@ -13,7 +13,7 @@ const Capso = () => {
       dispatch(fetchCapso() as any);
     }, [dispatch]);
     const capso = useSelector((state: RootState) => state.capso.capso);
-    const itemsPerPage = 10;
+    const itemsPerPage = 9;
   const [currentPage, setCurrentPage] = useState(1);
   const handlePageChange = (page: React.SetStateAction<number>) => {
     setCurrentPage(page);
@@ -91,9 +91,9 @@ const Capso = () => {
       </table>
     </div>
     <Link to="/capsonew">
-    <div className='buttonService'>
+    <div className='capsonew'>
       <img src={Capsonew} alt='add'/>
-      <p className='themdv'>Cấp số mới</p>
+      <p className='capsomoi'>Cấp số mới</p>
     </div>
     </Link>
     <div 

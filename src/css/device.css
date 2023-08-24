@@ -1,13 +1,14 @@
 .thietbi{
     background-color: #F6F6F6;
     width: 1472px;
-    height: 822px;
+    height: 852px;
     margin-left: 232px;
-   margin-top: -10%;
+    margin-top: -23%;
 }
 .subheading {
     font-size: 1.5em;
-    margin-top: -22%;
+    margin-top: 3%;
+    padding-top: 20px;
     margin-left: 41px;
     color: #333; /* Màu chữ tuỳ chọn */
     display: block;

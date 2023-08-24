@@ -22,7 +22,7 @@ const GrantNumber = () => {
         </div>
        <Personal/>
       </div>
-      <h2 className="subheading">Quản lý cấp số</h2>
+      <h2 className="quanlycapsoo">Quản lý cấp số</h2>
     <div className="container">
       <div className="tendvtieude">
       <p>Tên dịch vụ</p>

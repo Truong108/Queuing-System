@@ -1,9 +1,9 @@
 .report{
     background-color: #F6F6F6;
     width: 1472px;
-    height: 830px;
+    height: 870px;
     margin-left: 232px;
-    margin-top: -20%;
+    margin-top: -22%;
 }
 .bangbaocao{
     border-collapse: collapse;
@@ -35,7 +35,7 @@
   .download{
     position: fixed;
     z-index: 999;
-    top: 33%;
+    top: 30%;
     right: 1px; 
     transform: translateY(-50%); 
     width: 75px;

@@ -3,7 +3,9 @@ import Info from '../../assets/thongtincanhan.png';
 import '../../css/dashboard.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 const Dashboard = () => {
-    return ( <>
+
+    return ( 
+    <>
     <div className="infocanhan">
     <div className="navtoppp">
         <div className="textnavtop">
@@ -22,7 +24,7 @@ const Dashboard = () => {
             </div>
         </div>
        </div>
-       <p className="ten">Lê Quỳnh Ái Vân</p>
+       <p className="ten"></p>
     </div>
     <form className="container">
     <div className="row">
@@ -38,7 +40,8 @@ const Dashboard = () => {
               marginTop: '10px'
           }}
             id="inputEmail1"
-            placeholder="Lê Quỳnh Ái Vân"
+            
+            readOnly
             />
         </div>
         <div className="col-md-4">
@@ -53,7 +56,8 @@ const Dashboard = () => {
               marginTop: '10px'
           }}
             id="inputPassword1"
-            placeholder="lequynhaivan01"
+
+              readOnly
             />
         </div>
         <div className="col-md-4">
@@ -68,7 +72,8 @@ const Dashboard = () => {
               marginTop: '10px'
           }}
             id="inputEmail2"
-            placeholder="0767375921"
+        
+            readOnly
             />
         </div>
     </div> 
@@ -86,7 +91,8 @@ const Dashboard = () => {
               marginTop: '10px'
           }}
             id="inputPassword2"
-            placeholder="311940211"
+           
+            readOnly
             />
         </div>
         <div className="col-md-4">
@@ -101,7 +107,8 @@ const Dashboard = () => {
               marginTop: '10px'
           }}
             id="inputEmail3"
-            placeholder="adminSSO1@domain.com"
+           
+            readOnly 
             />
         </div>
         <div className="col-md-4">
@@ -116,13 +123,12 @@ const Dashboard = () => {
               marginTop: '10px'
           }}
             id="inputPassword3"
-            placeholder="Kế toán"
+           
+            readOnly
             />
         </div>
     </div>
-</form>
-
-
+    </form>
       </div>
       </div>
     </div>

@@ -1,10 +1,25 @@
 import { CaretRightOutlined } from "@ant-design/icons";
 import { Button, Input, Space } from "antd";
 import TextArea from "antd/es/input/TextArea";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Personal from "../../Personal";
 import '../../../../css/SettingHeThong/vaitro.css';
+import { useDispatch } from "react-redux";
+import { useState } from "react";
+import { addVaitro } from "../../../../redux/SettingVaitro/vaitroSlice";
 const Themvaitro = () => {
+  const dispatch = useDispatch()
+  const [dataInfo, setDataInfo]= useState({
+      tenvt: "",
+      sond: "",
+      mota: "",
+      cn: "",
+  })
+  const navigate = useNavigate()
+  const handleAdd = async () =>{
+      await dispatch(addVaitro(dataInfo) as any)
+      navigate("/systemInstallation")
+  }
     return ( <>
     <div className="themdevice">
      <div className="navtopp">
@@ -34,6 +49,7 @@ const Themvaitro = () => {
       <Input 
         placeholder="Nhập tên vai trò"
         className="form-matb"
+        onChange={(e) => setDataInfo((prev)=>({...prev, tenvt:e.target.value}))}
       />
     </div>
     <div className="col-md-6 input-container">
@@ -43,6 +59,7 @@ const Themvaitro = () => {
         placeholder="Nhập mô tả"
         autoSize={{ minRows: 5}}
         style={{ width: '190%', maxWidth: '600px' }}
+        onChange={(e) => setDataInfo((prev)=>({...prev, mota:e.target.value}))}
       />
     </div>
     <p className="thongtinbb">* Là trường thông tin bắt buộc</p>
@@ -159,6 +176,7 @@ const Themvaitro = () => {
    </Link>
     <Button danger className="nutaddtb"
     style={{color: '#FFF', marginLeft: '25px'}}
+    onClick={handleAdd}
     >Thêm</Button>
     </Space>
    </div>

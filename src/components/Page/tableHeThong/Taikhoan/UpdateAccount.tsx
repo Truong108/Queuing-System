@@ -13,6 +13,7 @@ import { fetchAccount } from "../../../../redux/SettingTaikhoan/accountReducer";
 const UpdateAccount = () => {
     const [dataInfo, setDataInfo] = useState<Account>({
         tendn: "",
+        mk: "",
         ht: "",
         sodt: "",
         mail: "",
@@ -25,8 +26,8 @@ const UpdateAccount = () => {
     const dispatch = useDispatch();
     const acountUp = useSelector((state: RootState) => state.account.account);
     const navigate = useNavigate()
-    const handleUpdate = () =>{
-      dispatch(updateAccount(dataInfo) as any)
+    const handleUpdate = async () =>{
+      await dispatch(updateAccount(dataInfo) as any)
       navigate("/quanlytaikhoan")
     }
     useEffect(() => {
@@ -156,6 +157,8 @@ const UpdateAccount = () => {
         size="large"
         placeholder="Nhập lại mật khẩu"
         iconRender={(visible) => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)}
+        value={dataInfo?.mk}
+        onChange={(e)=> setDataInfo((prev)=> ({...prev, mk:e.target.value}))}
       />
       </div>
      </div>

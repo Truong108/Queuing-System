@@ -50,7 +50,7 @@
   .buttonService{
     position: fixed;
     z-index: 999;
-    top: 33%;
+    top: 34%;
     right: 5px; 
     transform: translateY(-50%); 
     width: 85px;
@@ -74,4 +74,14 @@
   }
 .chitietdichvu{
   padding-left: 15px;
+}
+.quanlydichvu{
+  font-size: 1.5em;
+  margin-top: 3%;
+  padding-top: 20px;
+  margin-left: 41px;
+  color: #333; /* Màu chữ tuỳ chọn */
+  display: block;
+  color: #FF7506;
+  font-weight: bold;
 }

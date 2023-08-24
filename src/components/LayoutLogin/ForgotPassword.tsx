@@ -1,16 +1,42 @@
 import loginImg from '../../assets/Group.png';
 import Matkhau from '../../assets/datlaimk.png';
-import React, {  } from 'react';
+import React, { useState } from 'react';
 import '../../css/style.css'
-import { Button, Space } from 'antd';
-import { Link } from 'react-router-dom';
+import { Button, Space, Spin, message } from 'antd';
+import { Link, useNavigate } from 'react-router-dom';
+import { RootState } from '../../store/store';
+import { useSelector } from 'react-redux';
 
 const ForgotPassword: React.FC = () => {
+  const navigate = useNavigate(); 
+  const [userEmail, setUseremail] = useState<string>("");
+  const [spiner, setSpinner] = useState<boolean>(false)
+  const OnchaneHandleEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setUseremail(e.target.value);
+  };
+  const dataForgot = useSelector((state: RootState) => state.login.login);
+  const onchangeForgot = () => {
+    let validCredentials = false;
 
+    dataForgot.forEach((item) => {
+      if (userEmail === item.mail) {
+        validCredentials = true;
+      }
+    });
+    if (validCredentials) {
+      setSpinner(true);
+      setTimeout(() => {
+        navigate('/signupForm');
+      }, 3000);  
+    } else {
+      message.error('Email không đúng vui lòng nhập lại!');
+    }
+  };
   return (
     <section className="vh-100">
       <link rel="icon" href="img/mdb-favicon.ico" type="image/x-icon" />
       <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" />
+      <Spin tip="Đang kiểm tra email..." spinning={spiner}>
       <div className="container-fluid">
         <div className="row">
           <div className="col-sm-6 text-black formdn">
@@ -32,6 +58,7 @@ const ForgotPassword: React.FC = () => {
                   <input
                     type="email"
                     className="form-control form-control-lg"
+                    onChange={OnchaneHandleEmail}
                   />
                 </div>
               </div>
@@ -51,9 +78,9 @@ const ForgotPassword: React.FC = () => {
                   width: '162px',
                   height: '40px',
                 }}>
-                <Link to="/signupForm">
-                  <Button className='tieptuc'>Tiếp tục</Button>
-                </Link>
+                  <Button className='tieptuc'
+                  onClick={onchangeForgot}
+                  >Tiếp tục</Button>
                 </Space>
               </div>
             </div>
@@ -74,6 +101,7 @@ const ForgotPassword: React.FC = () => {
           </div>
         </div>
       </div>
+      </Spin>
     </section>
   );
 };

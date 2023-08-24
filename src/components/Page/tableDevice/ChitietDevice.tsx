@@ -1,6 +1,6 @@
 import { CaretRightOutlined } from "@ant-design/icons";
 import Personal from "../Personal";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import '../../../css/Device/danhsachtb.css';
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../store/store";
@@ -20,7 +20,10 @@ const ChitietDevice = () => {
          setDevice(data)
       dispatch(fetchThietBi() as any);
     }, [deviceInfo, dispatch, id]);
-   
+    const navigate =  useNavigate()
+    const handleUpdate = (id: string) =>{
+        navigate(`/updevice/${id}`);
+    }
     return ( <>
     <div className="themdevice">
      <div className="navtopp">
@@ -39,7 +42,7 @@ const ChitietDevice = () => {
     </div>
    </div>
    <div className="totaladdtb">
-   <h2 className="tieudetb">Quản lí thiết bị</h2>
+   <h2 className="tieudetb">Quản lý thiết bị</h2>
    <table className="bangthongtinchitiet">
     <h4 className="thongtintb">Thông tin thiết bị</h4>
   <div className="containerThemtb">
@@ -163,12 +166,14 @@ const ChitietDevice = () => {
      </div>
    </div>
    </table>
-   <Link to="/updevice">
-    <div className='iconButtonDevice'>
+   <td className='iconButtonDevice' onClick={() => device && device.matb && handleUpdate(device.matb)}>
+    <div className=''>
       <img src={UpdateDevice} alt='up'/>
-      <p className='uptb'>Cập nhật thiết bị</p>
+      <p className='uptb' 
+      style={{ textDecoration: "none", cursor: "pointer" }}
+      >Cập nhật thiết bị</p>
     </div>
-    </Link>
+  </td>
    </div>
     </> 
   );

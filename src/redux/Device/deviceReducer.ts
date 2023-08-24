@@ -20,7 +20,7 @@ export const fetchThietBi = createAsyncThunk("thietbi/fetchData", async () => {
           state.devices = [...state.devices, action.payload]
       })
       .addCase(addDevice.fulfilled, (state, action)=>{
-        state.devices = action.payload
+        state.devices = [...state.devices, action.payload];
       });
     },
   });

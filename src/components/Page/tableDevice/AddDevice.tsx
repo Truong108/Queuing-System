@@ -21,7 +21,7 @@ const AddDevice = () => {
     })
     const navigate = useNavigate()
     const handleAdd = async () =>{
-        dispatch(addDevice(dataInfo) as any)
+        await dispatch(addDevice(dataInfo) as any)
         navigate("/device")
     }
     return ( <>

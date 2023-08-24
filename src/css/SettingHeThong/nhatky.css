@@ -1,9 +1,9 @@
 .nhatkyfrom{
     background-color: #F6F6F6;
     width: 1472px;
-    height: 842px;
+    height: 882px;
     margin-left: 232px;
-    margin-top: -20%;
+    margin-top: -22%;
 }
 .containhatky{
     display: flex;
@@ -14,11 +14,11 @@
     margin-bottom: 20px;
 }
 .chontgnhatky{
-    margin-top: 40px;
+    margin-top: 100px;
     margin-left: -109%;
 }
 .tukhoanhatky p{
-    margin-top: 40px;
+    margin-top: 100px;
     margin-left: -14px;
 }
 .chontgnhatky, .tukhoanhatky{

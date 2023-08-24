@@ -1,7 +1,7 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { AppThunk } from '../../store/store'; // Đảm bảo đường dẫn đúng
 import api from '../../firebase/firebaseAPI'; // Đảm bảo đường dẫn đúng
-import { collection, getDocs } from "firebase/firestore";
+import { collection, doc, getDocs, updateDoc } from "firebase/firestore";
 import { Login } from '../../Interface/Login';
 
 interface LoginState {
@@ -21,6 +21,12 @@ const loginSlice = createSlice({
     },
   },
 });
+export const forgotpasswordLogin = createAsyncThunk("dangnhap/forgotpasswordLogin", 
+async (login : any) => {
+    const docRef = doc(collection(api,"dangnhap"), login.id)
+    await updateDoc(docRef, login)
+    return login
+})
 
 export const { fetchLoginSuccess } = loginSlice.actions;
 export default loginSlice.reducer;

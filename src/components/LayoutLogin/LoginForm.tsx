@@ -27,17 +27,22 @@ const LoginForm: React.FC = () => {
   };
   const [spiner, setSpinner] = useState<boolean>(false)
   const onchangeLogin = () => {
-      dataLogin.forEach((item) =>{
-          if(userName === item.tendn && password === item.mk){
-              setSpinner(true) 
-              setTimeout(()=>{
-                navigate("/dashboard")
-              },2000)
-          }else{
-            message.error('Sai tên tài khoản mật khẩu');
-          }
-      })
-  };  
+    let validCredentials = false;
+  
+    dataLogin.forEach((item) => {
+      if (userName === item.tendn && password === item.mk) {
+        validCredentials = true;
+      }
+    });
+    if (validCredentials) {
+      setSpinner(true);
+      setTimeout(() => {
+        navigate('/dashboard');
+      }, 3000);
+    } else {
+      message.error('Sai tên đăng nhập hoặc mật khẩu!');
+    }
+  };
   const dispatch = useDispatch();
   const dataLogin = useSelector((state: RootState) => state.login.login);
 

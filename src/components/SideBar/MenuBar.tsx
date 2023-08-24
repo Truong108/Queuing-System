@@ -7,19 +7,45 @@ import { AppstoreOutlined,
   CodepenOutlined, 
   DesktopOutlined, 
   LogoutOutlined, 
-  MoreOutlined, 
   SettingOutlined,
   WechatOutlined } from "@ant-design/icons";
-import React from "react";
+import { Layout, Menu } from "antd";
 
+const { Sider } = Layout;
+const items = [
+  {
+    title: 'Cài đặt hệ thống',
+    key: '1',
+    path: '/systemInstallation',
+    icon: <SettingOutlined />,
+    children: [
+      {
+        title: 'Quản lý vai trò',
+        key: '1',
+        path: '/systemInstallation',
+      },
+      {
+        title: 'Quản lý tài khoản',
+        key: '2',
+        path: '/quanlytaikhoan',
+      },
+      {
+        title: 'Nhật ký người dùng',
+        key: '3',
+        path: '/nhatky',
+      },
+    ],
+  },
+];
 const MenuBar = () => {
-  const [popoverVisible, setPopoverVisible] = useState(false);
   const [selectedTabIndex, setSelectedTabIndex] = useState<number | null>(0);
 
   const handleTabClick = (index: number) => {
     setSelectedTabIndex(index);
   };
-  
+  const onClick = (item: any) => {
+    console.log('Clicked item:', item);
+  };
  return ( <>
   <div className="logoMenu">
     <img src={LogoMenu} alt="/" />  
@@ -92,71 +118,39 @@ const MenuBar = () => {
           </li>
         </Link>
         <div className="Popover">
-        <Link to="/systemInstallation" className="no-underline">
-      <li
-        className={selectedTabIndex === 5 ? "active" : ""}
-        onClick={() => handleTabClick(5)}
-        style={{
-          display: "flex",
-          alignItems: "center"
-        }}
-      >
-        <SettingOutlined />
-        <span
-          style={{
-            display: "flex",
-            alignItems: "center",
-            whiteSpace: "nowrap"
-          }}
-        >
-          Cài đặt hệ thống
-          <div
+        <Sider>
+          <Menu
+            onClick={onClick}
             style={{
-              marginLeft: "10px",
-              clear: "both",
-              whiteSpace: "nowrap",
-              marginTop: "-1px"
+              width: 252,
+              height: '50px',
+              marginLeft: '-20px',
+              marginTop: '-26px',
             }}
+            mode="vertical"
           >
-            <MoreOutlined
-              style={{ fontWeight: "bold", marginLeft: "5px" }}
-              onClick={() => setPopoverVisible(!popoverVisible)} 
-            />
-          </div>
-        </span>
-      </li>
-      {popoverVisible && (
-        <div className="Popover-links">
-        <React.Fragment>
-          <Link to="/systemInstallation" className="nav-link">
-            <li
-              className={selectedTabIndex === 5 ? "active" : ""}
-              onClick={() => handleTabClick(5)}
-            >
-              <span style={{ fontWeight: "bold" }}>Quản lý vai trò</span>
-            </li>
-          </Link>
-          <Link to="/quanlytaikhoan" className="nav-link">
-            <li 
-              className={selectedTabIndex === 6 ? "active" : ""}
-              onClick={() => handleTabClick(6)}
-            >
-              <span style={{ fontWeight: "bold" }}>Quản lý tài khoản</span>
-            </li>
-          </Link>
-          <Link to="/nhatky" className="nav-link">
-            <li
-              className={selectedTabIndex === 7 ? "active" : ""}
-              onClick={() => handleTabClick(7)}
-            >
-              <span style={{ fontWeight: "bold" }}>Nhật ký người dùng</span>
-            </li>
-          </Link>
-        </React.Fragment>
+            {items.map((menuItem) => (
+              <Menu.SubMenu
+                key={menuItem.key}
+                title={menuItem.title}
+                icon={menuItem.icon}
+                className="custom-menu"
+              >
+                {menuItem.children.map((subItem) => (
+                  <Menu.Item key={subItem.key}
+                  className="custom-menu-item"
+                  >
+                    <Link 
+                    className="custom-menu-link"
+                    to={subItem.path || ''}
+                    >{subItem.title}</Link>
+                  </Menu.Item>
+                ))}
+              </Menu.SubMenu>
+            ))}
+          </Menu>
+        </Sider>
         </div>
-      )}
-    </Link>
-    </div>
     </ul>
   </div>
   <Link to="/">

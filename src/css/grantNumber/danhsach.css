@@ -1,9 +1,21 @@
 .capso{
     background-color: #F6F6F6;
     width: 1472px;
-    height: 842px;
+    height: 872px;
     margin-left: 232px;
     margin-bottom: -10%;
+    margin-top: 23px;
+}
+.quanlycapsoo{
+    font-family: "Nunito Sans", sans-serif;
+    color: #FF7506;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 36px;
+    margin-top: -27%;
+    padding-top: 60px;
+    margin-left: 40px;
 }
 .tendvtieude{
     font-family: 'Nunito', sans-serif;
@@ -87,3 +99,28 @@
     text-align: center;
     text-transform: uppercase;
 }
+.capsonew{
+    position: fixed;
+    z-index: 999;
+    top: 33%;
+    right: 5px; 
+    transform: translateY(-50%); 
+    width: 85px;
+    height: 100px;
+    padding: 12px 4px 10px 22px;
+    gap: 4px;
+    background-color: #FFF2E7;
+  }  
+  .capsonew img{
+    margin-left: 12px;
+  }
+  .capsomoi{
+    margin-top: 10px;
+    color: var(--orange-orange-500, #FF7506);
+    font-family: "Nunito Sans", sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    text-align: center;
+  }

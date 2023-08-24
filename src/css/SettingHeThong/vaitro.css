@@ -1,18 +1,16 @@
 .vaitro{
     background-color: #F6F6F6;
     width: 1472px;
-    height: 842px;
+    height: 882px;
     margin-left: 232px;
-    margin-top: -20%;
+    margin-top: -21%;
 }
 .dsvaitro{
     font-size: 1.5em;
     margin-left: 38px;
-    color: #333; /* Màu chữ tuỳ chọn */
-    display: block;
+    display: flex;
     color: #FF7506;
     font-weight: bold;
-    padding-top: 11px;
 }
 .contaivaitro{
     display: flex;
@@ -21,6 +19,9 @@
     margin-right: 9%;
     margin-top: -2%;
     margin-bottom: 55px;
+}
+.tukhoavaitro{
+    margin-bottom: -40px;
 }
 .tukhoavaitro p{
     font-size: 16px;
@@ -46,6 +47,7 @@
     width: 89%;
     height: 450px;
     margin-left: 37px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
 }
 .bangvaitro th{
     border: 1px solid #dddddd;
@@ -70,7 +72,7 @@
     font-style: normal;
     font-weight: 700;
     line-height: 36px;
-    margin-top: -23%;
+    margin-top: -24%;
     padding-top: 15px;
     margin-left: 40px;
 }
@@ -78,7 +80,6 @@
 .containerThemvaitro{
     width: 1380px;
     height: 625px;
-    margin-top: 20px;
     display: flex;
     background-color: #FFF;
     border-radius: 15px;
@@ -125,4 +126,13 @@
 }
 .motavaitro{
     margin-top: 40px;
+}
+.thongtinvaitro{
+    font-family: "Nunito Sans", sans-serif;
+    color: #FF7506;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 30px;
+    margin-left: 30px;
 }

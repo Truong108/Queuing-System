@@ -21,7 +21,7 @@ const Service = () => {
         </div>
        <Personal/>
       </div>
-      <h2 className="subheading">Quản lý dịch vụ</h2>
+      <h2 className="quanlydichvu">Quản lý dịch vụ</h2>
     <div className="container">
       <div className="trangthaihd">
       <p>Trạng thái hoạt động</p>

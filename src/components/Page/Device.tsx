@@ -4,10 +4,12 @@ import '../../css/device.css';
 import { CaretRightOutlined, SearchOutlined } from "@ant-design/icons";
 import { Input, Select, Space } from "antd";
 import Danhsach from "./tableDevice/Danhsach";
+import { useState } from "react";
 const Device = () => {
-  const handleChange = (value: string) => {
-    console.log(`selected ${value}`);
-  };
+  const [statusActive, setStatusActive]  = useState<string>("Tất cả")
+  const [statusCornect, setStatusCornect] = useState<string>("Tất cả")
+
+
   return ( 
   <div className="thietbi">
     <div className="navtopp">
@@ -27,7 +29,7 @@ const Device = () => {
       <Select
         defaultValue="Tất cả"
         style={{ width: 350, marginLeft: '-2px' }}
-        onChange={handleChange}
+        onChange={(e) => setStatusActive(e)}
         options={[
           { value: 'Tất cả', label: 'Tất cả' },
           { value: 'Hoạt động', label: 'Hoạt động' },
@@ -42,7 +44,7 @@ const Device = () => {
       <Select
         defaultValue="Tất cả"
         style={{ width: 350, marginLeft: '-2px' }}
-        onChange={handleChange}
+        onChange={(e) => setStatusCornect(e)}
         options={[
           { value: 'Tất cả', label: 'Tất cả' },
           { value: 'Kết nối', label: 'Kết nối' },
@@ -72,7 +74,7 @@ const Device = () => {
       </nav>
       </div>
     </div>
-    <Danhsach/>
+    <Danhsach statusActive={statusActive} statusCornect={statusCornect}/>
   </div> 
   );
 }

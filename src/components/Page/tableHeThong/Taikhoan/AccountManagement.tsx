@@ -13,14 +13,19 @@ const Quanlytaikhoan = () => {
       dispatch(fetchAccount() as any);
     }, [dispatch]);
     const account = useSelector((state: RootState) => state.account.account);
-    const itemsPerPage = 9;
-  const [currentPage, setCurrentPage] = useState(1);
   const handlePageChange = (page: React.SetStateAction<number>) => {
     setCurrentPage(page);
   };
+  
+  const itemsPerPage = 9;
+  const [currentPage, setCurrentPage] = useState(1);
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
-  const currentPageData = account.slice(startIndex, endIndex);
+  
+  const currentPageData = [];
+  for (let i = startIndex; i < Math.min(endIndex, account.length); i++) {
+    currentPageData.push(account[i]);
+  }
   const navigate =  useNavigate()
   const handleUpdate = (id: string) =>{
     navigate(`/uptaikhoan/${id}`);

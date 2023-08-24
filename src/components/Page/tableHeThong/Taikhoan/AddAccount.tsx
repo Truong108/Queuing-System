@@ -11,6 +11,7 @@ const AddAccount = () => {
     const dispatch = useDispatch()
     const [dataInfo, setDataInfo]= useState({
         tendn: "",
+        mk: "",
         ht: "",
         sodt: "",
         mail: "",
@@ -20,7 +21,7 @@ const AddAccount = () => {
     })
     const navigate = useNavigate()
     const handleAdd = async () =>{
-        dispatch(addAccount(dataInfo) as any)
+        await dispatch(addAccount(dataInfo) as any)
         navigate("/quanlytaikhoan")
     }
     return ( <>
@@ -35,7 +36,7 @@ const AddAccount = () => {
     </Link>
      <CaretRightOutlined  style={{marginLeft: '1px'}}/>
     <span style={{marginLeft: '20px'}}
-     >Cập nhật tài khoản</span>
+     >Thêm tài khoản</span>
     </div>
       <Personal/>
     </div>
@@ -137,6 +138,7 @@ const AddAccount = () => {
         size="large"
         placeholder="Nhập lại mật khẩu"
         iconRender={(visible) => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)}
+        onChange={(e) => setDataInfo((prev)=>({...prev, mk:e.target.value}))}
       />
       </div>
      </div>

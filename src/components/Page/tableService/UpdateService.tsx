@@ -33,8 +33,8 @@ const UpdateService = () => {
       dispatch(fetchDichvu() as any);
     }, [ dispatch, id]);
     const navigate = useNavigate()
-    const handleUpdate = () =>{
-      dispatch(updateService(dataService) as any)
+    const handleUpdate = async () =>{
+      await dispatch(updateService(dataService) as any)
       navigate("/service")
     }
     return ( <>
@@ -48,7 +48,7 @@ const UpdateService = () => {
      >Danh sách dịch vụ</span>
     </Link>
      <CaretRightOutlined  style={{marginLeft: '1px'}}/>
-     <Link to="/chitietservice" style={{textDecoration: 'none'}}>
+     <Link to="/chitietservice/:id" style={{textDecoration: 'none'}}>
      <span style={{marginLeft: '20px', color: '#7E7D88'}}
      >Chi tiết</span>
      </Link>
@@ -60,7 +60,7 @@ const UpdateService = () => {
     </div>
    </div>
    <div className="totaladdtb">
-   <h2 className="tieudetb">Quản lý dịch vụ</h2>
+   <h2 className="quanlydichvuupdate">Quản lý dịch vụ</h2>
    <table className="bangthongtin">
     <h4 className="thongtintb">Thông tin dịch vụ</h4>
   <div className="containerThemtb">

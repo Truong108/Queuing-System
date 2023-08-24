@@ -15,14 +15,19 @@ const Danhsachdichvu = () => {
       dispatch(fetchDichvu() as any);
     }, [dispatch]);
     const service = useSelector((state: RootState) => state.service.service);
-    const itemsPerPage = 9;
-  const [currentPage, setCurrentPage] = useState(1);
   const handlePageChange = (page: React.SetStateAction<number>) => {
     setCurrentPage(page);
   };
+
+  const itemsPerPage = 9;
+  const [currentPage, setCurrentPage] = useState(1);
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
-  const currentPageData = service.slice(startIndex, endIndex);
+  
+  const currentPageData = [];
+  for (let i = startIndex; i < Math.min(endIndex, service.length); i++) {
+    currentPageData.push(service[i]);
+  }
   const navigate =  useNavigate()
   const handleDetail = (id:string) =>{
       navigate(`/chitietservice/${id}`)

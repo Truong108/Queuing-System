@@ -35,6 +35,20 @@
 .menubar{
   text-decoration: none;
   margin-left: -32px;
+  margin-top: 60px;
+}
+
+.menubar .submenu {
+  display: none;
+  position: absolute;
+  background-color: #1f1f1f;
+  list-style: none;
+  padding: 0;
+  z-index: 1;
+}
+
+.menubar li:hover .submenu {
+  display: block;
 }
 
 .menubar ul {
@@ -73,13 +87,10 @@
   text-decoration: none;
 }
 .Popover {
-  position: relative; /* Để làm việc với các vị trí tương đối */
-  width: 232px;
+  position: relative; 
+  top: 26px;
+  width: 252px;
 }
-
-.Popover-links {
-  position: absolute; /* Đặt vị trí tuyệt đối cho các liên kết bên trong */
-  top: 100%; /* Đặt vị trí bên dưới dấu ba chấm */
-  margin-top: 10px;
+.custom-menu-link{
+  text-decoration: none;
 }
-

@@ -7,8 +7,11 @@ import '../../../css/Device/danhsachtb.css';
 import Addthietbi from '../../../assets/add-square.png'
 import { Pagination } from 'antd';
 import { Link, useNavigate } from 'react-router-dom';
-
-const Danhsachthietbi = () => {
+interface tableProps{
+  statusActive: string;
+  statusCornect: string;
+}
+const Danhsachthietbi:React.FC<tableProps> = ({statusActive, statusCornect}) => {
     const dispatch = useDispatch();
     useEffect(() => {
       dispatch(fetchThietBi() as any);
@@ -32,15 +35,22 @@ const Danhsachthietbi = () => {
       return text.slice(0, maxLength) + "...";
     };
     
-    const itemsPerPage = 9;
-    const [currentPage, setCurrentPage] = useState(1);
     const handlePageChange = (page: React.SetStateAction<number>) => {
       setCurrentPage(page);
     };
+
+    const itemsPerPage = 9;
+    const [currentPage, setCurrentPage] = useState(1);
     const startIndex = (currentPage - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
-    const currentPageData = devices.slice(startIndex, endIndex);
+    
+    const currentPageData = [];
+    for (let i = startIndex; i < Math.min(endIndex, devices.length); i++) {
+      currentPageData.push(devices[i]);
+    }
 
+    const filter = currentPageData.filter((item) => (statusActive === "Tất cả" || item.trangthai === statusActive) &&(statusCornect === "Tất cả" || item.trangthaikn === statusCornect))
+                                                      
     const navigate =  useNavigate()
     const handleDetail = (id:string) =>{
         navigate(`/chitietdevice/${id}`)
@@ -64,13 +74,33 @@ const Danhsachthietbi = () => {
           </tr>
         </thead>
         <tbody>
-        {currentPageData.map((device: ThietBi, index) => {
+        {filter.map((device: ThietBi, index) => {
           const mautb = index % 2 === 1 ? { backgroundColor: "#FF750622" } : {};
           
-          const ketnoi = {
-            color: device.trangthaikn === "Kết nối" && device.trangthai === "Hoạt động" ? "#FFA500" : "#FF0000",
+          let hoatdong = {}
+          if(device.trangthai ==="Hoạt động"){
+            hoatdong = {color: "#34CD26", 
             marginRight: "10px",
-          };
+             }
+          }
+          if(device.trangthai === "Ngưng hoạt động"){
+            hoatdong = {color: "#EC3740",
+            marginRight: "10px",
+           }
+          }
+         let ketnoi = {}
+         if(device.trangthaikn === "Kết nối"){
+          ketnoi = {
+            color: '#35C75A',
+            marginRight: "10px",
+          }
+         }
+         if(device.trangthaikn === "Mất kết nối"){
+          ketnoi = {
+            color: "#E73F3F",
+            marginRight: "10px",
+          }
+         }
           
           return (
             <tr key={index}>
@@ -78,12 +108,12 @@ const Danhsachthietbi = () => {
               <td className='tdtentb' style={mautb}>{device.tentb}</td>
               <td className='tddc' style={mautb}>{device.dcip}</td>
               <td className='tdtt' style={mautb}>
-                <span style={ketnoi}><i className="bi bi-circle-fill"></i></span>
+                <span style={hoatdong}><i className="bi bi-circle-fill"></i></span>
                 {device.trangthai}
               </td>
               <td className='tdttkn' style={mautb}>
                 <span style={ketnoi}><i className="bi bi-circle-fill"></i></span>
-                {device.trangthaikn}
+                {device.trangthaikn} 
               </td>
               <td className='tddv' style={mautb}>
                   {Array.isArray(device.dichvu) ? (

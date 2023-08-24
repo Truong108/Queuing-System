@@ -2,6 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import api from "../../firebase/firebaseAPI";
 import { collection, getDocs } from "firebase/firestore";
 import { Login } from "../../Interface/Login";
+import { forgotpasswordLogin } from "./authSlice";
 
 
 export const fetchLogin = createAsyncThunk("dangnhap/fetchLogin", async () => {
@@ -16,7 +17,10 @@ export const fetchLogin = createAsyncThunk("dangnhap/fetchLogin", async () => {
     extraReducers(builder) {
       builder.addCase(fetchLogin.fulfilled, (state, action) => {
         state.login = action.payload;
-      });
+      })
+      .addCase(forgotpasswordLogin.fulfilled, (state, action) =>{
+        state.login = [...state.login, action.payload]
+    });
     },
   });
 

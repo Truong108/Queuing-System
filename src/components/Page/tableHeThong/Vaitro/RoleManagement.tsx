@@ -3,7 +3,7 @@ import { Caidatvaitro } from "../../../../Interface/Caidatvaitro";
 import { useEffect, useState } from "react";
 import { RootState } from "../../../../store/store";
 import { fetchVaitro } from "../../../../redux/SettingVaitro/vaitroReducer";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Addvaitro from '../../../../assets/add-square.png';
 import { Pagination } from "antd";
 import '../../../../css/SettingHeThong/vaitro.css';
@@ -13,15 +13,23 @@ const Qlvaitro = () => {
     useEffect(() => {
       dispatch(fetchVaitro() as any);
     }, [dispatch]);
-    const vaitro = useSelector((state: RootState) => state.vaitro.vaitro);
-    const itemsPerPage = 10;
-  const [currentPage, setCurrentPage] = useState(1);
+  const vaitro = useSelector((state: RootState) => state.vaitro.vaitro);
   const handlePageChange = (page: React.SetStateAction<number>) => {
     setCurrentPage(page);
   };
+  const itemsPerPage = 10;
+  const [currentPage, setCurrentPage] = useState(1);
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
-  const currentPageData = vaitro.slice(startIndex, endIndex);
+  
+  const currentPageData = [];
+  for (let i = startIndex; i < Math.min(endIndex, vaitro.length); i++) {
+    currentPageData.push(vaitro[i]);
+  }
+  const navigate =  useNavigate()
+  const handleUpdate = (id: string) =>{
+    navigate(`/upvaitro/${id}`);
+}
     return ( <>
      <div className='contect'>
       <table className='bangvaitro'>
@@ -47,10 +55,9 @@ const Qlvaitro = () => {
               style={mauvaitro}>{vaitro.sond}</td>
               <td className='tdmota'
               style={mauvaitro}>{vaitro.mota}</td>
-              <Link className='tdcnhat' 
-              to="/upvaitro">
-              <td style={mauvaitro}>{vaitro.cn}</td>
-              </Link>
+              <td className='cnthietbi' style={mauvaitro} onClick={() => handleUpdate(vaitro.tenvt)}>
+                <span style={{ textDecoration: "underline", cursor: "pointer" }}>Cập nhật</span>
+              </td>
             </tr>
             ); 
             })}

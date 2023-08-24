@@ -28,7 +28,7 @@ const Capsonew = () => {
     </div>
    </div>
    <div className="totaladdtb">
-   <h2 className="tieudetb">Quản lý cấp số</h2>
+   <h2 className="quanlycapsonew">Quản lý cấp số</h2>
    <table className="bangcapso">
     <h4 className="capsotieude">Cấp số mới</h4>
     <p className="textcapso1">Dịch vụ khách hàng lựa chọn</p>

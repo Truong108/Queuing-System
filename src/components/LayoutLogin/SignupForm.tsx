@@ -1,11 +1,40 @@
-import { Link } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import loginImg from '../../assets/Group.png';
 import Matkhau from '../../assets/datlaimk.png';
 import '../../css/signup.css';
 import { Button, Input, Space } from 'antd';
 import { EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
+import { Login } from '../../Interface/Login';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../../store/store';
+import { fetchLogin, forgotpasswordLogin } from '../../redux/Login/authSlice';
 
 const SignupForm = () => {
+  const [dataInfo, setDataInfo] = useState<Login>({
+    tennd: "",
+    tendn: "",
+    mk: "",
+    mail: "",
+    sodt: "",
+    vaitro: "",
+  })
+  const {id} = useParams()
+  const [forLogin, setForgotLogin] = useState<any>()
+  const dispatch = useDispatch();
+  const forgotLogin = useSelector((state: RootState) => state.login.login);
+  const navigate = useNavigate()
+  const handleForgot = async () =>{
+    await dispatch(forgotpasswordLogin(dataInfo) as any)
+    navigate("/")
+  }
+  useEffect(() => {
+      // eslint-disable-next-line eqeqeq
+      const data = forgotLogin.find((item) => item.mk == id)
+      setDataInfo(data!)
+      setForgotLogin(data)
+    dispatch(fetchLogin() as any);
+  }, [dispatch, id]);
     return ( <>
      <section className="vh-100">
       <link rel="icon" href="img/mdb-favicon.ico" type="image/x-icon" />
@@ -63,9 +92,9 @@ const SignupForm = () => {
                   width: '162px',
                   height: '40px',
                 }}>
-                  <Link to="/">
-                  <Button className='xacnhan'>Xác nhận</Button>
-                  </Link>
+                  <Button className='xacnhan'
+                  onClick={handleForgot}
+                  >Xác nhận</Button>
                 </Space>
               </div>
             </div>

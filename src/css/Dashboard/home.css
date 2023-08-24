@@ -1,7 +1,7 @@
 .homedashboard{
     display: flex;
     float: right;
-    margin-top: -20%;
+    margin-top: -390px;
     background-color: #F6F6F6;
 }
 .headerdashb{
@@ -45,6 +45,7 @@
     width: 400px;
     background-color: #fff;
     padding: 20px 15px;
+    margin-top: 25px;
   }
 
   .tabledashboard {
@@ -52,6 +53,7 @@
     padding: 20px 15px;
     width: 1058px;
     height: 860px;
+    margin-top: 25px;
   }
   
   .bieudo {

@@ -45,7 +45,7 @@ export const RouteHome = [
     {path: '/capsonew', element: <Capsonew/>},
     {path: '/chitietcapso/:id', element: <ChitietCapso/>},
     {path: '/themvaitro', element: <Addvaitro/>},
-    {path: '/upvaitro', element: <Capnhatvaitro/>},
+    {path: '/upvaitro/:id', element: <Capnhatvaitro/>},
     {path: '/quanlytaikhoan', element: <Account/>},
     {path: '/uptaikhoan/:id', element: <UpdateAccount/>},
     {path: '/addtaikhoan', element: <AddAccount/>},

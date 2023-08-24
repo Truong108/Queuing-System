@@ -1,4 +1,5 @@
 export interface Login {
+    id?: string;
     tennd: string;
     tendn: string;
     mk: string;

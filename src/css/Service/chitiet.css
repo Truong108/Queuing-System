@@ -1,6 +1,17 @@
 .totalchitiet {
     display: flex;
   }
+  .tieudedichvu{
+    font-family: "Nunito Sans", sans-serif;
+    color: #FF7506;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 36px;
+    margin-top: -26%;
+    padding-top: 50px;
+    margin-left: 40px;
+  }
 .bangchitiet{
     width: 400px;
     height: 720px;

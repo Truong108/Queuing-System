@@ -21,7 +21,7 @@ const AddService = () => {
   })
   const navigate = useNavigate()
   const handleAdd = async () =>{
-      dispatch(addService(dataInfo) as any)
+      await dispatch(addService(dataInfo) as any)
       navigate("/service")
   }
     return ( <>
@@ -42,7 +42,7 @@ const AddService = () => {
     </div>
    </div>
    <div className="totaladdtb">
-   <h2 className="tieudetb">Quản lý dịch vụ</h2>
+   <h2 className="quanlydichvuadd">Quản lý dịch vụ</h2>
    <table className="bangthongtin">
     <h4 className="thongtintb">Thông tin dịch vụ</h4>
   <div className="containerThemtb">

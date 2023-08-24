@@ -1,5 +1,5 @@
 export interface Caidatvaitro{
-    id: string;
+    id?: string;
     tenvt: string;
     sond: string;
     mota: string;

@@ -1,6 +1,6 @@
 import { CaretRightOutlined, SearchOutlined } from "@ant-design/icons";
 import Personal from "../Personal";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import '../../../css/Service/chitiet.css';
 import { fetchDichvu } from "../../../redux/Service/serviceReducer";
 import { useDispatch, useSelector } from "react-redux";
@@ -43,6 +43,10 @@ const DetailService = () => {
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
   const currentPageData = service.slice(startIndex, endIndex);
+  const navigate =  useNavigate()
+  const hanndleUpdate = (id:string) =>{
+    navigate(`/capnhatservice/${id}`)
+}
     return ( <>
     <div className="themdevice">
      <div className="navtopp">
@@ -61,7 +65,7 @@ const DetailService = () => {
     </div>
    </div>
    <div className="totaladdtb">
-   <h2 className="tieudetb">Quản lý dịch vụ</h2>
+   <h2 className="tieudedichvu">Quản lý dịch vụ</h2>
    <div className="totalchitiet">
    <table className="bangchitiet">
     <h4 className="thongtintb">Thông tin dịch vụ</h4>
@@ -99,21 +103,22 @@ const DetailService = () => {
         </label>
     </div>
     <div className="col-md-4">
-        <label htmlFor="inputEmail4" className="text-chitiet">
-            Mô tả: 
-            <span style={{
-                color: '#535261',
-                fontFamily: "Nunito Sans, sans-serif",
-                fontSize: '16px',
-                fontStyle: 'normal',
-                fontWeight: '400',
-                lineHeight: '24px',
-                marginLeft: '50px'
-            }}>
-                {chitietservice?.mota}
-            </span>
-        </label>
-    </div>
+    <label htmlFor="inputEmail4" className="text-chitiet">
+        Mô tả: 
+        <span style={{
+            color: '#535261',
+            fontFamily: "Nunito Sans, sans-serif",
+            fontSize: '16px',
+            fontStyle: 'normal',
+            fontWeight: '400',
+            lineHeight: '24px',
+            marginLeft: '50px',
+            whiteSpace: 'pre-line', // Tự động xuống hàng khi đạt tới số lượng từ nhất định
+        }}>
+            {chitietservice?.mota}
+        </span>
+    </label>
+</div>
     </div>
     <h4 className="thongtintb">Quy tắc cấp số</h4>
     <div className="check">
@@ -252,12 +257,12 @@ const DetailService = () => {
       </table>
    </table>
    </div>
-   <Link to="/capnhatservice">
-    <div className='chitietButtun'>
+   <td className='chitietButtun' onClick={() => chitietservice && chitietservice.madv && hanndleUpdate(chitietservice.madv)}>
+    <div className=''>
       <img src={Edit} alt='add'/>
-      <p className='editct'>Cập nhật <br/> danh sách</p>
+      <p className='editct' style={{ textDecoration: "none", cursor: "pointer" }}>Cập nhật <br/> danh sách</p>
     </div>
-    </Link>
+    </td>
     <Link to="/service">
     <div className='chitietButtun2'>
       <img src={Back} alt='add'/>

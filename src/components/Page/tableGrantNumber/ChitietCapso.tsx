@@ -38,7 +38,7 @@ const Chitietcapso = () => {
     </div>
    </div>
    <div className="totaladdtb">
-   <h2 className="tieudetb">Quản lí cấp số</h2>
+   <h2 className="quanlycapsochitiet">Quản lý cấp số</h2>
    <table className="bangthongtinchitiet">
     <h4 className="thongtintb">Thông tin cấp số</h4>
     <div className="containerThemtb">

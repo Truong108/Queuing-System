@@ -9,7 +9,7 @@ const DefaultLayouts: React.FC<LayoutProps> = ({ content }) => {
   return (
     <div className="app">
       <div className="menu">
-        <MenuBar />
+      <MenuBar />
       </div>
       <Content>{content}</Content>
     </div>
