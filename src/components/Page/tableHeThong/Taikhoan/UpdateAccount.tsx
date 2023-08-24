@@ -9,8 +9,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../../store/store";
 import { updateAccount } from "../../../../redux/SettingTaikhoan/accountSlice";
 import { fetchAccount } from "../../../../redux/SettingTaikhoan/accountReducer";
+import { addNhatky } from "../../../../redux/SettingNhatky/nhatkySlice";
 
 const UpdateAccount = () => {
+  const user = localStorage.getItem("user")
+  const time = new Date()
+  if(user){
+    var account = JSON.parse(user)
+  }
     const [dataInfo, setDataInfo] = useState<Account>({
         tendn: "",
         mk: "",
@@ -21,6 +27,12 @@ const UpdateAccount = () => {
         tthd: "",
         cn: "",
       })
+      const nhatKi = ({
+        ipthuchien:"192.168.3.1",
+        tendn: account.ht,
+        tgtacdong: time.toLocaleString(),
+        thaotacth: `Cập nhật tài khoản ${dataInfo.tendn}`
+      })
     const {id} = useParams()
     const [accountUpdate, setAccountUpdate] = useState<any>()
     const dispatch = useDispatch();
@@ -28,6 +40,7 @@ const UpdateAccount = () => {
     const navigate = useNavigate()
     const handleUpdate = async () =>{
       await dispatch(updateAccount(dataInfo) as any)
+      await dispatch(addNhatky(nhatKi) as any)
       navigate("/quanlytaikhoan")
     }
     useEffect(() => {

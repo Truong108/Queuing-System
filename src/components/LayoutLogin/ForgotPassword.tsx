@@ -14,7 +14,7 @@ const ForgotPassword: React.FC = () => {
   const OnchaneHandleEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUseremail(e.target.value);
   };
-  const dataForgot = useSelector((state: RootState) => state.login.login);
+  const dataForgot = useSelector((state: RootState) => state.account.account);
   const onchangeForgot = () => {
     let validCredentials = false;
 

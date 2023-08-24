@@ -5,10 +5,9 @@ import '../../css/SettingHeThong/vaitro.css';
 import { Input, Select, Space } from "antd";
 import '../../css/SettingHeThong/taikhoan.css';
 import Quanlytaikhoan from "./tableHeThong/Taikhoan/AccountManagement";
+import { useState } from "react";
 const Account = () => {
-    const handleChange = (value: string) => {
-        console.log(`selected ${value}`);
-      };
+  const [statusActive, setStatusActive]  = useState<string>("Tất cả")
     return ( <>
     <div className="taikhoan">
     <div className="navtop">
@@ -28,7 +27,7 @@ const Account = () => {
       <Select
         defaultValue="Tất cả"
         style={{ width: 350, marginLeft: '-2px' }}
-        onChange={handleChange}
+        onChange={(e) => setStatusActive(e)}
         options={[
           { value: 'Tất cả', label: 'Tất cả' },
           { value: 'Kế toán', label: 'Kế toán' },
@@ -62,7 +61,7 @@ const Account = () => {
       </nav>
       </div>
     </div>
-    <Quanlytaikhoan/>
+    <Quanlytaikhoan statusActive={statusActive}/>
     </div>
     </> 
     );

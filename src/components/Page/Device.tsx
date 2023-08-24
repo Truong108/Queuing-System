@@ -8,8 +8,6 @@ import { useState } from "react";
 const Device = () => {
   const [statusActive, setStatusActive]  = useState<string>("Tất cả")
   const [statusCornect, setStatusCornect] = useState<string>("Tất cả")
-
-
   return ( 
   <div className="thietbi">
     <div className="navtopp">

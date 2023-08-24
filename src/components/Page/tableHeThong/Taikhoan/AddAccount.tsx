@@ -6,10 +6,16 @@ import '../../../../css/SettingHeThong/uptaikhoan.css';
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addAccount } from "../../../../redux/SettingTaikhoan/accountSlice";
+import { addNhatky } from "../../../../redux/SettingNhatky/nhatkySlice";
 
 const AddAccount = () => {
+  const user = localStorage.getItem("user")
+  const time = new Date()
+  if(user){
+    var account = JSON.parse(user)
+  }
     const dispatch = useDispatch()
-    const [dataInfo, setDataInfo]= useState({
+    const [dataAdd, setDataAdd]= useState({
         tendn: "",
         mk: "",
         ht: "",
@@ -19,9 +25,16 @@ const AddAccount = () => {
         vt: "",
         capnhat: "",
     })
+    const nhatKi = ({
+      ipthuchien:"192.168.3.1",
+      tendn: account.ht,
+      tgtacdong: time.toLocaleString(),
+      thaotacth: `Thêm tài khoản ${dataAdd.tendn}`
+    })
     const navigate = useNavigate()
     const handleAdd = async () =>{
-        await dispatch(addAccount(dataInfo) as any)
+        await dispatch(addAccount(dataAdd) as any)
+        await dispatch(addNhatky(nhatKi) as any)
         navigate("/quanlytaikhoan")
     }
     return ( <>
@@ -52,7 +65,7 @@ const AddAccount = () => {
         <Input 
             placeholder="Họ và Tên"
             className="form-tb"
-            onChange={(e) => setDataInfo((prev)=>({...prev, ht:e.target.value}))}
+            onChange={(e) => setDataAdd((prev)=>({...prev, ht:e.target.value}))}
         />
     </div>
     <div className="col-md-3">
@@ -60,7 +73,7 @@ const AddAccount = () => {
         <Input 
             placeholder="Số điện thoại"
             className="form-tb"
-            onChange={(e) => setDataInfo((prev)=>({...prev, sodt:e.target.value}))}
+            onChange={(e) => setDataAdd((prev)=>({...prev, sodt:e.target.value}))}
         />
     </div>
     <div className="col-md-3">
@@ -68,7 +81,7 @@ const AddAccount = () => {
         <Input 
             placeholder="Email"
             className="form-tb"
-            onChange={(e) => setDataInfo((prev)=>({...prev, mail:e.target.value}))}
+            onChange={(e) => setDataAdd((prev)=>({...prev, mail:e.target.value}))}
         />
     </div>
     <div className="col-md-3">
@@ -78,7 +91,7 @@ const AddAccount = () => {
             className="form-select" 
             aria-label="Default select example" 
             style={{ width: '1608%' }}
-            onChange={(e) => setDataInfo((prev)=>({...prev, vt:e.target.value}))}
+            onChange={(e) => setDataAdd((prev)=>({...prev, vt:e.target.value}))}
         >
           <option value="" disabled selected hidden>Tất cả</option>
           <option value="Kế toán">Kế toán</option>
@@ -97,7 +110,7 @@ const AddAccount = () => {
       <Input 
         placeholder="Tên đăng nhập"
         className="form-tb"
-        onChange={(e) => setDataInfo((prev)=>({...prev, tendn:e.target.value}))}
+        onChange={(e) => setDataAdd((prev)=>({...prev, tendn:e.target.value}))}
         />
     </div>
     <div className="col-md-3"
@@ -138,7 +151,7 @@ const AddAccount = () => {
         size="large"
         placeholder="Nhập lại mật khẩu"
         iconRender={(visible) => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)}
-        onChange={(e) => setDataInfo((prev)=>({...prev, mk:e.target.value}))}
+        onChange={(e) => setDataAdd((prev)=>({...prev, mk:e.target.value}))}
       />
       </div>
      </div>
@@ -149,7 +162,7 @@ const AddAccount = () => {
         className="form-select" 
         aria-label="Default select example" 
         style={{ width: '400%' }}
-        onChange={(e) => setDataInfo((prev)=>({...prev, tthd:e.target.value}))}
+        onChange={(e) => setDataAdd((prev)=>({...prev, tthd:e.target.value}))}
         >
           <option value="" disabled selected hidden>Tất cả</option>
           <option value="Tất cả">Tất cả</option>

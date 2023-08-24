@@ -6,8 +6,8 @@ import '../../css/style.css';
 import { Button, Input, Space, Spin, message } from 'antd';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchLogin } from '../../redux/Login/authReducer';
 import { RootState } from '../../store/store';
+import { fetchAccount } from '../../redux/SettingTaikhoan/accountReducer';
 
 
 const LoginForm: React.FC = () => {
@@ -27,27 +27,24 @@ const LoginForm: React.FC = () => {
   };
   const [spiner, setSpinner] = useState<boolean>(false)
   const onchangeLogin = () => {
-    let validCredentials = false;
   
-    dataLogin.forEach((item) => {
-      if (userName === item.tendn && password === item.mk) {
-        validCredentials = true;
-      }
-    });
-    if (validCredentials) {
+ const user = dataLogin.find((user)=> user.tendn === userName && user.mk === password)
+
+    if (user) {
+      localStorage.setItem("user", JSON.stringify(user))
       setSpinner(true);
       setTimeout(() => {
         navigate('/dashboard');
-      }, 3000);
+      }, 1000);
     } else {
       message.error('Sai tên đăng nhập hoặc mật khẩu!');
     }
   };
   const dispatch = useDispatch();
-  const dataLogin = useSelector((state: RootState) => state.login.login);
+  const dataLogin = useSelector((state: RootState) => state.account.account);
 
   useEffect(() => {
-    dispatch(fetchLogin() as any);
+    dispatch(fetchAccount() as any);
   }, [dispatch]);
   return (
     <section className="vh-100">

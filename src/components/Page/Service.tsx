@@ -3,10 +3,9 @@ import '../../css/dashboard.css';
 import { CaretRightOutlined, SearchOutlined } from "@ant-design/icons";
 import { DatePicker, DatePickerProps, Input, Select, Space } from "antd";
 import Danhsachdv from "./tableService/Danhsachdv";
+import { useState } from "react";
 const Service = () => {
-  const handleChange = (value: string) => {
-    console.log(`selected ${value}`);
-  };
+  const [statusActive, setStatusActive]  = useState<string>("Tất cả")
   const onChange: DatePickerProps['onChange'] = (date, dateString) => {
     console.log(date, dateString);
   };
@@ -29,7 +28,7 @@ const Service = () => {
       <Select
         defaultValue="Tất cả"
         style={{ width: 350, marginLeft: '-2px' }}
-        onChange={handleChange}
+        onChange={(e) => setStatusActive(e)}
         options={[
           { value: 'Tất cả', label: 'Tất cả' },
           { value: 'Hoạt động', label: 'Hoạt động' },
@@ -38,7 +37,7 @@ const Service = () => {
       />
        </Space>
       </div>
-      <div className="trangthaikn">
+      <div className="chontg">
         <p>Chọn thời gian</p>
         <Space direction="vertical">
           <DatePicker onChange={onChange} />
@@ -48,7 +47,7 @@ const Service = () => {
           <DatePicker onChange={onChange} />
         </Space>
       </div>
-      <div className="tukhoa">
+      <div className="tukhoaa">
         <p>Từ khóa</p>
         <nav className="navbar">
         <div className="container-fluid">
@@ -69,7 +68,7 @@ const Service = () => {
       </nav>
       </div>
     </div>
-    <Danhsachdv/>
+    <Danhsachdv statusActive={statusActive}/>
     </div>
     </> 
     );

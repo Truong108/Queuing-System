@@ -7,7 +7,10 @@ import { Account } from "../../../../Interface/Taikhoan";
 import AddAccount from '../../../../assets/add-square.png'
 import { Pagination } from "antd";
 
-const Quanlytaikhoan = () => {
+interface tableProps{
+  statusActive: string;
+}
+const Quanlytaikhoan:React.FC<tableProps> = ({statusActive}) => {
     const dispatch = useDispatch();
     useEffect(() => {
       dispatch(fetchAccount() as any);
@@ -30,6 +33,7 @@ const Quanlytaikhoan = () => {
   const handleUpdate = (id: string) =>{
     navigate(`/uptaikhoan/${id}`);
   }
+  const filter = currentPageData.filter((item) => (statusActive === "Tất cả" || item.vt === statusActive))
     return ( <>
      <div className='contaiaccount'>
       <table className='bangaccount'>
@@ -45,7 +49,7 @@ const Quanlytaikhoan = () => {
           </tr>
         </thead>
         <tbody>
-          {currentPageData.map((account: Account, index) => {
+          {filter.map((account: Account, index) => {
              let mauaccount = {};
              if (index % 2 === 1) {
                 mauaccount = { backgroundColor: "#FF750622" };

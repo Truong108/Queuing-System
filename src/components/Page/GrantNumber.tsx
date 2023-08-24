@@ -4,10 +4,11 @@ import '../../css/grantNumber/danhsach.css';
 import { CaretRightOutlined, SearchOutlined } from "@ant-design/icons";
 import { DatePicker, DatePickerProps, Input, Select, Space } from "antd";
 import Capso from "./tableGrantNumber/Danhsach";
+import { useState } from "react";
 const GrantNumber = () => {
-  const handleChange = (value: string) => {
-    console.log(`selected ${value}`);
-  };
+  const [statusService, setStatusService]  = useState<string>("Tất cả")
+  const [statusCondition, setStatusCondition]  = useState<string>("Tất cả")
+  const [statusSource, setStatusSource]  = useState<string>("Tất cả")
   const onChange: DatePickerProps['onChange'] = (date, dateString) => {
     console.log(date, dateString);
   };
@@ -30,7 +31,7 @@ const GrantNumber = () => {
       <Select
         defaultValue="Tất cả"
         style={{ width: 170, marginLeft: '-2px' }}
-        onChange={handleChange}
+        onChange={(e) => setStatusService(e)}
         options={[
           { value: 'Tất cả', label: 'Tất cả' },
           { value: 'Khám tim mạch', label: 'Khám tim mạch' },
@@ -52,7 +53,7 @@ const GrantNumber = () => {
       <Select
         defaultValue="Tất cả"
         style={{ width: 170, marginLeft: '-10px' }}
-        onChange={handleChange}
+        onChange={(e) => setStatusCondition(e)}
         options={[
           { value: 'Tất cả', label: 'Tất cả' },
           { value: 'Đang chờ', label: 'Đang chờ' },
@@ -68,16 +69,17 @@ const GrantNumber = () => {
       <Select
         defaultValue="Tất cả"
         style={{ width: 170, marginLeft: '-10px' }}
-        onChange={handleChange}
+        onChange={(e) => setStatusSource(e)}
         options={[
           { value: 'Tất cả', label: 'Tất cả' },
           { value: 'Kiosk', label: 'Kiosk' },
-          { value: 'Hệ thống', label: 'Hệ thống' }
+          { value: 'Hệ thống', label: 'Hệ thống' },
+          { value: 'Đang chờ', label: 'Đang chờ' }
         ]}
       />
        </Space>
       </div>
-      <div className="chontg">
+      <div className="chontgcapso">
         <p>Chọn thời gian</p>
         <Space direction="vertical">
           <DatePicker onChange={onChange} />
@@ -108,7 +110,7 @@ const GrantNumber = () => {
       </nav>
       </div>
     </div>
-    <Capso/>
+    <Capso statusService={statusService} statusCondition={statusCondition} statusSource={statusSource}/>
     </div>
     </> 
     );

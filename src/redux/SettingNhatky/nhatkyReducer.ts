@@ -2,6 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import api from "../../firebase/firebaseAPI";
 import { collection, getDocs } from "firebase/firestore";
 import { Nhatky } from "../../Interface/Nhatky";
+import { addNhatky } from "./nhatkySlice";
 
 export const fetchNhatky = createAsyncThunk("nhatky/fetchData", async () => {
     const querySnapshot = await getDocs(collection(api, 'nhatky'));
@@ -14,6 +15,9 @@ export const fetchNhatky = createAsyncThunk("nhatky/fetchData", async () => {
     extraReducers(builder) {
       builder.addCase(fetchNhatky.fulfilled, (state, action) => {
         state.nhatky = action.payload;
+      })
+      .addCase(addNhatky.fulfilled, (state, action)=>{
+        state.nhatky = [...state.nhatky, action.payload];
       });
     },
   });

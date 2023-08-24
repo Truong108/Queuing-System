@@ -272,8 +272,8 @@ const DetailService = () => {
     <div 
       style={{ 
         position: 'fixed', 
-        bottom: '40px', 
-        right: '85px', 
+        bottom: '46px', 
+        right: '100px', 
         zIndex: 1,
         display: 'flex',
         flexDirection: 'column',

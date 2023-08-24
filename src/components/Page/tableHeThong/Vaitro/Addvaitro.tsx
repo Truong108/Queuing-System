@@ -7,17 +7,30 @@ import '../../../../css/SettingHeThong/vaitro.css';
 import { useDispatch } from "react-redux";
 import { useState } from "react";
 import { addVaitro } from "../../../../redux/SettingVaitro/vaitroSlice";
+import { addNhatky } from "../../../../redux/SettingNhatky/nhatkySlice";
 const Themvaitro = () => {
+  const user = localStorage.getItem("user")
+  const time = new Date()
+  if(user){
+    var account = JSON.parse(user)
+  }
   const dispatch = useDispatch()
   const [dataInfo, setDataInfo]= useState({
       tenvt: "",
-      sond: "",
+      sond: "5",
       mota: "",
       cn: "",
+  })
+  const nhatKi = ({
+    ipthuchien:"192.168.3.1",
+    tendn: account.ht,
+    tgtacdong: time.toLocaleString(),
+    thaotacth: `Thêm vai trò ${dataInfo.tenvt}`
   })
   const navigate = useNavigate()
   const handleAdd = async () =>{
       await dispatch(addVaitro(dataInfo) as any)
+      await dispatch(addNhatky(nhatKi) as any)
       navigate("/systemInstallation")
   }
     return ( <>

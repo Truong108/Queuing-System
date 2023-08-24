@@ -1,7 +1,7 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { AppThunk } from '../../store/store'; // Đảm bảo đường dẫn đúng
 import api from '../../firebase/firebaseAPI'; // Đảm bảo đường dẫn đúng
-import { collection, getDocs } from "firebase/firestore";
+import { addDoc, collection, getDocs } from "firebase/firestore";
 import { Nhatky } from '../../Interface/Nhatky';
 
 interface NhatkyState {
@@ -22,6 +22,11 @@ const nhatkySlice = createSlice({
   },
 });
 
+export const addNhatky = createAsyncThunk("nhatky/addNhatky", 
+async (nhatky : any) => {
+    const docRef = await addDoc(collection(api, "nhatky"), nhatky)
+    return {...nhatky, id:docRef.id}
+})
 export const { fetchNhatkySuccess } = nhatkySlice.actions;
 export default nhatkySlice.reducer;
 

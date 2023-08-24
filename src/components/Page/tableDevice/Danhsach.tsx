@@ -21,7 +21,7 @@ const Danhsachthietbi:React.FC<tableProps> = ({statusActive, statusCornect}) => 
 
     useEffect(() => {
       setShowFullContent(devices.map(() => false));
-    }, [devices, dispatch]);
+    }, [devices]);
 
     const toggleShowContent = (index: number) => {
       const newShowFullContent = [...showFullContent];
@@ -49,7 +49,8 @@ const Danhsachthietbi:React.FC<tableProps> = ({statusActive, statusCornect}) => 
       currentPageData.push(devices[i]);
     }
 
-    const filter = currentPageData.filter((item) => (statusActive === "Tất cả" || item.trangthai === statusActive) &&(statusCornect === "Tất cả" || item.trangthaikn === statusCornect))
+    const filter = currentPageData.filter((item) => (statusActive === "Tất cả" || item.trangthai === statusActive) 
+    &&(statusCornect === "Tất cả" || item.trangthaikn === statusCornect))
                                                       
     const navigate =  useNavigate()
     const handleDetail = (id:string) =>{
@@ -101,7 +102,6 @@ const Danhsachthietbi:React.FC<tableProps> = ({statusActive, statusCornect}) => 
             marginRight: "10px",
           }
          }
-          
           return (
             <tr key={index}>
               <td className='tdmatb' style={mautb}>{device.matb}</td>

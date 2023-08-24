@@ -27,10 +27,18 @@ async (account : any) => {
     await updateDoc(docRef, account)
     return account
 })
-export const addAccount = createAsyncThunk("account/addAccount", 
-async (account : any) => {
-    const docRef = await addDoc(collection(api, "taikhoan"), account)
-    return {...account, id:docRef.id}
+export const addAccount = createAsyncThunk("accountadd/addAccount", 
+async (accountadd : any) => {
+    const docRef = await addDoc(collection(api, "taikhoan"), accountadd)
+    await updateDoc(docRef, accountadd)
+    return {...accountadd, id:docRef.id}
+})
+
+export const forgotpasswordLogin = createAsyncThunk("dangnhap/forgotpasswordLogin", 
+async (login : any) => {
+    const docRef = doc(collection(api,"dangnhap"), login.id)
+    await updateDoc(docRef, login)
+    return login
 })
 
 export const { fetchAccountSuccess } = accountSlice.actions;

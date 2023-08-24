@@ -10,16 +10,28 @@ import { RootState } from "../../../../store/store";
 import { useDispatch, useSelector } from "react-redux";
 import { updateVaitro } from "../../../../redux/SettingVaitro/vaitroSlice";
 import { fetchVaitro } from "../../../../redux/SettingVaitro/vaitroReducer";
+import { addNhatky } from "../../../../redux/SettingNhatky/nhatkySlice";
 
 interface CheckboxValues {
   [key: string]: boolean;
 }
 const Capnhatvaitro = () => {
+  const user = localStorage.getItem("user")
+  const time = new Date()
+  if(user){
+    var account = JSON.parse(user)
+  }
   const [dataInfo, setDataInfo] = useState<Caidatvaitro>({
     tenvt: "",
     sond: "",
     mota: "",
     cn: "",
+  })
+  const nhatKi = ({
+    ipthuchien:"192.168.3.1",
+    tendn: account.ht,
+    tgtacdong: time.toLocaleString(),
+    thaotacth: `Cập nhật vai trò ${dataInfo.tenvt}`
   })
   const {id} = useParams()
   const [vaitroUpdate, setVaitroUpdate] = useState<any>()
@@ -28,6 +40,7 @@ const Capnhatvaitro = () => {
     const navigate = useNavigate()
     const handleUpdate = async () =>{
       await dispatch(updateVaitro(dataInfo) as any)
+      await dispatch(addNhatky(nhatKi) as any)
       navigate("/systemInstallation")
     }
     useEffect(() => {

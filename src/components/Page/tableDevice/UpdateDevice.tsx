@@ -9,9 +9,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../store/store";
 import { fetchThietBi } from "../../../redux/Device/deviceReducer";
 import { updateDevice } from "../../../redux/Device/deviceSlice";
+import { addNhatky } from "../../../redux/SettingNhatky/nhatkySlice";
 
 
 const UpdateDevice = () => {
+  const user = localStorage.getItem("user")
+  const time = new Date()
+  if(user){
+    var account = JSON.parse(user)
+  }
   const [dataInfo, setDataInfo] = useState<ThietBi>({
     matb: "",
     tentb: "",
@@ -22,6 +28,12 @@ const UpdateDevice = () => {
     chitiet: "",
     capnhat: "",
   })
+  const nhatKi = ({
+    ipthuchien:"192.168.3.1",
+    tendn: account.ht,
+    tgtacdong: time.toLocaleString(),
+    thaotacth: `Cập nhật thiết bị ${dataInfo.matb}`
+  })
   const {id} = useParams()
   const [deviceUpdate, setDeviceUpdate] = useState<any>()
   const dispatch = useDispatch();
@@ -29,6 +41,7 @@ const UpdateDevice = () => {
     const navigate = useNavigate()
     const handleUpdate = async () =>{
       await dispatch(updateDevice(dataInfo) as any)
+      await dispatch(addNhatky(nhatKi) as any)
       navigate("/device")
     }
     useEffect(() => {

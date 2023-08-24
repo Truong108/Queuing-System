@@ -4,6 +4,10 @@ import '../../css/dashboard.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 const Dashboard = () => {
 
+  const user = localStorage.getItem("user")
+  if(user){
+    var account = JSON.parse(user)
+  }
     return ( 
     <>
     <div className="infocanhan">
@@ -31,6 +35,7 @@ const Dashboard = () => {
         <div className="col-md-4">
             <label htmlFor="inputEmail1" className="form-info">Tên người dùng</label>
             <input 
+            value={account.ht}
             type="email" 
             className="form-control" 
             style={{
@@ -47,7 +52,8 @@ const Dashboard = () => {
         <div className="col-md-4">
             <label htmlFor="inputPassword1" className="form-info">Tên đăng nhập</label>
             <input 
-            type="password" 
+            value={account.tendn}
+            type="email" 
             className="form-control" 
             style={{
               marginLeft: '89px',
@@ -55,14 +61,14 @@ const Dashboard = () => {
               height: '45px',
               marginTop: '10px'
           }}
-            id="inputPassword1"
-
+              id="inputEmail1"
               readOnly
             />
         </div>
         <div className="col-md-4">
             <label htmlFor="inputEmail2" className="form-info">Số điện thoại</label>
             <input 
+            value={account.sodt}
             type="email" 
             className="form-control" 
             style={{
@@ -82,7 +88,8 @@ const Dashboard = () => {
         <div className="col-md-4">
             <label htmlFor="inputPassword2" className="form-info">Mật khẩu</label>
             <input 
-            type="password" 
+            value={account.mk}
+            type="email" 
             className="form-control" 
             style={{
               marginLeft: '89px',
@@ -90,14 +97,14 @@ const Dashboard = () => {
               height: '45px',
               marginTop: '10px'
           }}
-            id="inputPassword2"
-           
+            id="inputEmail2"
             readOnly
             />
         </div>
         <div className="col-md-4">
             <label htmlFor="inputEmail3" className="form-info">Email</label>
             <input 
+            value={account.mail}
             type="email" 
             className="form-control" 
             style={{
@@ -114,6 +121,7 @@ const Dashboard = () => {
         <div className="col-md-4">
             <label htmlFor="inputPassword3" className="form-info">Vai trò</label>
             <input 
+            value={account.vt}
             type="text" 
             className="form-control" 
             style={{

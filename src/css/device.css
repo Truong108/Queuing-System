@@ -36,8 +36,27 @@
 .trangthaikn{
     margin-left: 20px;
 }
+.chontg{
+  margin-left: -300px !important;
+}
+.chontgcapso{
+  margin-top: 10px;
+  white-space: nowrap;
+}
+
 .tukhoa{
-    margin-left: 220px;
+    margin-left: 325px;
+}
+.tukhoaa{
+  margin-top: 17px;
+  margin-right: 26px;
+}
+.tukhoaa p, .chontgcapso p{
+  font-family: 'Nunito', sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px;
 }
 .input-container {
     display: inline-block;

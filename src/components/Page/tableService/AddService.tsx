@@ -8,20 +8,33 @@ import '../../../css/Service/addService.css';
 import { useDispatch } from "react-redux";
 import { useState } from "react";
 import { addService } from "../../../redux/Service/serviceSlice";
+import { addNhatky } from "../../../redux/SettingNhatky/nhatkySlice";
 
 const AddService = () => {
+  const user = localStorage.getItem("user")
+  const time = new Date()
+  if(user){
+    var account = JSON.parse(user)
+  }
   const dispatch = useDispatch()
   const [dataInfo, setDataInfo]= useState({
       tendv: "",
       madv: "",
       mota: "",
-      tthd: "",
+      tthd: "Hoạt động",
       ct: "",
       cn: "",
+  })
+  const nhatKi = ({
+    ipthuchien:"192.168.3.1",
+    tendn: account.ht,
+    tgtacdong: time.toLocaleString(),
+    thaotacth: `Thêm dịch vụ ${dataInfo.madv}`
   })
   const navigate = useNavigate()
   const handleAdd = async () =>{
       await dispatch(addService(dataInfo) as any)
+      await dispatch(addNhatky(nhatKi) as any)
       navigate("/service")
   }
     return ( <>

@@ -8,8 +8,10 @@ import { Link, useNavigate } from 'react-router-dom';
 import { fetchDichvu } from '../../../redux/Service/serviceReducer';
 import { Dichvu } from '../../../Interface/service/Dichvu';
 
-
-const Danhsachdichvu = () => {
+interface tableProps{
+  statusActive: string;
+}
+const Danhsachdichvu:React.FC<tableProps> = ({statusActive}) => {
     const dispatch = useDispatch();
     useEffect(() => {
       dispatch(fetchDichvu() as any);
@@ -34,7 +36,8 @@ const Danhsachdichvu = () => {
   }
   const hanndleUpdate = (id:string) =>{
     navigate(`/capnhatservice/${id}`)
-}
+  }
+  const filter = currentPageData.filter((item) => (statusActive === "Tất cả" || item.tthd === statusActive))
     return ( <>
      <div className='contect'>
       <table className='bangdichvu'>
@@ -49,7 +52,7 @@ const Danhsachdichvu = () => {
           </tr>
         </thead>
         <tbody>
-          {currentPageData.map((service: Dichvu, index) => {
+          {filter.map((service: Dichvu, index) => {
              let mautb = {};
              if (index % 2 === 1) {
               mautb = { backgroundColor: "#FF750622" };

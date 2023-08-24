@@ -3,6 +3,10 @@ import avatar from "../../assets/avatar.png";
 import Notification from "../../assets/notification.png";
 import '../../css/info.css';
 const Personal = () => {
+   const user = localStorage.getItem("user")
+   if(user){
+      var account = JSON.parse(user)
+   }
  return ( 
    <div className="cssthongtin">
     <img src={Notification} className="anhthongtin" alt="" />
@@ -21,7 +25,7 @@ const Personal = () => {
          lineHeight: '24px'
       }}
       >
-      Lê Thị Quỳnh Vân
+      {account.ht}
       </span>
      </div>
    </div>

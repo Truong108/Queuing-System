@@ -7,7 +7,12 @@ import { fetchCapso } from "../../../redux/GrantNumber/grantNumberReducer";
 import { RootState } from "../../../store/store";
 import { CapSo } from "../../../Interface/Capso";
 
-const Capso = () => {
+interface tableProps{
+  statusService: string;
+  statusCondition: string;
+  statusSource: string;
+}
+const Capso:React.FC<tableProps> = ({statusService, statusCondition, statusSource}) => {
     const dispatch = useDispatch();
     useEffect(() => {
       dispatch(fetchCapso() as any);
@@ -25,6 +30,12 @@ const Capso = () => {
   const handleDetail = (id:string) =>{
       navigate(`/chitietcapso/${id}`)
   }
+  const filter = currentPageData.filter((item) => (statusService === "Tất cả" || item.tendv === statusService) 
+  &&
+  (statusCondition === "Tất cả" || item.tt === statusCondition)
+  &&
+  (statusSource === "Tất cả" || item.ncap === statusSource)
+  )
     return ( <>
     <div className='contect'>
       <table className='bangdichvu'>
@@ -41,7 +52,7 @@ const Capso = () => {
           </tr>
         </thead>
         <tbody>
-          {currentPageData.map((capso: CapSo, index) => {
+          {filter.map((capso: CapSo, index) => {
              let maucapso = {};
              if (index % 2 === 1) {
               maucapso = { backgroundColor: "#FF750622" };

@@ -11,8 +11,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../store/store";
 import { fetchDichvu } from "../../../redux/Service/serviceReducer";
 import { updateService } from "../../../redux/Service/serviceSlice";
+import { addNhatky } from "../../../redux/SettingNhatky/nhatkySlice";
 
 const UpdateService = () => {
+  const user = localStorage.getItem("user")
+  const time = new Date()
+  if(user){
+    var account = JSON.parse(user)
+  }
   const [dataService, setDataService] = useState<Dichvu>({
     madv: "",
     tendv: "",
@@ -20,6 +26,12 @@ const UpdateService = () => {
     tthd: "",
     ct: "",
     cn: "",
+  })
+  const nhatKi = ({
+    ipthuchien:"192.168.3.1",
+    tendn: account.ht,
+    tgtacdong: time.toLocaleString(),
+    thaotacth: `Cập nhật dịch vụ ${dataService.madv}`
   })
   const {id} = useParams()
   const [serviceUpdate, setServiceUpdate] = useState<any>()
@@ -35,6 +47,7 @@ const UpdateService = () => {
     const navigate = useNavigate()
     const handleUpdate = async () =>{
       await dispatch(updateService(dataService) as any)
+      await dispatch(addNhatky(nhatKi) as any)
       navigate("/service")
     }
     return ( <>

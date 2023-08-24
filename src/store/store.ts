@@ -7,11 +7,9 @@ import baocaoReducer from "../redux/Report/reportReducer";
 import vaitroReducer from "../redux/SettingVaitro/vaitroReducer";
 import accountReducer from "../redux/SettingTaikhoan/accountReducer";
 import nhatkyReducer from "../redux/SettingNhatky/nhatkyReducer";
-import  loginSlice  from "../redux/Login/authReducer";
 
 const store = configureStore({
   reducer: {
-    login: loginSlice,
     device: deviceReducer,
     service: serviceReducer,
     chitietservice: chitietserviceReducer,

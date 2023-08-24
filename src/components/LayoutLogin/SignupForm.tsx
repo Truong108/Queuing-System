@@ -4,25 +4,28 @@ import Matkhau from '../../assets/datlaimk.png';
 import '../../css/signup.css';
 import { Button, Input, Space } from 'antd';
 import { EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
-import { Login } from '../../Interface/Login';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../store/store';
-import { fetchLogin, forgotpasswordLogin } from '../../redux/Login/authSlice';
+import { fetchAccount } from '../../redux/SettingTaikhoan/accountReducer';
+import { Account } from '../../Interface/Taikhoan';
+import { forgotpasswordLogin } from '../../redux/SettingTaikhoan/accountSlice';
 
 const SignupForm = () => {
-  const [dataInfo, setDataInfo] = useState<Login>({
-    tennd: "",
+  const [dataInfo, setDataInfo] = useState<Account>({
+    ht: "",
     tendn: "",
     mk: "",
     mail: "",
     sodt: "",
-    vaitro: "",
+    tthd: "",
+    vt: "",
+    cn: "",
   })
   const {id} = useParams()
-  const [forLogin, setForgotLogin] = useState<any>()
+  const [forLogin, setForgotLogin] = useState<any>();
   const dispatch = useDispatch();
-  const forgotLogin = useSelector((state: RootState) => state.login.login);
+  const forgotLogin = useSelector((state: RootState) => state.account.account);
   const navigate = useNavigate()
   const handleForgot = async () =>{
     await dispatch(forgotpasswordLogin(dataInfo) as any)
@@ -33,8 +36,8 @@ const SignupForm = () => {
       const data = forgotLogin.find((item) => item.mk == id)
       setDataInfo(data!)
       setForgotLogin(data)
-    dispatch(fetchLogin() as any);
-  }, [dispatch, id]);
+    dispatch(fetchAccount() as any);
+  }, [dispatch, forgotLogin, id]);
     return ( <>
      <section className="vh-100">
       <link rel="icon" href="img/mdb-favicon.ico" type="image/x-icon" />

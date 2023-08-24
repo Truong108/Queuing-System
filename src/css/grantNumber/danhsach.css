@@ -1,7 +1,7 @@
 .capso{
     background-color: #F6F6F6;
     width: 1472px;
-    height: 872px;
+    height: 882px;
     margin-left: 232px;
     margin-bottom: -10%;
     margin-top: 23px;
@@ -38,16 +38,16 @@
     font-weight: 600;
     line-height: 24px;
 }
+.tendv2{
+    margin-right: 77px;
+}
 .tendv2 p{
     margin-left: -10px;
-}
-.chontg{
-    white-space: nowrap;
 }
 .timkiemcapso{
     margin-top: 10px;
     margin-left: 250px;
-    margin-right: 20px;
+    margin-right: 25px;
     font-family: 'Nunito', sans-serif;
     font-size: 16px;
     font-style: normal;
