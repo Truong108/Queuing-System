@@ -2,14 +2,22 @@ import { Link } from "react-router-dom";
 import avatar from "../../assets/avatar.png";
 import Notification from "../../assets/notification.png";
 import '../../css/info.css';
+import { useState } from "react";
+import { Modal } from "antd";
 const Personal = () => {
    const user = localStorage.getItem("user")
    if(user){
       var account = JSON.parse(user)
    }
+   const [modal1Open, setModal1Open] = useState(false);
  return ( 
    <div className="cssthongtin">
-    <img src={Notification} className="anhthongtin" alt="" />
+    <img 
+    src={Notification} 
+    className="anhthongtin" 
+    alt="" 
+    onClick={() => setModal1Open(true)}
+    />
     <Link to="/personalinformation" className="link-style">
     <div className="thongtin">
     <div className="avatar">
@@ -30,6 +38,17 @@ const Personal = () => {
      </div>
    </div>
    </Link>
+   <Modal
+        title="20px to Top"
+        style={{ top: 20 }}
+        open={modal1Open}
+        onOk={() => setModal1Open(false)}
+        onCancel={() => setModal1Open(false)}
+      >
+        <p>some contents...</p>
+        <p>some contents...</p>
+        <p>some contents...</p>
+      </Modal>
    </div>
    );
 }

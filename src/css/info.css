@@ -1,8 +1,11 @@
+
 .cssthongtin {
     display: flex;
     align-items: center;
     font-family: "Nunito Sans", sans-serif;
     margin-right: 50px;
+    position: relative;
+    z-index: 999;
   }
   .textthongtin{
     margin-bottom: 35px;

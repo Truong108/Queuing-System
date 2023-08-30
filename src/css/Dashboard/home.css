@@ -7,11 +7,11 @@
 .headerdashb{
     display: flex;
     justify-content: space-between;
-    width: 1470px;
+    width: 1475px;
     height: 127px;
     position: absolute;
     top: -1px;
-    left: 248px; /* Dịch chuyển .navtop qua phải */
+    left: 230px; /* Dịch chuyển .navtop qua phải */
     z-index: 10000; /* Đảm bảo nằm trên cùng */
     background-color: #F6F6F6;
 }
@@ -40,12 +40,14 @@
  .totaltabledashboard {
     display: flex;
     height: 100%;
+    margin-right: 19px;
   }
   .bang2 {
-    width: 400px;
+    width: 430px;
     background-color: #fff;
-    padding: 20px 15px;
+    padding: 20px 15px 20px;
     margin-top: 25px;
+    margin-right: -30px;
   }
 
   .tabledashboard {
@@ -62,6 +64,7 @@
   }
   .tongquan{
     color: #ff9138;
+    margin-top: 20px;
   }
   
   .tab1, .tab2, .tab3, .tab4 {

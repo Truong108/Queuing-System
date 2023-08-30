@@ -22,17 +22,17 @@ const Home = () => {
       paddingTop: '15px',
       borderRadius: token.borderRadiusLG,
     };
-  
-    return ( <>
+    return (
+    <>
      <div className="totaltabledashboard">
         <div className="tabledashboard">
           <h2 className='bieudo'>Biểu đồ cấp số</h2>
             <div className="contaidashboard">
             <div className='dashboard1'>
                <div className="tab1">
-                <img src={Group1} alt="" />
+                <img src={Group1} alt=""/>
                 <label htmlFor="">
-                Số thứ tự <br />
+                Số thứ tự <br/>
                 đã cấp
                 </label>
             </div>
@@ -143,7 +143,7 @@ const Home = () => {
             <div className="bangthongke">
               <div>
                 <span className="textthongke">Bảng thống kê theo ngày</span>
-                <br />
+                <br/>
                 <p className='nam'>Năm 2023</p>
               </div>
               <div>
@@ -296,7 +296,8 @@ const Home = () => {
           </div>
         </div>
       </div>
-    </> );
+    </> 
+    );
 }
  
 export default Home;

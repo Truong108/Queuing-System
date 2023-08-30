@@ -1,6 +1,6 @@
 export interface BaoCao{
     id: string;
-    stt: number;
+    stt: string;
     tendv: string;
     tgcap: string;
     tt: string;
