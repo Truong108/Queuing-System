@@ -15,34 +15,30 @@ const LoginForm: React.FC = () => {
   const navigate = useNavigate(); 
   const [userName, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
-  
-
   const OnchaneHandleUserName = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUsername(e.target.value);
-    setLoginError(false); // Reset lỗi khi thay đổi tên đăng nhập
+    setLoginError(false); 
   };
   const OnchaneHandlePassword = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPassword(e.target.value);
-    setLoginError(false); // Reset lỗi khi thay đổi mật khẩu
+    setLoginError(false); 
   };
   const [spiner, setSpinner] = useState<boolean>(false)
   const onchangeLogin = () => {
-  
- const user = dataLogin.find((user)=> user.tendn === userName && user.mk === password)
-
+  const user = dataLogin.find((user)=> user.tendn === userName && user.mk === password)
     if (user) {
       localStorage.setItem("user", JSON.stringify(user))
+      message.success('Đăng nhập thành công.')
       setSpinner(true);
       setTimeout(() => {
         navigate('/dashboard');
-      }, 1000);
+      }, 2000);
     } else {
       message.error('Sai tên đăng nhập hoặc mật khẩu!');
     }
   };
   const dispatch = useDispatch();
   const dataLogin = useSelector((state: RootState) => state.account.account);
-
   useEffect(() => {
     dispatch(fetchAccount() as any);
   }, [dispatch]);

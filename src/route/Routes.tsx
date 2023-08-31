@@ -26,7 +26,7 @@ import UpdateService from "../components/Page/tableService/UpdateService";
 export const RouteLogin = [
     {path: '/', element: <LoginForm/>},
     {path: '/forgotpassword', element: <ForgotPassword/>},
-    {path: '/signupForm', element: <SignupForm/>},
+    {path: '/signupForm/:id', element: <SignupForm/>},
 ];
 export const RouteHome = [
     {path: '/dashboard', element: <Dashboard/>},

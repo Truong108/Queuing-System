@@ -34,12 +34,6 @@ async (accountadd : any) => {
     return {...accountadd, id:docRef.id}
 })
 
-export const forgotpasswordLogin = createAsyncThunk("dangnhap/forgotpasswordLogin", 
-async (login : any) => {
-    const docRef = doc(collection(api,"dangnhap"), login.id)
-    await updateDoc(docRef, login)
-    return login
-})
 
 export const { fetchAccountSuccess } = accountSlice.actions;
 export default accountSlice.reducer;

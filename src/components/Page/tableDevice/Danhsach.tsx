@@ -10,8 +10,9 @@ import { Link, useNavigate } from 'react-router-dom';
 interface tableProps{
   statusActive: string;
   statusCornect: string;
+  text: string;
 }
-const Danhsachthietbi:React.FC<tableProps> = ({statusActive, statusCornect}) => {
+const Danhsachthietbi:React.FC<tableProps> = ({statusActive, statusCornect, text}) => {
     const dispatch = useDispatch();
     useEffect(() => {
       dispatch(fetchThietBi() as any);
@@ -48,10 +49,9 @@ const Danhsachthietbi:React.FC<tableProps> = ({statusActive, statusCornect}) => 
     for (let i = startIndex; i < Math.min(endIndex, devices.length); i++) {
       currentPageData.push(devices[i]);
     }
-
-    const filter = currentPageData.filter((item) => (statusActive === "Tất cả" || item.trangthai === statusActive) 
-    &&(statusCornect === "Tất cả" || item.trangthaikn === statusCornect))
-                                                      
+    const filter = currentPageData.filter((items) => (statusActive === "Tất cả" || items.trangthai === statusActive) 
+    &&(statusCornect === "Tất cả" || items.trangthaikn === statusCornect) && (items.matb.includes(text)))
+                                   
     const navigate =  useNavigate()
     const handleDetail = (id:string) =>{
         navigate(`/chitietdevice/${id}`)

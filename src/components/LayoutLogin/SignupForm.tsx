@@ -2,40 +2,43 @@ import { useNavigate, useParams } from 'react-router-dom';
 import loginImg from '../../assets/Group.png';
 import Matkhau from '../../assets/datlaimk.png';
 import '../../css/signup.css';
-import { Button, Input, Space } from 'antd';
+import { Button, Input, Space, Spin, message } from 'antd';
 import { EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../store/store';
 import { fetchAccount } from '../../redux/SettingTaikhoan/accountReducer';
 import { Account } from '../../Interface/Taikhoan';
-import { forgotpasswordLogin } from '../../redux/SettingTaikhoan/accountSlice';
+import { updateAccount } from '../../redux/SettingTaikhoan/accountSlice';
 
 const SignupForm = () => {
   const [dataInfo, setDataInfo] = useState<Account>({
-    ht: "",
-    tendn: "",
     mk: "",
-    mail: "",
-    sodt: "",
-    tthd: "",
-    vt: "",
-    cn: "",
   })
+  const [matkhau, setMatkhau] = useState<string>("");
+  const [nhapLaiMatKhau, setNhapLaiMatKhau] = useState("");
   const {id} = useParams()
-  const [forLogin, setForgotLogin] = useState<any>();
   const dispatch = useDispatch();
   const forgotLogin = useSelector((state: RootState) => state.account.account);
+  const [spiner, setSpinner] = useState<boolean>(false);
   const navigate = useNavigate()
-  const handleForgot = async () =>{
-    await dispatch(forgotpasswordLogin(dataInfo) as any)
-    navigate("/")
-  }
+  const handleForgot = async () => {
+    if (matkhau !== nhapLaiMatKhau) {
+      message.error("Mật khẩu không khớp vui lòng nhập lại!");
+      return;
+    }
+    const updatedData = { ...dataInfo, mk: matkhau };
+    await dispatch(updateAccount(updatedData) as any);
+    message.success(`Đổi mật khẩu thành công tài khoản ${dataInfo.mail}`);
+    setSpinner(true);
+    setTimeout(() => {
+      navigate('/');
+    }, 2000);
+  };
   useEffect(() => {
-      // eslint-disable-next-line eqeqeq
-      const data = forgotLogin.find((item) => item.mk == id)
-      setDataInfo(data!)
-      setForgotLogin(data)
+    // eslint-disable-next-line eqeqeq
+    const data = forgotLogin.find((item) => item.mail === id)
+    setDataInfo(data!)
     dispatch(fetchAccount() as any);
   }, [dispatch, forgotLogin, id]);
     return ( <>
@@ -48,6 +51,7 @@ const SignupForm = () => {
             <div className="px-5 ms-xl-4" style={{ textAlign: 'center', marginTop: '150px' }}>
             <img src={loginImg} alt="login"/>
             </div>
+            <Spin tip="Đang đổi mật khẩu..." spinning={spiner}>
             <div className='formdangky'>
             <h2 className='signupform'>
               Đặt lại mật khẩu mới
@@ -68,6 +72,7 @@ const SignupForm = () => {
                     size="large"
                     placeholder="Mật khẩu"
                     iconRender={(visible) => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)}
+                    onChange={(e)=> setMatkhau(e.target.value)}
                   />
                   </div>
                 </div>
@@ -85,6 +90,7 @@ const SignupForm = () => {
                     size="large"
                     placeholder="Nhập lại mật khẩu"
                     iconRender={(visible) => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)}
+                    onChange={(e) => setNhapLaiMatKhau(e.target.value)}
                   />
                   </div>
                 </div>
@@ -103,6 +109,7 @@ const SignupForm = () => {
             </div>
               </form>
             </div>
+            </Spin>
           </div>
           <div className="col-sm-6 px-0 d-none d-sm-block signfrom">
           <div className="header-container"

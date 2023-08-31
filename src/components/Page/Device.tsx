@@ -8,6 +8,9 @@ import { useState } from "react";
 const Device = () => {
   const [statusActive, setStatusActive]  = useState<string>("Tất cả")
   const [statusCornect, setStatusCornect] = useState<string>("Tất cả")
+  const [text, setText] = useState<string>("")
+  console.log(text);
+ 
   return ( 
   <div className="thietbi">
     <div className="navtopp">
@@ -59,20 +62,21 @@ const Device = () => {
           <div className="input-container">
           <Input
             className="form-control"
-            type="search"
             placeholder="Nhập từ khóa"
             aria-label="Search"
             suffix={<SearchOutlined 
             style={{color: '#FF7506'}}
             />}
+            onChange={(e)=> setText(e.target.value)}
           />
+
         </div>
           </form>
         </div>
       </nav>
       </div>
     </div>
-    <Danhsach statusActive={statusActive} statusCornect={statusCornect}/>
+    <Danhsach text={text} statusActive={statusActive} statusCornect={statusCornect}/>
   </div> 
   );
 }

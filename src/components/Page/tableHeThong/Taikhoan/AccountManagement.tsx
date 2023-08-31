@@ -81,7 +81,7 @@ const Quanlytaikhoan:React.FC<tableProps> = ({statusActive}) => {
               style={mauaccount}>{account.vt}</td>
               <td className='actthd'
               style={mauaccount}><span style={tthoatdong}><i className="bi bi-circle-fill"></i></span>{account.tthd}</td>
-              <td className='cnthietbi' style={mauaccount} onClick={() => handleUpdate(account.tendn)}>
+              <td className='cnthietbi' style={mauaccount} onClick={() => handleUpdate(account.tendn!)}>
                 <span style={{ textDecoration: "underline", cursor: "pointer" }}>Cập nhật</span>
               </td>
             </tr>

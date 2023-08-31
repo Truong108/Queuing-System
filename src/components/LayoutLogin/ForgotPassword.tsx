@@ -1,37 +1,39 @@
 import loginImg from '../../assets/Group.png';
 import Matkhau from '../../assets/datlaimk.png';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../../css/style.css'
 import { Button, Space, Spin, message } from 'antd';
 import { Link, useNavigate } from 'react-router-dom';
 import { RootState } from '../../store/store';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchAccount } from '../../redux/SettingTaikhoan/accountReducer';
 
 const ForgotPassword: React.FC = () => {
   const navigate = useNavigate(); 
+  const dispatch = useDispatch();
   const [userEmail, setUseremail] = useState<string>("");
   const [spiner, setSpinner] = useState<boolean>(false)
   const OnchaneHandleEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUseremail(e.target.value);
   };
+  
   const dataForgot = useSelector((state: RootState) => state.account.account);
+  const email = dataForgot.map((item)=> item.mail)
+  console.log(email);
   const onchangeForgot = () => {
-    let validCredentials = false;
-
-    dataForgot.forEach((item) => {
-      if (userEmail === item.mail) {
-        validCredentials = true;
-      }
-    });
-    if (validCredentials) {
+    if(email.includes(userEmail)){
+      message.success('Bạn đã nhập đúng email.')
       setSpinner(true);
       setTimeout(() => {
-        navigate('/signupForm');
-      }, 3000);  
-    } else {
-      message.error('Email không đúng vui lòng nhập lại!');
+      navigate(`/signupForm/${encodeURIComponent(userEmail)}`);
+      }, 2000); 
+    }else{
+      message.error("Nhập sai email vui lòng nhập lại!")
     }
   };
+  useEffect(()=>{
+    dispatch(fetchAccount() as any)
+  },[dispatch])
   return (
     <section className="vh-100">
       <link rel="icon" href="img/mdb-favicon.ico" type="image/x-icon" />
