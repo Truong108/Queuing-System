@@ -11,8 +11,9 @@ interface tableProps{
   statusService: string;
   statusCondition: string;
   statusSource: string;
+  text: string;
 }
-const Capso:React.FC<tableProps> = ({statusService, statusCondition, statusSource}) => {
+const Capso:React.FC<tableProps> = ({statusService, statusCondition, statusSource, text}) => {
     const dispatch = useDispatch();
     useEffect(() => {
       dispatch(fetchCapso() as any);
@@ -35,6 +36,7 @@ const Capso:React.FC<tableProps> = ({statusService, statusCondition, statusSourc
   (statusCondition === "Tất cả" || item.tt === statusCondition)
   &&
   (statusSource === "Tất cả" || item.ncap === statusSource)
+  && (item.tenkh.includes(text))
   )
     return ( <>
     <div className='contect'>

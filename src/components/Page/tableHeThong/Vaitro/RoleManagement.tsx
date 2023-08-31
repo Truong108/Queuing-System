@@ -7,8 +7,10 @@ import { Link, useNavigate } from "react-router-dom";
 import Addvaitro from '../../../../assets/add-square.png';
 import { Pagination } from "antd";
 import '../../../../css/SettingHeThong/vaitro.css';
-
-const Qlvaitro = () => {
+interface tableProps{
+  text: string;
+}
+const Qlvaitro:React.FC<tableProps> = ({text}) => {
     const dispatch = useDispatch();
     useEffect(() => {
       dispatch(fetchVaitro() as any);
@@ -30,6 +32,8 @@ const Qlvaitro = () => {
   const handleUpdate = (id: string) =>{
     navigate(`/upvaitro/${id}`);
 }
+const filter = currentPageData.filter((item) => (item.tenvt.includes(text))
+)
     return ( <>
      <div className='contect'>
       <table className='bangvaitro'>
@@ -42,7 +46,7 @@ const Qlvaitro = () => {
           </tr>
         </thead>
         <tbody>
-          {currentPageData.map((vaitro: Caidatvaitro, index) => {
+          {filter.map((vaitro: Caidatvaitro, index) => {
              let mauvaitro = {};
              if (index % 2 === 1) {
                 mauvaitro = { backgroundColor: "#FF750622" };

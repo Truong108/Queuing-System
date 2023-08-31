@@ -4,7 +4,9 @@ import { CaretRightOutlined, SearchOutlined } from "@ant-design/icons";
 import '../../css/SettingHeThong/vaitro.css';
 import Qlvaitro from "./tableHeThong/Vaitro/RoleManagement";
 import { Input } from "antd";
+import { useState } from "react";
 const SystemInstallation = () => {
+  const [text, setText] = useState<string>("");
     return ( <>
     <div className="vaitro">
     <div className="navtop">
@@ -32,6 +34,7 @@ const SystemInstallation = () => {
             suffix={<SearchOutlined 
             style={{color: '#FF7506'}}
             />}
+            onChange={(e) => setText(e.target.value)}
           />
         </div>
           </form>
@@ -39,7 +42,7 @@ const SystemInstallation = () => {
       </nav>
       </div>
     </div>
-    <Qlvaitro/>
+    <Qlvaitro text={text}/>
     </div>
     </> 
     );

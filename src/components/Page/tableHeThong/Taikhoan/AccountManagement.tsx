@@ -9,8 +9,9 @@ import { Pagination } from "antd";
 
 interface tableProps{
   statusActive: string;
+  text: string;
 }
-const Quanlytaikhoan:React.FC<tableProps> = ({statusActive}) => {
+const Quanlytaikhoan:React.FC<tableProps> = ({statusActive, text}) => {
     const dispatch = useDispatch();
     useEffect(() => {
       dispatch(fetchAccount() as any);
@@ -33,7 +34,9 @@ const Quanlytaikhoan:React.FC<tableProps> = ({statusActive}) => {
   const handleUpdate = (id: string) =>{
     navigate(`/uptaikhoan/${id}`);
   }
-  const filter = currentPageData.filter((item) => (statusActive === "Tất cả" || item.vt === statusActive))
+  const filter = currentPageData.filter((item) => (statusActive === "Tất cả" || item.vt === statusActive)
+  && (item.ht!.includes(text))
+  )
     return ( <>
      <div className='contaiaccount'>
       <table className='bangaccount'>

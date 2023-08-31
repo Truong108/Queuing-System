@@ -12,6 +12,7 @@ const GrantNumber = () => {
   const onChange: DatePickerProps['onChange'] = (date, dateString) => {
     console.log(date, dateString);
   };
+  const [text, setText] = useState<string>("")
     return ( <>
     <div className="capso">
     <div className="navtop">
@@ -103,6 +104,7 @@ const GrantNumber = () => {
             suffix={<SearchOutlined 
             style={{color: '#FF7506'}}
             />}
+            onChange={(e)=> setText(e.target.value)}
           />
         </div>
           </form>
@@ -110,7 +112,7 @@ const GrantNumber = () => {
       </nav>
       </div>
     </div>
-    <Capso statusService={statusService} statusCondition={statusCondition} statusSource={statusSource}/>
+    <Capso text={text} statusService={statusService} statusCondition={statusCondition} statusSource={statusSource}/>
     </div>
     </> 
     );

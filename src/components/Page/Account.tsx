@@ -8,6 +8,7 @@ import Quanlytaikhoan from "./tableHeThong/Taikhoan/AccountManagement";
 import { useState } from "react";
 const Account = () => {
   const [statusActive, setStatusActive]  = useState<string>("Tất cả")
+  const [text, setText] = useState<string>("");
     return ( <>
     <div className="taikhoan">
     <div className="navtop">
@@ -54,6 +55,7 @@ const Account = () => {
             suffix={<SearchOutlined 
             style={{color: '#FF7506'}}
             />}
+            onChange={(e) => setText(e.target.value)}
           />
         </div>
           </form>
@@ -61,7 +63,7 @@ const Account = () => {
       </nav>
       </div>
     </div>
-    <Quanlytaikhoan statusActive={statusActive}/>
+    <Quanlytaikhoan text={text} statusActive={statusActive}/>
     </div>
     </> 
     );

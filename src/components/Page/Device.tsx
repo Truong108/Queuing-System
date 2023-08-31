@@ -9,8 +9,6 @@ const Device = () => {
   const [statusActive, setStatusActive]  = useState<string>("Tất cả")
   const [statusCornect, setStatusCornect] = useState<string>("Tất cả")
   const [text, setText] = useState<string>("")
-  console.log(text);
- 
   return ( 
   <div className="thietbi">
     <div className="navtopp">

@@ -9,6 +9,7 @@ const Service = () => {
   const onChange: DatePickerProps['onChange'] = (date, dateString) => {
     console.log(date, dateString);
   };
+  const [text, setText] = useState<string>("")
     return ( <>
     <div className="thietbi">
       <div className="navtop">
@@ -61,6 +62,7 @@ const Service = () => {
             suffix={<SearchOutlined 
             style={{color: '#FF7506'}}
             />}
+            onChange={(e)=> setText(e.target.value)}
           />
         </div>
           </form>
@@ -68,7 +70,7 @@ const Service = () => {
       </nav>
       </div>
     </div>
-    <Danhsachdv statusActive={statusActive}/>
+    <Danhsachdv text={text} statusActive={statusActive}/>
     </div>
     </> 
     );

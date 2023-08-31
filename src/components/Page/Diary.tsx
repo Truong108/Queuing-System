@@ -3,11 +3,13 @@ import NhatKy from "./tableHeThong/UserLog";
 import Personal from "./Personal";
 import { DatePicker, DatePickerProps, Input, Space } from "antd";
 import '../../css/SettingHeThong/nhatky.css';
+import { useState } from "react";
 
 const Diary = () => {
     const onChange: DatePickerProps['onChange'] = (date, dateString) => {
         console.log(date, dateString);
       };
+      const [text, setText] = useState<string>("");
     return ( <>
     <div className="nhatkyfrom">
     <div className="navtop">
@@ -44,6 +46,7 @@ const Diary = () => {
             suffix={<SearchOutlined 
             style={{color: '#FF7506'}}
             />}
+            onChange={(e) => setText(e.target.value)}
           />
         </div>
           </form>
@@ -51,7 +54,7 @@ const Diary = () => {
       </nav>
       </div>
     </div>
-    <NhatKy/>
+    <NhatKy text={text}/>
     </div>
     </> );
 }

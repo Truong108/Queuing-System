@@ -5,7 +5,10 @@ import { RootState } from "../../../store/store";
 import { Pagination } from "antd";
 import { Nhatky } from "../../../Interface/Nhatky";
 
-const NhatKy = () => {
+interface tableProps{
+  text: string;
+}
+const NhatKy:React.FC<tableProps> = ({text}) => {
     const dispatch = useDispatch();
     useEffect(() => {
       dispatch(fetchNhatky() as any);
@@ -19,19 +22,20 @@ const NhatKy = () => {
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
   const currentPageData = nhatky.slice(startIndex, endIndex);
+  const filter = currentPageData.filter((items) => (items.tendn.includes(text)))
     return ( <>
          <div className='contect'>
       <table className='bangnhatky'>
         <thead>
           <tr>
-          <th className='tenlogin'>Tên đăng nhập</th>
+          <th className='tenlogin'>Tên người dùng</th>
             <th className='tgtacdong'>Thời gian tác động</th>
             <th className='ipthuchien'>IP thực hiện</th>
             <th className='thaotacth'>Thao tác thực hiện</th>
           </tr>
         </thead>
         <tbody>
-          {currentPageData.map((nhatky: Nhatky, index) => {
+          {filter.map((nhatky: Nhatky, index) => {
              let maunhatky = {};
              if (index % 2 === 1) {
                 maunhatky = { backgroundColor: "#FF750622" };

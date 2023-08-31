@@ -10,8 +10,9 @@ import { Dichvu } from '../../../Interface/service/Dichvu';
 
 interface tableProps{
   statusActive: string;
+  text: string;
 }
-const Danhsachdichvu:React.FC<tableProps> = ({statusActive}) => {
+const Danhsachdichvu:React.FC<tableProps> = ({statusActive, text}) => {
     const dispatch = useDispatch();
     useEffect(() => {
       dispatch(fetchDichvu() as any);
@@ -37,7 +38,9 @@ const Danhsachdichvu:React.FC<tableProps> = ({statusActive}) => {
   const hanndleUpdate = (id:string) =>{
     navigate(`/capnhatservice/${id}`)
   }
-  const filter = currentPageData.filter((item) => (statusActive === "Tất cả" || item.tthd === statusActive))
+  const filter = currentPageData.filter((item) => (statusActive === "Tất cả" || item.tthd === statusActive)
+  && (item.madv.includes(text))
+  )
     return ( <>
      <div className='contect'>
       <table className='bangdichvu'>
